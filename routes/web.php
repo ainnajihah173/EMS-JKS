@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\MRegistrationController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -38,7 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 
     //Marriage Registration
-    
+    Route::get('/marriage-registration', [MRegistrationController::class, 'index'])->name('manageMRegistration.index');
+    Route::get('/marriage-registration/show', [MRegistrationController::class, 'show'])->name('manageMRegistration.infoApplicant');
     //Marriage Card
 
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
