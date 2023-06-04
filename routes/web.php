@@ -37,6 +37,10 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 
+    //Marriage Registration
+    
+    //Marriage Card
+
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     Route::get('/form-example', [HomeController::class, 'formExample'])->name('form-example');
     Route::get('/manage', [PageController::class, 'manage'])->name('manage');
