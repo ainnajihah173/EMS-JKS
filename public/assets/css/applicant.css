@@ -20305,8 +20305,8 @@ textarea.form-control-lg {
   transform: translateX(21px);
 }
 .form-switch .form-check-input:checked {
-  border-color: rgba(251, 99, 64, 0.95);
-  background-color: rgba(251, 99, 64, 0.95);
+  border-color: rgba(33, 37, 41, 0.1);
+  background-color: #11cdef;
 }
 .form-switch .form-check-label {
   margin-bottom: 0;

@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/logo-ct-dark.png">
+    <link rel="icon" type="image/png" href="/img/logo-jks-small.png">
     <title>
-        Argon Free Template
+        EMS-JKS
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -18,7 +18,7 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ env('APP_URL') . '/assets/css/nucleo-svg.css' }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/argon-dashboard.css' }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/applicant.css' }}" rel="stylesheet" />
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Swal -->
@@ -43,12 +43,12 @@
             @if (
                 !in_array(request()->route()->getName(),
                     ['profile', 'profile-static']))
-                <div class="min-height-300 bg-primary position-absolute w-100"></div>
+                <div class="min-height-300 position-absolute w-100"></div>
             @elseif (in_array(request()->route()->getName(),
                     ['profile-static', 'profile']))
                 <div class="position-absolute w-100 min-height-300 top-0"
                     style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
-                    <span class="mask bg-primary opacity-6"></span>
+                    <span class="mask opacity-6"></span>
                 </div>
             @endif
             @include('layouts.navbars.auth.sidenav')
@@ -89,7 +89,7 @@
             allowInput: true
         });
     </script>
-    @stack('js');
+    @stack('js')
 </body>
 
 </html>
