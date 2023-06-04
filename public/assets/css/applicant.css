@@ -20319,7 +20319,7 @@ textarea.form-control-lg {
 
 label,
 .form-label {
-  font-size: 0.75rem;
+  font-size: 14px;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: #344767;
@@ -21705,7 +21705,7 @@ hr.horizontal.gray-light {
   background-image: linear-gradient(310deg, #8392ab 0%, #8392ab 100%);
 }
 .sidenav[data-color=secondary] .navbar-nav > .nav-item > .nav-link.active .icon i,
-.sidenav[data-color=secondary] .navbar-nav > .nav-item > .nav-link.active .nav-link-text {
+.sidenav .navbar-nav > .nav-item > .nav-link.active .nav-link-text {
   color: #fff !important;
 }
 .sidenav[data-color=secondary] .navbar-nav > .nav-item > .nav-link.active:after {
@@ -21714,9 +21714,9 @@ hr.horizontal.gray-light {
 .sidenav[data-color=success] .navbar-nav > .nav-item > .nav-link.active {
   background-image: linear-gradient(310deg, #2dce89 0%, #2dce89 100%);
 }
-.sidenav[data-color=success] .navbar-nav > .nav-item > .nav-link.active .icon i,
-.sidenav[data-color=success] .navbar-nav > .nav-item > .nav-link.active .nav-link-text {
-  color: #fff !important;
+.sidenav .navbar-nav > .nav-item > .nav-link.active .icon i,
+.sidenav .navbar-nav > .nav-item > .nav-link.active .nav-link-text {
+  color: #2dce89 !important;
 }
 .sidenav[data-color=success] .navbar-nav > .nav-item > .nav-link.active:after {
   color: #fff;

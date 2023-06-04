@@ -40,7 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Marriage Registration
     Route::get('/marriage-registration', [MRegistrationController::class, 'index'])->name('manageMRegistration.index');
-    Route::get('/marriage-registration/show', [MRegistrationController::class, 'show'])->name('manageMRegistration.infoApplicant');
+    Route::get('/marriage-registration/show-info', [MRegistrationController::class, 'show'])->name('manageMRegistration.infoApplicant');
+    Route::get('/marriage-registration/show-application', [MRegistrationController::class, 'showApp'])->name('manageMRegistration.viewAppApplicant');
+    Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.viewCertificateApplicant');
+    
     //Marriage Card
 
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');

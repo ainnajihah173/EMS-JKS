@@ -35,7 +35,7 @@ class MRegistrationController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show Applicant Info before go to mreg form
      */
     public function show(MRegistration $mRegistration)
     {
@@ -43,7 +43,23 @@ class MRegistrationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show Applicant Info for their Application
+     */
+    public function showApp(MRegistration $mRegistration)
+    {
+        return view('manageMRegistration.viewAppApplicant');
+    }
+
+    /**
+     * Show Applicant Info for their cert
+     */
+    public function showCert(MRegistration $mRegistration)
+    {
+        return view('manageMRegistration.viewCertificateApplicant');
+    }
+
+    /**
+     * Edit Registration Form
      */
     public function edit(MRegistration $mRegistration)
     {
@@ -59,7 +75,7 @@ class MRegistrationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete Data
      */
     public function destroy(MRegistration $mRegistration)
     {

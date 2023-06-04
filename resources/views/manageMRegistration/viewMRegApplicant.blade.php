@@ -35,9 +35,9 @@
                                         <td>981234050981</td>
                                         <td>XXXXXXXXXXXXX</td>
                                         <td>22/11/2022</td>
-                                        <td class="text-center"><span class="badge badge-pill bg-warning">Belum
+                                        <td ><span class="badge badge-pill bg-warning">Belum
                                                 Hantar</span></td>
-                                        <td class="text-center">
+                                        <td>
                                             <a href=""><i class="fas fa-eye"
                                                     style="padding-right:15px;color:green"></i></a>
                                             <a href=""><i class="fas fa-edit"
