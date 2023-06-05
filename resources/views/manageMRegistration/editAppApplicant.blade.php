@@ -7,70 +7,324 @@
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Maklumat Pasangan</h6>
+                        <h6>Maklumat Pemohon</h6>
                     </div>
                     <div class="card-body p-3">
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>Nama Suami</label>
+                        <!-- Nav Tab -->
+                        <div class="nav-wrapper position-relative end-0">
+                            <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#suami"
+                                        role="tab" aria-controls="suami" aria-selected="true">
+                                        Maklumat Suami
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#isteri" role="tab"
+                                        aria-controls="isteri" aria-selected="false">
+                                        Maklumat Isteri
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#kahwin" role="tab"
+                                        aria-controls="kahwin" aria-selected="false">
+                                        Maklumat Perkahwinan
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="card-header pb-0 text-center">
+                                <p class="fw-bold font-italic">** Sila Pastikan Maklumat Diisi dengan Maklumat Yang Betul **
+                                </p>
                             </div>
-                            <div class="col-2">
-                              <p>: Ali Bin Abu</p>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="suami" role="tabpanel"
+                                    aria-labelledby="home-tab">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Nama Suami <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="husName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    No. Kad Pengenalan <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="kpHus" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Tarikh Lahir <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="husName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Umur <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="ageHus" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Warganegara <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">Warganegara</option>
+                                                    <option value="2">Bukan Warganegara</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Taraf Pendidikan <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">Tiada Pendidikan</option>
+                                                    <option value="2"></option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Bangsa <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Status Sebelum Berkahwin <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Alamat Dalam K/P <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="alamatKPHus" rows="3"></textarea>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label font-italic" for="exampleCheck1">Tanda Jika
+                                                    Alamat Terkini Sama Dengan Alamat Dalam K/P</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Alamat Terkini <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="alamatTerkiniHus" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Sektor Pekerjaan <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Nama Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="namaKerjaHus" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Pendapatan (RM) <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="gajiHus" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    No. Telefon <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="telHus" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <button onclick="history.back()"
+                                            class="btn btn-light btn-md ms-auto">Kembali</button>
+                                        <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="isteri" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Nama Isteri <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="wifeName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    No. Kad Pengenalan <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="kpWife" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Tarikh Lahir <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="wifeName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Umur <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="ageWife" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Warganegara <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">Warganegara</option>
+                                                    <option value="2">Bukan Warganegara</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Taraf Pendidikan <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">Tiada Pendidikan</option>
+                                                    <option value="2"></option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Bangsa <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Status Sebelum Berkahwin <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Alamat Dalam K/P <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="alamatKPWife" rows="3"></textarea>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label font-italic" for="exampleCheck1">Tanda Jika
+                                                    Alamat Terkini Sama Dengan Alamat Dalam K/P</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Alamat Terkini <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="alamatTerkiniWife" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Sektor Pekerjaan <span class="text-danger">*</span></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Sila Pilih...</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Nama Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="namaKerjaWife" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    Pendapatan (RM) <span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="gajiWife" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-control-label">
+                                                    No. Telefon <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="telWife" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
+                                    </div>
+                                </div>
+                            <div class="tab-pane fade" id="kahwin" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row mt-3">
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>No. K/P Suami</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: 981234050981</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>Nama Isteri</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: Zubaidah Binti Awang</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>No. K/P Isteri</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: 981234050984</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>Kategori Pendaftaran Nikah</label>
-                            </div>
-                            <div class="col-7">
-                                <select class="form-select" aria-label="Default select example" style="width:50%;">
-                                    <option selected>--- Sila Pilih ---</option>
-                                    <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                    <option value="2">Pendaftaran Nikah Sukarela</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>No. Akaun Terima Kebenaran Berkahwin</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: XXXXXXXXXXXXX</p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2">
-                            <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
 @endsection
 
+@push('js')
+    <script>
+      
+    </script>
+@endpush

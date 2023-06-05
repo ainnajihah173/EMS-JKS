@@ -71,7 +71,7 @@ class MRegistrationController extends Controller
      */
     public function edit(MRegistration $mRegistration)
     {
-        //
+        return view('manageMRegistration.editAppApplicant');
     }
 
     /**

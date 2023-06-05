@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index');
 
     //Marriage Card Staff
-    
+
 
     //Consultation Application
 
@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Insentive Application
 
 
+    //Example
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     Route::get('/form-example', [HomeController::class, 'formExample'])->name('form-example');
     Route::get('/manage', [PageController::class, 'manage'])->name('manage');
