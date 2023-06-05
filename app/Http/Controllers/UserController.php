@@ -56,7 +56,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data = User::find($id)->toArray();
-
+        
         return view('user.show', compact('data'));
     }
 

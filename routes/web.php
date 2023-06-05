@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\MCardApplicationController;
 use App\Http\Controllers\MRegistrationController;
 use App\Http\Controllers\UserController;
 
@@ -38,13 +39,34 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 
-    //Marriage Registration
+    //Marriage Course
+
+
+    //Marriage Request
+
+
+    //Marriage Registration Applicant
     Route::get('/marriage-registration', [MRegistrationController::class, 'index'])->name('manageMRegistration.index');
     Route::get('/marriage-registration/show-info', [MRegistrationController::class, 'show'])->name('manageMRegistration.infoApplicant');
+    Route::get('/marriage-registration/edit-application', [MRegistrationController::class, 'edit'])->name('manageMRegistration.editAppApplication');
     Route::get('/marriage-registration/show-application', [MRegistrationController::class, 'showApp'])->name('manageMRegistration.viewAppApplicant');
+    Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.printAppApplicant');
     Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.viewCertificateApplicant');
     
-    //Marriage Card
+    //Marriage Registration Staff
+
+
+    //Marriage Card Applicant
+    Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index');
+
+    //Marriage Card Staff
+    
+
+    //Consultation Application
+
+
+    //Insentive Application
+
 
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     Route::get('/form-example', [HomeController::class, 'formExample'])->name('form-example');

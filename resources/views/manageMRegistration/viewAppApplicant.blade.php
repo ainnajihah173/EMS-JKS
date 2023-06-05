@@ -7,7 +7,7 @@
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Maklumat Pasangan</h6>
+                        <h6>Maklumat Permohonan</h6>
                     </div>
                     <div class="card-body p-3">
                         <!-- Maklumat Suami-->
@@ -265,7 +265,19 @@
                                 <p>: XXXXXXXXx</p>
                             </div>
                             <div class="col-2">
+                                <label>Umur Saksi 1</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: XXXXXXXXx</p>
+                            </div>
+                            <div class="col-2">
                                 <label>Nama Saksi 2</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: XXXXXXXXXX</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Umur Saksi 2</label>
                             </div>
                             <div class="col-2">
                                 <p>: XXXXXXXXXX</p>

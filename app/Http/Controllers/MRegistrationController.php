@@ -51,6 +51,14 @@ class MRegistrationController extends Controller
     }
 
     /**
+     * Show Applicant Info for their Application
+     */
+    public function showPrint(MRegistration $mRegistration)
+    {
+        return view('manageMRegistration.printAppApplicant');
+    }
+
+    /**
      * Show Applicant Info for their cert
      */
     public function showCert(MRegistration $mRegistration)
