@@ -37,7 +37,17 @@ class MCardApplicationController extends Controller
      */
     public function show(MCard_Application $mCard_Application)
     {
-        //
+        return view('manageMCard.cardAppApplicant');
+    }
+
+    public function showApp(MCard_Application $mCard_Application)
+    {
+        return view('manageMCard.viewAppApplicant');
+    }
+
+    public function showPrint(MCard_Application $mCard_Application)
+    {
+        return view('manageMCard.printAppApplicant');
     }
 
     /**

@@ -13,7 +13,8 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between">
                         <h6>Maklumat Pasangan</h6>
-                        <a href="{{ route('manageMRegistration.infoApplicant') }}" class="btn btn-info btn-sm float-end mb-0 mt-4"><i class="fas fa-plus"></i> Daftar
+                        <a href="{{ route('manageMCard.cardAppApplicant') }}"
+                            class="btn btn-info btn-sm float-end mb-0 mt-4"><i class="fas fa-plus"></i> Mohon Kad
                             Nikah</a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2 mx-5">
@@ -22,8 +23,8 @@
                                 <thead class="bg-light">
                                     <tr>
                                         <th>Bil</th>
-                                        <th>K/P Suami</th>
-                                        <th>No. Permohonan</th>
+                                        <th>Nama Pemohon</th>
+                                        <th>No. Pendaftaran Sijil</th>
                                         <th>Tarikh Mohon</th>
                                         <th>Status</th>
                                         <th>Operasi</th>
@@ -35,7 +36,7 @@
                                         <td>981234050981</td>
                                         <td>XXXXXXXXXXXXX</td>
                                         <td>22/11/2022</td>
-                                        <td ><span class="badge badge-pill bg-warning">Belum
+                                        <td><span class="badge badge-pill bg-warning">Belum
                                                 Hantar</span></td>
                                         <td>
                                             <a href=""><i class="fas fa-eye"
@@ -45,8 +46,6 @@
                                             <a href=""><i class="fas fa-trash"
                                                     style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
                                             <a href=""><i class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                            <a href=""><i class="fas fa-file"
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
                                     </tr>
@@ -63,7 +62,6 @@
 
 @push('js')
     <script>
-
         let table = new DataTable('#myTable');
 
         function deleteRecord(url) {
