@@ -1,7 +1,7 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Pendaftaran Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Pendaftaran Perkahwinan'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -13,9 +13,6 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between">
                         <h6>Maklumat Pasangan</h6>
-                        <a href="{{ route('manageMRegistration.infoApplicant') }}"
-                            class="btn btn-info btn-sm float-end mb-0 mt-4"><i class="fas fa-plus"></i> Daftar
-                            Nikah</a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2 mx-5">
                         <div class="table-responsive p-0">
@@ -23,8 +20,9 @@
                                 <thead class="bg-light">
                                     <tr>
                                         <th>Bil</th>
-                                        <th>K/P Suami</th>
+                                        <th>KP/Nama Suami</th>
                                         <th>No. Permohonan</th>
+                                        <th>Kategori Nikah</th>
                                         <th>Tarikh Mohon</th>
                                         <th>Status</th>
                                         <th>Operasi</th>
@@ -33,23 +31,21 @@
                                 <tbody>
                                     <tr style="line-height: 30px;">
                                         <td>1</td>
-                                        <td>981234050981</td>
+                                        <td>981234050981 <br> Ali bin Abu</td>
                                         <td>XXXXXXXXXXXXX</td>
+                                        <td>Nikah Sukarela</td>
                                         <td>22/11/2022</td>
-                                        <td><span class="badge badge-pill bg-warning">Belum
-                                                Hantar</span></td>
+                                        <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
                                         <td>
-                                            <a href="{{ route('manageMRegistration.viewAppApplicant') }}"><i
-                                                    class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMRegistration.editAppApplication') }}"><i
-                                                    class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
-                                            <a href=""><i class="fas fa-trash"
-                                                    style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                            <a href="{{ route('manageMRegistration.printAppApplicant') }}"><i
-                                                    class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                            <a href="{{ route('manageMRegistration.viewCertificateApplicant') }}"><i
-                                                    class="fas fa-file"
+                                            <a href="{{ route('manageMRegistration.viewAppStaff') }}"><i class="fas fa-eye"
+                                                    style="padding-right:15px;color:green"></i></a>
+                                            <a href="{{ route('manageMRegistration.editMRegStaff') }}"><i class="fas fa-edit"
+                                                    style="padding-right:15px;color:blue"></i></a>
+                                            <a href="{{ route('manageMRegistration.printAppStaff') }}"><i class="fas fa-print"
+                                                    style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
+                                            <a href="{{ route('manageMRegistration.editStatusStaff') }}"><i class="far fa-check-circle"
+                                                    style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
+                                            <a href=""><i class="fas fa-certificate"
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
                                     </tr>

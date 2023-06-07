@@ -1,36 +1,36 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+<aside class="sidenav bg-blue navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
     id="sidenav-main">
     <div class="sidenav-header text-center">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ route('home') }}" target="_blank">
             <img src="{{ env('APP_URL') . '/img/logo-staff.png' }}" class="navbar-brand-img h-100" alt="main_logo">
         </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6 text-white">Menu</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
                     href="{{ route('home') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user text-secondary text-sm opacity-10"></i>
+                        <i class="fas fa-user text-white text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Profil</span>
+                    <span class="nav-link-text ms-1 text-white">Profil</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'manageMRegistration.index' ? 'active' : '' }}"
-                    href="{{ route('manageMRegistration.index') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'manageMRegistration.indexStaff' ? 'active' : '' }}"
+                    href="{{ route('manageMRegistration.indexStaff') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-file-alt text-secondary text-sm opacity-10"></i>
+                        <i class="fas fa-file-alt text-white text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Pendaftaran Perkahwinan</span>
+                    <span class="nav-link-text ms-1 text-white">Pendaftaran Perkahwinan</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -38,9 +38,9 @@
                     href="{{ route('manageMCard.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-id-card text-secondary text-sm opacity-10"></i>
+                        <i class="fas fa-id-card text-white text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Permohonan Kad Kahwin</span>
+                    <span class="nav-link-text ms-1 text-white">Permohonan Kad Kahwin</span>
                 </a>
             </li>
 
