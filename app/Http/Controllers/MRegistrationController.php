@@ -73,6 +73,11 @@ class MRegistrationController extends Controller
         return view('manageMRegistration.viewCertificateApplicant');
     }
 
+    public function showCertStaff(MRegistration $mRegistration)
+    {
+        return view('manageMRegistration.viewCertificateStaff');
+    }
+
     public function showAppStaff(MRegistration $mRegistration)
     {
         return view('manageMRegistration.viewAppStaff');

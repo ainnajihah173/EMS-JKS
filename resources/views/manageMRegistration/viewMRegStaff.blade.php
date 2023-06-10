@@ -45,7 +45,7 @@
                                                     style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
                                             <a href="{{ route('manageMRegistration.editStatusStaff') }}"><i class="far fa-check-circle"
                                                     style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
-                                            <a href=""><i class="fas fa-certificate"
+                                            <a href="{{ route('manageMRegistration.viewCertificateStaff') }}"><i class="fas fa-certificate"
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
                                     </tr>

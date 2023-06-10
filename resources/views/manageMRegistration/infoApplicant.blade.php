@@ -12,39 +12,39 @@
                     <div class="card-body p-3">
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                              <label>Nama Suami</label>
+                                <label>Nama Suami</label>
                             </div>
                             <div class="col-2">
-                              <p>: Ali Bin Abu</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>No. K/P Suami</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: 981234050981</p>
+                                <p>: Ali Bin Abu</p>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                              <label>Nama Isteri</label>
+                                <label>No. K/P Suami</label>
                             </div>
                             <div class="col-2">
-                              <p>: Zubaidah Binti Awang</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                              <label>No. K/P Isteri</label>
-                            </div>
-                            <div class="col-2">
-                              <p>: 981234050984</p>
+                                <p>: 981234050981</p>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                              <label>Kategori Pendaftaran Nikah</label>
+                                <label>Nama Isteri</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: Zubaidah Binti Awang</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start m-1">
+                            <div class="col-2">
+                                <label>No. K/P Isteri</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: 981234050984</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start m-1">
+                            <div class="col-2">
+                                <label>Kategori Pendaftaran Nikah</label>
                             </div>
                             <div class="col-7">
                                 <select class="form-select" aria-label="Default select example" style="width:50%;">
@@ -56,16 +56,16 @@
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                              <label>No. Akaun Terima Kebenaran Berkahwin</label>
+                                <label>No. Akaun Terima Kebenaran Berkahwin</label>
                             </div>
                             <div class="col-2">
-                              <p>: XXXXXXXXXXXXX</p>
+                                <p>: XXXXXXXXXXXXX</p>
                             </div>
                         </div>
                         <div class="text-center mt-2">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="{{ route('manageMRegistration.editAppApplication') }}" class="btn btn-info btn-md ms-4">Nikah Kebenaran</a>
-                            <a href="{{ route('manageMRegistration.editAppApplication') }}" class="btn btn-secondary btn-md ms-4">Nikah Sukarela</a>
+                            <a href="{{ route('manageMRegistration.editAppApplication') }}"
+                                class="btn btn-info btn-md ms-4">Seterusnya</a>
                         </div>
                     </div>
                 </div>
@@ -74,4 +74,3 @@
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
-

@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'manageMCard.index' ? 'active' : '' }}"
+                <a class="nav-link {{ Route::currentRouteName() == 'manageMCard.indexStaff' ? 'active' : '' }}"
                     href="{{ route('manageMCard.index') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

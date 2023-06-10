@@ -16,6 +16,11 @@ class MCardApplicationController extends Controller
         return view('manageMCard.viewMCardApplicant');
     }
 
+    public function indexStaff()
+    {
+        return view('manageMCard.viewMCardStaff');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -45,9 +50,18 @@ class MCardApplicationController extends Controller
         return view('manageMCard.viewAppApplicant');
     }
 
+    public function showAppStaff(MCard_Application $mCard_Application)
+    {
+        return view('manageMCard.viewAppStaff');
+    }
+
     public function showPrint(MCard_Application $mCard_Application)
     {
         return view('manageMCard.printAppApplicant');
+    }
+    public function showCardStaff(MCard_Application $mCard_Application)
+    {
+        return view('manageMCard.viewCardStaff');
     }
 
     /**
@@ -57,6 +71,13 @@ class MCardApplicationController extends Controller
     {
         //
     }
+
+    public function editStatus(MCard_Application $mCard_Application)
+    {
+        return view('manageMCard.editStatusStaff');
+    }
+
+
 
     /**
      * Update the specified resource in storage.

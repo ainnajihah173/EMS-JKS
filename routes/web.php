@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-registration/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.viewAppStaff');
     Route::get('/staff/marriage-registration/print-application', [MRegistrationController::class, 'printAppStaff'])->name('manageMRegistration.printAppStaff');
     Route::get('/staff/marriage-registration/status-application', [MRegistrationController::class, 'editStatus'])->name('manageMRegistration.editStatusStaff');
+    Route::get('/staff/marriage-registration/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.viewCertificateStaff');
 
     //Marriage Card Applicant
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 
@@ -67,7 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-card/print-application', [MCardApplicationController::class, 'showPrint'])->name('manageMCard.printAppApplicant');
     
     //Marriage Card Staff
-    Route::get('/staff/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 
+    Route::get('/staff/marriage-card', [MCardApplicationController::class, 'indexStaff'])->name('manageMCard.indexStaff'); 
+    Route::get('/staff/marriage-card/view-application', [MCardApplicationController::class, 'showAppStaff'])->name('manageMCard.viewAppStaff'); 
+    Route::get('/staff/marriage-card/status-application', [MCardApplicationController::class, 'editStatus'])->name('manageMCard.editStatusStaff'); 
+    Route::get('/staff/marriage-card/card', [MCardApplicationController::class, 'showCardStaff'])->name('manageMCard.viewCardStaff'); 
 
     //Consultation Application
 
