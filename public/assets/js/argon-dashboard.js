@@ -2418,7 +2418,7 @@ window.sidebarType = function (a) {
     var textDarks = document.querySelectorAll('.sidenav .text-dark');
 
     for (var _i2 = 0; _i2 < textDarks.length; _i2++) {
-      textDarks[_i2].classList.add('text-white');
+      textDarks[_i2].classList.add('text-white'); 
 
       textDarks[_i2].classList.remove('text-dark');
     }

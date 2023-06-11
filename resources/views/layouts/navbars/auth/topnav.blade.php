@@ -6,7 +6,7 @@
         <div class="navbar bg-white collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" style="border-radius: 20px;"
             id="navbar">
             <div class="">
-                <h6 class="font-weight-bolder mb-0">{{ $title }}</h6>
+                <h6 class="font-weight-bolder mb-0 text-dark">{{ $title }}</h6>
             </div>
             <ul class="navbar-nav justify-content-end">
                 <!--

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\MRegistration;
 use App\Http\Requests\StoreMRegistrationRequest;
 use App\Http\Requests\UpdateMRegistrationRequest;
+use App\Models\ApplicantDetail;
+use App\Models\Wali;
+use App\Models\Witness;
+use Illuminate\Http\Request;
 
 class MRegistrationController extends Controller
 {
@@ -13,9 +17,9 @@ class MRegistrationController extends Controller
      */
     public function index()
     {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
+        $datas = MRegistration::all();
 
-        return view('manageMRegistration.viewMRegApplicant');
+        return view('manageMRegistration.viewMRegApplicant', compact('datas'));
     }
 
     public function indexStaff()
@@ -28,17 +32,37 @@ class MRegistrationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->category;
+        return view('manageMRegistration.createAppApplicant', compact('data'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMRegistrationRequest $request)
+    public function store(Request $request)
     {
-        //
+        $applicant = ApplicantDetail::create($request->applicant);
+        $spouse = ApplicantDetail::create($request->spouse);
+        $wali = Wali::create($request->wali);
+        $witness = Witness::create($request->witness);
+
+        $MRegCount = MRegistration::count();
+
+        $request->merge([
+            'user_id' => auth()->user()->id,
+            'applicant_id' => $applicant->id,
+            'spouse_id' => $spouse->id,
+            'wali_id' => $wali->id,
+            'witness_id' => $witness->id,
+            'mreg_noApp' => 'MR' . date("Y") . sprintf("%'.05d\n", $MRegCount + 1),
+            'mreg_status' => "Draft"
+        ]);
+
+        MRegistration::create($request->all());
+
+        return redirect()->route('manageMRegistration.index');
     }
 
     /**
@@ -46,15 +70,17 @@ class MRegistrationController extends Controller
      */
     public function show(MRegistration $mRegistration)
     {
-        return view('manageMRegistration.infoApplicant');
+        $data = MRegistration::where('user_id', auth()->user()->id)->first();
+        return view('manageMRegistration.infoApplicant', compact('data'));
     }
 
     /**
      * Show Applicant Info for their Application
      */
-    public function showApp(MRegistration $mRegistration)
+    public function showApp()
     {
-        return view('manageMRegistration.viewAppApplicant');
+        $data = MRegistration::where('user_id', auth()->user()->id)->first();
+        return view('manageMRegistration.viewAppApplicant', compact('data'));
     }
 
     /**
@@ -62,7 +88,8 @@ class MRegistrationController extends Controller
      */
     public function showPrint(MRegistration $mRegistration)
     {
-        return view('manageMRegistration.printAppApplicant');
+        $data = MRegistration::where('user_id', auth()->user()->id)->first();
+        return view('manageMRegistration.printAppApplicant', compact('data'));
     }
 
     /**
@@ -118,6 +145,8 @@ class MRegistrationController extends Controller
      */
     public function destroy(MRegistration $mRegistration)
     {
-        //
+        MRegistration::where('user_id', auth()->user()->id)->first()->delete();
+
+        return response()->json(['success' => true]);
     }
 }

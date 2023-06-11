@@ -12,34 +12,34 @@
                     <div class="card-body p-3">
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                                <label>Nama Suami</label>
+                                <label>Nama Pemohon</label>
                             </div>
                             <div class="col-2">
-                                <p>: Ali Bin Abu</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>No. K/P Suami</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: 981234050981</p>
+                                <p>: </p>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                                <label>Nama Isteri</label>
+                                <label>No. K/P Pemohon</label>
                             </div>
                             <div class="col-2">
-                                <p>: Zubaidah Binti Awang</p>
+                                <p>: </p>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                                <label>No. K/P Isteri</label>
+                                <label>Nama Pasangan</label>
                             </div>
                             <div class="col-2">
-                                <p>: 981234050984</p>
+                                <p>:</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start m-1">
+                            <div class="col-2">
+                                <label>No. K/P Pasangan</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: </p>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1">
@@ -47,7 +47,7 @@
                                 <label>Kategori Pendaftaran Nikah</label>
                             </div>
                             <div class="col-7">
-                                <select class="form-select" aria-label="Default select example" style="width:50%;">
+                                <select class="form-select" id="mySelect" style="width:50%;" onchange="checkSelected()">
                                     <option selected>--- Sila Pilih ---</option>
                                     <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
                                     <option value="2">Pendaftaran Nikah Sukarela</option>
@@ -56,15 +56,15 @@
                         </div>
                         <div class="row justify-content-start m-1">
                             <div class="col-2">
-                                <label>No. Akaun Terima Kebenaran Berkahwin</label>
+                                <label id="labelA"></label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXXXXXXXXXXX</p>
+                                <p id="noAcc"></p>
                             </div>
                         </div>
                         <div class="text-center mt-2">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="{{ route('manageMRegistration.editAppApplication') }}"
+                            <a href="#" id="myLink"
                                 class="btn btn-info btn-md ms-4">Seterusnya</a>
                         </div>
                     </div>
@@ -74,3 +74,24 @@
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
+
+@push('js')
+    <script>
+        function checkSelected() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedValue = selectElement.value;
+            var seterusnyaButton = document.getElementById("myLink");
+
+            if (selectedValue === "1") {
+                document.getElementById("labelA").innerHTML = "No. Akaun Terima Kebenaran Berkahwin";
+                document.getElementById("noAcc").innerHTML = ": XXXXXXXXXXXXX";
+                seterusnyaButton.href = "{{ route('manageMRegistration.create', ['category' => '1']) }}";
+
+            } else {
+                document.getElementById("labelA").innerHTML = "";
+                document.getElementById("noAcc").innerHTML = "";
+                seterusnyaButton.href = "{{ route('manageMRegistration.create', ['category' => '2']) }}";
+            }
+        }
+    </script>
+@endpush

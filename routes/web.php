@@ -47,11 +47,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Marriage Registration Applicant
     Route::get('/marriage-registration', [MRegistrationController::class, 'index'])->name('manageMRegistration.index');
-    Route::get('/marriage-registration/view-info', [MRegistrationController::class, 'show'])->name('manageMRegistration.infoApplicant');
+    Route::get('/marriage-registration/view-info', [MRegistrationController::class, 'show'])->name('manageMRegistration.show');
+    Route::get('/marriage-registration/create-application', [MRegistrationController::class, 'create'])->name('manageMRegistration.create');
     Route::get('/marriage-registration/edit-application', [MRegistrationController::class, 'edit'])->name('manageMRegistration.editAppApplication');
-    Route::get('/marriage-registration/view-application', [MRegistrationController::class, 'showApp'])->name('manageMRegistration.viewAppApplicant');
-    Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.printAppApplicant');
-    Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.viewCertificateApplicant');
+    Route::get('/marriage-registration/view-application', [MRegistrationController::class, 'showApp'])->name('manageMRegistration.showApp');
+    Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.showPrint');
+    Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.showCert');
+    Route::post('/marriage-registration/store-application', [MRegistrationController::class, 'store'])->name('manageMRegistration.store');
     
     //Marriage Registration Staff
     Route::get('/staff/marriage-registration', [MRegistrationController::class, 'indexStaff'])->name('manageMRegistration.indexStaff');

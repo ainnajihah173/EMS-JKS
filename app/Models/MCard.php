@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MCard_Application extends Model
+class MCard extends Model
 {
     use HasFactory;
 }

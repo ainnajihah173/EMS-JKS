@@ -44,20 +44,19 @@
                                     <div class="tab-pane fade show active" id="pemohon" role="tabpanel"
                                         aria-labelledby="home-tab">
                                         <div class="row mt-3">
+                                            <input type="hidden" value="{{ $data}}" name="mreg_category">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Nama Pemohon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" name="applicant[app_name]"
-                                                        required>
+                                                    <input class="form-control" type="text" name="applicant[app_name]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Kad Pengenalan <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="applicant[app_ic]" type="text"
-                                                        required>
+                                                    <input class="form-control" name="applicant[app_ic]" type="text">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -65,7 +64,7 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         Tarikh Lahir <span class="text-danger">*</span></label>
                                                     <input class="form-control" type="date"
-                                                        name="applicant[app_birthdate]" required>
+                                                        name="applicant[app_birthdate]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -95,8 +94,9 @@
                                                         <option value="1">Tiada Pendidikan</option>
                                                         <option value="2">SPM</option>
                                                         <option value="3">Diploma</option>
-                                                        <option value="4">Ijazah Sarjana</option>
-                                                        <option value="5">PHD</option>
+                                                        <option value="4">Ijazah Sarjana Muda</option>
+                                                        <option value="5">Ijazah Sarjana</option>
+                                                        <option value="6">PHD</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -163,14 +163,14 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         Pendapatan (RM) <span class="text-danger">*</span></label>
                                                     <input class="form-control" type="text"
-                                                        name="applicant[app_jobSalary]" required>
+                                                        name="applicant[app_jobSalary]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Telefon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="applicant[app_phonenumber]"
+                                                    <input class="form-control" name="applicant[app_phoneNumber]"
                                                         type="text">
                                                 </div>
                                             </div>
@@ -188,24 +188,22 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Nama Pasangan <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" name="spouse[app_name]"
-                                                        required>
+                                                    <input class="form-control" type="text" name="spouse[app_name]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Kad Pengenalan <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="spouse[app_ic]" type="text"
-                                                        required>
+                                                    <input class="form-control" name="spouse[app_ic]" type="text">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Tarikh Lahir <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text"
-                                                        name="spouse[app_birthdate]" required>
+                                                    <input class="form-control" type="date"
+                                                        name="spouse[app_birthdate]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -235,8 +233,9 @@
                                                         <option value="1">Tiada Pendidikan</option>
                                                         <option value="2">SPM</option>
                                                         <option value="3">Diploma</option>
-                                                        <option value="4">Ijazah Sarjana</option>
-                                                        <option value="5">PHD</option>
+                                                        <option value="4">Ijazah Sarjana Muda</option>
+                                                        <option value="5">Ijazah Sarjana</option>
+                                                        <option value="6">PHD</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -287,6 +286,7 @@
                                                         <option value="0">Sila Pilih...</option>
                                                         <option value="1">Kerajaan</option>
                                                         <option value="2">Swasta</option>
+                                                        <option value="3">Tidak Bekerja</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -303,14 +303,14 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         Pendapatan (RM) <span class="text-danger">*</span></label>
                                                     <input class="form-control" type="text"
-                                                        name="spouse[app_jobSalary]" required>
+                                                        name="spouse[app_jobSalary]">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Telefon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="spouse[app_phonenumber]"
+                                                    <input class="form-control" name="spouse[app_phoneNumber]"
                                                         type="text">
                                                 </div>
                                             </div>
@@ -329,16 +329,15 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Tarikh Mohon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" name="mreg_dateApply"
-                                                        readonly>
+                                                    <input class="form-control" type="date" name="mreg_dateApply"
+                                                        id="dateApply" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Tarikh Akad Nikah <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="mreg_marriageDate" type="date"
-                                                        required>
+                                                    <input class="form-control" name="mreg_marriageDate" type="date">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -346,7 +345,7 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         Tempat Akad Nikah <span class="text-danger">*</span></label>
                                                     <input class="form-control" type="text"
-                                                        name="mreg_marriageAddress" required>
+                                                        name="mreg_marriageAddress">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -360,8 +359,7 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Mas Kahwin (RM) <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="number" name="mreg_masKahwin"
-                                                        required>
+                                                    <input class="form-control" type="number" name="mreg_masKahwin">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -375,8 +373,7 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Nama Jurunikah <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" name="mreg_jurunikahName"
-                                                        required>
+                                                    <input class="form-control" type="text" name="mreg_jurunikahName">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -526,7 +523,7 @@
                                             </div>
                                             <div class="text-center mt-4">
                                                 <a href="" class="btn btn-light btn-md ms-4">Kembali</a>
-                                                <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
+                                                <button type="submit" class="btn btn-info btn-md ms-4">Draft</button>
                                             </div>
                                         </div>
                                     </div>
@@ -542,5 +539,8 @@
 @endsection
 
 @push('js')
-    <script></script>
+    <script>
+        let field = document.querySelector('#dateApply');
+        field.valueAsDate = new Date();
+    </script>
 @endpush
