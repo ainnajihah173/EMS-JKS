@@ -19,6 +19,7 @@
     <link href="{{ env('APP_URL') . '/assets/css/nucleo-svg.css' }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/staff.css' }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/mCourseStaff.css' }}" rel="stylesheet" />
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Swal -->

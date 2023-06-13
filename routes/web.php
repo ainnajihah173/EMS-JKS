@@ -7,9 +7,13 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\CourseAppController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MApplicationController;
 use App\Http\Controllers\MCardApplicationController;
 use App\Http\Controllers\MRegistrationController;
 use App\Http\Controllers\UserController;
+use App\Models\MApplication;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +43,51 @@ Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 
-    //Marriage Course
+    //Marriage Course Applicant
+    Route::get('/marriage-course', [CourseAppController::class, 'index'])->name('manageMCourse.index');
+    Route::get('/marriage-course/register', [CourseAppController::class, 'createApp'])->name('manageMCourse.courseRegisteration');
+    Route::post('/marriage-course/store-course', [CourseAppController::class, 'storeApp'])->name('regCourse.store');
 
+    Route::get('/marriage-course/postpone-date', [CourseAppController::class, 'editPostpone'])->name('manageMCourse.postponeCourse');
+    Route::get('/marriage-course/document-list', [CourseAppController::class, 'showDoc'])->name('manageMCourse.documentList');
+    Route::get('/marriage-course/document-list/certificate', [CourseAppController::class, 'showCert'])->name('manageMCourse.printCert');
+    Route::get('/marriage-course/document-list/slip', [CourseAppController::class, 'showSlip'])->name('manageMCourse.printSlip');
+    Route::get('/marriage-course/view-course', [CourseAppController::class, 'showApp'])->name('manageMCourse.viewApplication');
+    Route::get('/marriage-course/edit-course', [CourseAppController::class, 'editApp'])->name('manageMCourse.editApplication');
 
-    //Marriage Request
+    Route::get('/loc', [CourseAppController::class, 'getLocDistrict'])->name('locDistrict');
+    Route::get('/adress', [CourseAppController::class, 'getAdress'])->name('address');
+    Route::get('/date', [CourseAppController::class, 'getDate'])->name('date');
+    
+
+    //Marriage Course Staff
+    Route::get('/staff/marriage-course', [CourseAppController::class, 'indexStaff'])->name('manageMCourse.indexStaff');
+    Route::get('/staff/marriage-course/add-course', [CourseController::class, 'createCourse'])->name('manageMCourse.addCourse');
+    Route::post('/staff/marriage-course/store-course', [CourseController::class, 'storeCourse'])->name('addCourse.store');
+
+    
+    Route::get('/staff/marriage-course/edit-application', [CourseAppController::class, 'editAppStaff'])->name('manageMCourse.editAppStaff');
+    Route::get('/staff/marriage-course/view-application', [CourseAppController::class, 'showAppStaff'])->name('manageMCourse.viewAppStaff');
+    Route::get('/staff/marriage-course/register-applicant', [CourseAppController::class, 'createRegStaff'])->name('manageMCourse.registerApplicant');
+    Route::get('/staff/marriage-course/document-list', [CourseAppController::class, 'showDocStaff'])->name('manageMCourse.documentListStaff');
+    Route::get('/staff/marriage-course/document-list/certificate', [CourseAppController::class, 'showCertStaff'])->name('manageMCourse.printCertStaff');
+    Route::get('/staff/marriage-course/document-list/slip', [CourseAppController::class, 'showSlipStaff'])->name('manageMCourse.printSlipStaff');
+    
+    
+
+    //Marriage Request Applicant
+    Route::get('/marriage-request', [MApplicationController::class, 'index'])->name('manageMRequest.statusRequest');
+    Route::get('/marriage-request/register', [MApplicationController::class, 'createRequestForm'])->name('manageMRequest.regRequestApplication');
+    Route::get('/marriage-request/view-application', [MApplicationController::class, 'showApp'])->name('manageMRequest.viewApplication');
+    Route::get('/marriage-request/edit-application', [MApplicationController::class, 'editApp'])->name('manageMRequest.editApplication');
+    Route::get('/marriage-request/edit-hiv', [MApplicationController::class, 'editHIV'])->name('manageMRequest.editHIVForm');
+    Route::get('/marriage-request/edit-wakalah', [MApplicationController::class, 'editWakalah'])->name('manageMRequest.editWakalahForm');
+    
+    //Marriage Request Staff
+    Route::get('/staff/marriage-request', [MApplicationController::class, 'indexStaff'])->name('manageMRequest.indexStaff');
+    Route::get('/staff/marriage-request/register-application', [MApplicationController::class, 'createRegStaff'])->name('manageMRequest.registerApplicant');
+    Route::get('/staff/marriage-request/view-application', [MApplicationController::class, 'showAppStaff'])->name('manageMRequest.viewAppStaff');
+    Route::get('/staff/marriage-request/edit-application', [MApplicationController::class, 'editAppStaff'])->name('manageMRequest.editAppStaff');
 
 
     //Marriage Registration Applicant

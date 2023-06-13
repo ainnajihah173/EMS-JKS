@@ -19,8 +19,10 @@
     <link href="{{ env('APP_URL') . '/assets/css/nucleo-svg.css' }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/applicant.css' }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ env('APP_URL') . '/assets/css/mCourse.css' }}" rel="stylesheet" />
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Swal -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- flatpickr -->
@@ -29,6 +31,7 @@
     <!-- datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 
 </head>
 
