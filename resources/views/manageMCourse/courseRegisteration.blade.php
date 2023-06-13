@@ -62,7 +62,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="example-text-input">Tarikh Kursus *</label>
-                                        <select class="form-select">
+                                        <select class="form-select" name="course[cou_locDistrict]">
                                             @foreach ($course as $row)
                                                 <option value="{{ $row->cou_name }}">{{ $row->cou_date }}
                                             @endforeach

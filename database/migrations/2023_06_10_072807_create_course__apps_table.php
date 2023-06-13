@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('course__apps', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('applicant_id')->nullable();
+            $table->foreignId('staff_id')->nullable();
+            $table->foreignId('course_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->string('couApp_attendance')->nullable();
             $table->string('couApp_receipt')->nullable();
             $table->string('couApp_approveStatus')->nullable();

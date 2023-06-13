@@ -60,7 +60,7 @@
                                                 class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
                                         <a href=""><i class="fas fa-trash"
                                                 style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                        <a href="{{ route('manageMRegistration.printAppApplicant') }}"><i
+                                        <a href=""><i
                                                 class="fas fa-print"
                                                 style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                     </td>
