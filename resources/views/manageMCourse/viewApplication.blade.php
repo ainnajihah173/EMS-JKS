@@ -25,7 +25,7 @@
                                     <span>Anjuran</span>
                                 </div>
                                 <div class="right">
-                                    <span>: Pejabat Agama Islam Bentong</span>
+                                    <span>: {{ $data->course->cou_locDistrict ?? '-' }}</span>
                                 </div>
                             </div>
 
@@ -34,7 +34,7 @@
                                     <span>Lokasi</span>
                                 </div>
                                 <div class="right">
-                                    <span>: Masjid Ar-Redha</span>
+                                    <span>: {{ $data->course->cou_address ?? '-' }}</span>
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@
                                     <span>Tarikh Kursus </span>
                                 </div>
                                 <div class="right">
-                                    <span>: 12/4/2023</span>
+                                    <span>: {{ $data->course->cou_date ?? '-' }}</span>
                                 </div>
                             </div>
 
@@ -61,7 +61,8 @@
                                     <span>Masa Kursus </span>
                                 </div>
                                 <div class="right">
-                                    <span>: 8:00 - 4:00p.m</span>
+                                    <span>: {{ $data->course->cou_startTime ?? '-' }} -
+                                        {{ $data->course->cou_endTime ?? '-' }}</span>
                                 </div>
                             </div>
 
@@ -88,12 +89,15 @@
                                     <span>Bukti Pembayaran </span>
                                 </div>
                                 <div class="right">
-                                    <span>: receiptttt.jpeg</span>
+                                    <span>: {{ $data->couApp_receipt ?? '-' }}</span>
                                 </div>
                             </div>
                         </div>
+                        <a href="{{ route('manageMCourse.updateAppStatus', ['course_app'=>$data->id, 'couApp_approveStatus' => 'Hantar'])}}"
+                            class="btn btn-primary btn-sm float-left mb-0 mt-4">Hantar</a>
                         <a href="{{ route('manageMCourse.index') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
                             Kembali</a>
+
                     </div>
                 </div>
             </div>

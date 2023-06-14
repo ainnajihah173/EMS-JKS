@@ -47,13 +47,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-course', [CourseAppController::class, 'index'])->name('manageMCourse.index');
     Route::get('/marriage-course/register', [CourseAppController::class, 'createApp'])->name('manageMCourse.courseRegisteration');
     Route::post('/marriage-course/store-course', [CourseAppController::class, 'storeApp'])->name('regCourse.store');
+    Route::post('/marriage-course/{course_app}/update-course', [CourseAppController::class, 'updateApp'])->name('regCourse.update');
+    Route::get('/marriage-course/{course_app}/view-course', [CourseAppController::class, 'showApp'])->name('manageMCourse.viewApplication');
+    Route::get('/marriage-course/{course_app}/updateApp', [CourseAppController::class, 'updateAppStatus'])->name('manageMCourse.updateAppStatus');
+    Route::get('/marriage-course/{course_app}/deleteApp', [CourseAppController::class, 'destroyApp'])->name('manageMCourse.destroyApplication');
+    Route::get('/marriage-course/{course_app}/document-list', [CourseAppController::class, 'showDoc'])->name('manageMCourse.documentList');
+    Route::get('/marriage-course/document-list', [CourseAppController::class, 'showDocTab'])->name('manageMCourse.documentListTab');
+    Route::get('/marriage-course/{course_app}/document-list/slip', [CourseAppController::class, 'showSlip'])->name('manageMCourse.printSlip');
+    Route::get('/marriage-course/{course_app}/document-list/certificate', [CourseAppController::class, 'showCert'])->name('manageMCourse.printCert');
+   
 
     Route::get('/marriage-course/postpone-date', [CourseAppController::class, 'editPostpone'])->name('manageMCourse.postponeCourse');
-    Route::get('/marriage-course/document-list', [CourseAppController::class, 'showDoc'])->name('manageMCourse.documentList');
-    Route::get('/marriage-course/document-list/certificate', [CourseAppController::class, 'showCert'])->name('manageMCourse.printCert');
-    Route::get('/marriage-course/document-list/slip', [CourseAppController::class, 'showSlip'])->name('manageMCourse.printSlip');
-    Route::get('/marriage-course/view-course', [CourseAppController::class, 'showApp'])->name('manageMCourse.viewApplication');
-    Route::get('/marriage-course/edit-course', [CourseAppController::class, 'editApp'])->name('manageMCourse.editApplication');
+    Route::get('/marriage-course/{course_app}/edit-course', [CourseAppController::class, 'editApp'])->name('manageMCourse.editApplication');
 
     Route::get('/loc', [CourseAppController::class, 'getLocDistrict'])->name('locDistrict');
     Route::get('/adress', [CourseAppController::class, 'getAdress'])->name('address');

@@ -19,8 +19,8 @@
                             <a class=" {{ Route::currentRouteName() == 'manageMCourse.postponeCourse' ? 'active' : '' }}"
                                 href="{{ route('manageMCourse.postponeCourse') }}"><button class="tablinks"
                                     onclick="activity(event, 'tangguh-kursus')">Penagguhan Kursus</button></a>
-                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.courseRegisteration' ? 'active' : '' }}"
-                                href="{{ route('manageMCourse.courseRegisteration') }}"><button class="tablinks"
+                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.documentListTab' ? 'active' : '' }}"
+                                href="{{ route('manageMCourse.documentListTab') }}"><button class="tablinks"
                                     onclick="activity(event, 'cetak')">Cetak</button></a>
                         </div>
 
@@ -49,22 +49,32 @@
                                     <th>Operasi</th>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="{{ route('manageMCourse.viewApplication') }}"><i class="fas fa-eye"
-                                                style="padding-right:15px;color:green"></i></a>
-                                        <a href="{{ route('manageMCourse.editApplication') }}"><i
-                                                class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
-                                        <a href=""><i class="fas fa-trash"
-                                                style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                        <a href=""><i
-                                                class="fas fa-print"
-                                                style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                    </td>
+                                    @foreach ($datas as $data)
+                                        <td>
+                                            {{ $loop->index + 1 }}
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            {{ $data->course->cou_date ?? '-' }}
+                                        </td>
+                                        <td>{{ $data->couApp_approveStatus ?? '-' }}</td>
+                                        <td>
+                                            {{-- <a href="{{ route('manageMCourse.viewApplication', ['course_app' => $data->id]) }}"><i class="fas fa-eye" style="padding-right:15px;color:green"></i></a> --}}
+
+                                            <a
+                                                href="{{ route('manageMCourse.viewApplication', ['course_app' => $data['id']]) }}"><i
+                                                    class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                            <a
+                                                href="{{ route('manageMCourse.editApplication', ['course_app' => $data->id]) }}"><i
+                                                    class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                            <a href="#"
+                                            onclick="showDeleteConfirmation('{{ route('manageMCourse.destroyApplication', ['course_app' => $data['id']]) }}');"><i class="fas fa-trash"
+                                                    style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
+                                            <a href="{{ route('manageMCourse.documentList', ['course_app' => $data->id]) }}"><i class="fas fa-print"
+                                                    style="padding-right:15px;color:black"></i></a>
+                                        </td>
                                 </tr>
+                                @endforeach
                             </table>
 
                             <a href="{{ route('manageMCourse.courseRegisteration') }}"
@@ -72,8 +82,38 @@
                         </div>
                     </div>
                 </div>
+                <!-- Padam Aduan Modal -->
+                <div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
+                    aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteConfirmationModalLabel">Padam Permohonan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Adakah kamu mahu memadam permohonan?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <a href="" id="deleteLink" class="btn btn-danger">Padam</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <!--  End Padam Aduan Modal -->
             </div>
         </div>
         @include('layouts.footers.auth.footer')
     </div>
+    <script>
+        function showDeleteConfirmation(deleteUrl) {
+            // Set the href attribute of the delete link in the modal
+            document.getElementById('deleteLink').href = deleteUrl;
+    
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
+        }
+    </script>
 @endsection

@@ -18,7 +18,8 @@
                                 href="{{ route('manageMCourse.courseRegisteration') }}"><button class="tablinks"
                                     onclick="activity(event, 'cetak')">Cetak</button></a>
                         </div>
-                        <form action="/action_page.php">
+                        <form role="form" method="POST" action="{{ route('regCourse.update', ['course_app' => $data->id]) }}" enctype="multipart/form-data">
+                            @csrf
                             <div id="daftarKursus" class="tabcontent">
                                 <div class="instruction-note">
                                     <p><b><i>***Sila isi semua bahagian.( * )adalah mandatori***</i></b></p>
@@ -27,11 +28,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Anjuran *</label>
-                                        <select class="form-select">
-                                            <option selected>--Sila Pilih Anjuran--</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Daerah</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -39,11 +40,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Lokasi *</label>
-                                        <select class="form-select">
-                                            <option selected>--Sila Pilih Lokasi--</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Lokasi</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}"> {{ $course->cou_address }}
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -51,7 +52,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="example-text-input">Tarikh Kursus *</label>
-                                        <input class="form-control" type="date" id="tarikh-kursus" name="tarikh-kursus">
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Tarikh</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_date }}
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -70,18 +76,23 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="example-text-input">Bukti Pembayaran *</label>
-                                        <input class="form-control" type="file" id="receipt" name="receipt">
+
+                                        <input class="form-control" type="file" id="receipt" name="receipt"
+                                            value="{{ $data->couApp_receipt ?? '-' }}">
                                     </div>
-                                </div>
-                                <a href="{{ route('manageMCourse.courseRegisteration') }}"
-                                    class="btn btn-info btn-sm float-end mb-0 mt-4"> Hantar</a>
+                                </div> --}}
+
+                                <input type="submit" class="btn btn-info btn-sm float-end mb-0 mt-4" value="Kemaskini">
                                 <input type="reset" class="btn btn-info btn-sm float-end mb-0 mt-4" value="Set Semula">
+
+                                <a href="{{ route('manageMCourse.index') }}"
+                                    class="btn btn-info btn-sm float-left mb-0 mt-4">
+                                    Kembali</a>
                         </form>
-                        <a href="{{ route('manageMCourse.index') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
-                            Kembali</a>
+
                     </div>
                 </div>
             </div>

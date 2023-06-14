@@ -14,12 +14,12 @@ class Course_App extends Model
         'id',
         'applicant_id',
         'staff_id',
-        'cou_id',
+        'course_id',
         'user_id',
-        'cou_attendace',
-        'cou_receipt',
-        'cou_approveStatus',
-        'cou_approveDate',
+        'couApp_attendace',
+        'couApp_receipt',
+        'couApp_approveStatus',
+        'couApp_approveDate',
     ];
 
     public function applicant()
@@ -32,7 +32,7 @@ class Course_App extends Model
     }
     public function Course()
     {
-        return $this->belongsTo(Course::class, 'cou_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
     public function user()
     {

@@ -12,8 +12,8 @@
                             <a class=" {{ Route::currentRouteName() == 'manageMCourse.postponeCourse' ? 'active' : '' }}"
                                 href="{{ route('manageMCourse.postponeCourse') }}"><button class="tablinks"
                                     onclick="activity(event, 'tangguh-kursus')">Penagguhan Kursus</button></a>
-                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.documentList' ? 'active' : '' }}"
-                                href="{{ route('manageMCourse.documentList') }}"><button class="tablinks"
+                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.documentListTab' ? 'active' : '' }}"
+                                href="{{ route('manageMCourse.documentListTab') }}"><button class="tablinks"
                                     onclick="activity(event, 'cetak')">Cetak</button></a>
                         </div>
 
@@ -28,15 +28,10 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Lokasi Anjuran
                                             *</label>
-                                        {{-- <select class="form-select">
-                                            @foreach ($data as $row)
-                                                <option value="{{ $row->cou_id }}">{{ $row->cou_locDistrict }} - {{ $row->cou_address }}
-                                            @endforeach
-                                        </select> --}}
-                                        <select class="form-select form-select-lg mb-3" id="loc" >
+                                        <select class="form-select" name="course_id">
                                             <option selected disabled>Sila Pilih Daerah</option>
-                                            @foreach ($course as $row)
-                                                <option value="{{ $row->cou_id }}">{{ $row->cou_locDistrict }}</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -44,36 +39,24 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Lokasi *</label>
-                                        <select class="form-select">
-                                            @foreach ($course as $row)
-                                                <option value="{{ $row->cou_id }}"> {{ $row->cou_address }}
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Lokasi</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}"> {{ $course->cou_address }}
                                             @endforeach
                                         </select>
-                                        {{-- <select class="form-select form-select-lg mb-3" id="loc">
-                                            <option selected disabled>Sila Pilih Lokasi</option>
-                                            @foreach ($adress as $row)
-                                                <option value="{{ $row->cou_id }}">{{ $row->cou_address }}</option>
-                                            @endforeach
-                                        </select> --}}
-                                        {{-- <select class="form-select" id="address"></select> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="example-text-input">Tarikh Kursus *</label>
-                                        <select class="form-select" name="course[cou_locDistrict]">
-                                            @foreach ($course as $row)
-                                                <option value="{{ $row->cou_name }}">{{ $row->cou_date }}
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Tarikh</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_date }}
                                             @endforeach
                                         </select>
-                                        {{-- <select class="form-select form-select-lg mb-3" id="loc">
-                                            <option selected disabled>Sila Pilih Tarikh Kursus</option>
-                                            @foreach ($adress as $row)
-                                                <option value="{{ $row->cou_id }}">{{ $row->cou_date }}</option>
-                                            @endforeach
-                                        </select> --}}
-                                        {{-- <select class="form-select" id="date"></select> --}}
                                     </div>
                                 </div>
 

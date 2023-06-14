@@ -5,69 +5,151 @@ namespace App\Http\Controllers;
 use App\Models\Course_App;
 use App\Models\Course;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreCourse_AppRequest;
-use App\Http\Requests\UpdateCourse_AppRequest;
+
 
 class CourseAppController extends Controller
 {
+    // applicant kursus kahwin dashboard
     public function index()
     {
         //$mreg = MRegistration::with('user')->get() , , compact('mreg');
 
-        return view('manageMCourse.statusApplication');
+        $datas = Course_App::with('course')->paginate(15);
+        return view('manageMCourse.statusApplication', compact('datas'));
     }
 
-    public function indexStaff()
-    {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMCourse.searchListStaff');
-    }
-
-    //create function
+    //return register page
     public function createApp()
     {
-        
-        $course = Course::all();
-        $courseApp = Course_App::all();
-
-        return view('manageMCourse.courseRegisteration')->with(['course'=>$course, 'courseApp' =>$courseApp]);;
+        //array
+        $courses = Course::All();
+        // $courseApp = Course_App::All();
+        return view('manageMCourse.courseRegisteration', compact('courses'));
     }
+
+    //store function
+    public function storeApp(Request $request)
+    {
+        // dd($request->all());
+        $request->merge([
+            'couApp_approveStatus' => "Draft"
+        ]);
+        Course_App::create($request->all());
+        return redirect()->route('manageMCourse.index');
+    }
+
+    //return page edit app
+    public function editApp($courseApp)
+    {
+        $courses = Course::all();
+        $data = Course_App::with('course')->find($courseApp);
+        return view('manageMCourse.editApplication', compact('data', 'courses'));
+    }
+
+    //update application course
+    public function updateApp(Request $request, $courseApp)
+    {
+        $data = Course_App::find($courseApp);
+        $data->update($request->all());
+        return redirect()->route('manageMCourse.index');
+    }
+
+
+    //return page view/submit status
+    public function showApp($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+        // dd($data);
+
+        return view('manageMCourse.viewApplication', compact('data'));
+    }
+
+    //change status from draft to hantar
+    public function updateAppStatus(Request $request, $courseApp)
+    {
+        $data = Course_App::find($courseApp);
+        if ($data) {
+            $data->couApp_approveStatus = $request->couApp_approveStatus;
+            if ($request->couApp_approveStatus == "Draft") {
+                $data->couApp_approveStatus == "Hantar";
+            }
+            $data->save();
+        }
+        return redirect()->route('manageMCourse.index', compact('data'));
+    }
+
+    //delete kursus kahwin
+    public function destroyApp($courseApp)
+    {
+        Course_App::find($courseApp)->delete();
+        return redirect()->route('manageMCourse.index');
+    }
+
+    //return page view/ list document
+    public function showDoc($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+        // dd($data);
+
+        return view('manageMCourse.documentList', compact('data'));
+    }
+    public function showDocTab()
+    {
+        return view('manageMCourse.documentList');
+    }
+
+    //return  page course slip 
+    public function showSlip($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.printSlip', compact('data'));
+    }
+
+    //show page certificate 
+    public function showCert($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.printCert', compact('data'));
+    }
+
+
+
+    //return page staff
+    public function indexStaff()
+    {
+        $courses = Course::All();
+        $datas = Course_App::with('course')->paginate(15);
+        return view('manageMCourse.searchListStaff', compact('datas','courses'));
+    }
+
+    // public function showList($courseApp)
+    // {
+    //     $request->merge([
+    //         'couApp_approveStatus' => "Draft"
+    //     ]);
+        
+    //     $data = Course_App::with('course')->find($courseApp);
+    //     // dd($data);
+
+    //     return view('manageMCourse.viewApplication', compact('data'));
+    // }
+
 
     public function createRegStaff(Course_App $courseApp)
     {
         return view('manageMCourse.registerApplicant');
     }
 
-    //store function
-    public function storeApp(Request $request)
-    {
-        Course_App:: create($request->all());
-        return redirect()->route('manageMCourse.index');
-    }
-    
+
     public function storeRegStaff(Course_App $request)
     {
         //
     }
 
-    //show function
-    public function showDoc(Course_App $courseApp)
-    {
-        return view('manageMCourse.documentList');
-    }
-    public function showCert(Course_App $courseApp)
-    {
-        return view('manageMCourse.printCert');
-    }
-    public function showSlip(Course_App $courseApp)
-    {
-        return view('manageMCourse.printSlip');
-    }
-    public function showApp(Course_App $courseApp)
-    {
-        return view('manageMCourse.viewApplication');
-    }
+
+
     public function showDocStaff(Course_App $courseApp)
     {
         return view('manageMCourse.documentListStaff');
@@ -86,10 +168,6 @@ class CourseAppController extends Controller
     }
 
     //edit function
-    public function editApp(Course_App $courseApp)
-    {
-        return view('manageMCourse.editApplication');
-    }
     public function editAppStaff(Course_App $courseApp)
     {
         return view('manageMCourse.editAppStaff');
@@ -100,46 +178,39 @@ class CourseAppController extends Controller
     }
 
     //destroy function
-    public function destroyApp()
-    {
-       
-    }
+    // public function destroyApp()
+    // {
+    // }
 
     public function destroyAppStaff()
     {
-       
     }
-    
+
     public function getLocDistrict()
     {
         $loc = Course::all();
 
         return $loc;
-
     }
     public function getAddress(Request $request)
     {
         $address = Course::table('courses')
-        -> where('cou_id', $request->cou_locDistrict)
-        ->get();
+            ->where('cou_id', $request->cou_locDistrict)
+            ->get();
 
-        if(count($address)>0){
+        if (count($address) > 0) {
             return response()->json($address);
         }
-
     }
 
     public function getDate(Request $request)
     {
         $date = Course::table('courses')
-        -> where('cou_id', $request->cou_adress)
-        ->get();
+            ->where('cou_id', $request->cou_adress)
+            ->get();
 
-        if(count($date)>0){
+        if (count($date) > 0) {
             return response()->json($date);
         }
-
     }
-
 }
-

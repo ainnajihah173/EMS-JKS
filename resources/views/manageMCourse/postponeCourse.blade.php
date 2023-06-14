@@ -13,8 +13,8 @@
                                     onclick="activity(event, 'daftar-kursus')">Daftar Kursus</button></a>
                             <button class="tablinks active" onclick="activity(event, 'tangguh-kursus')">Penagguhan
                                 Kursus</button></a>
-                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.documentList' ? 'active' : '' }}"
-                                href="{{ route('manageMCourse.documentList') }}"><button class="tablinks"
+                            <a class=" {{ Route::currentRouteName() == 'manageMCourse.documentListTab' ? 'active' : '' }}"
+                                href="{{ route('manageMCourse.documentListTab') }}"><button class="tablinks"
                                     onclick="activity(event, 'cetak')">Cetak</button></a>
                         </div>
 

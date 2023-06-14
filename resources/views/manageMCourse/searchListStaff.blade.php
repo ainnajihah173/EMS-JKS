@@ -23,11 +23,11 @@
                                             <span><b>PAID</b></span>
                                         </div>
                                         <div class="right">
-                                            <select class="form-select" aria-label="Default select example"
-                                                style="width:50%;">
-                                                <option selected>--- Sila Pilih PAID ---</option>
-                                                <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                                <option value="2">Pendaftaran Nikah Sukarela</option>
+                                            <select class="form-select" name="course_id">
+                                                <option selected disabled>Sila Pilih Daerah</option>
+                                                @foreach ($courses as $course)
+                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -75,18 +75,27 @@
                                         <th>Anjuran</th>
                                         <th>Lokasi</th>
                                         <th>Nama Peserta</th>
-                                        <th>Kelulusan</th>
+                                       
                                         <th>Kehadiran</th>
+                                        <th>Kelulusan</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($datas as $data)
                                     <tr style="line-height: 30px;">
-                                        <td>1</td>
+                                       
+                                        <td>
+                                            {{ $loop->index + 1 }}
+                                        </td>
+                                        <td>
+                                            {{ $data->course->cou_locDistrict ?? '-' }}
+                                        </td>
+                                        <td>
+                                            {{ $data->course->cou_address ?? '-' }}
+                                        </td>
                                         <td>981234050981 <br> Ali bin Abu</td>
-                                        <td>XXXXXXXXXXXXX</td>
-                                        <td>Nikah Sukarela</td>
-                                        <td>22/11/2022</td>
+                                        <td>Hadir</td>
                                         <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
                                         <td>
                                             <a href="{{ route('manageMCourse.viewAppStaff') }}"><i class="fas fa-eye"
@@ -102,7 +111,10 @@
                                             <a href=""><i class="fas fa-certificate"
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
+                                       
                                     </tr>
+                                    @endforeach
+                                    <tr style="display:none"></tr>
                                 </tbody>
                             </table>
                         </div>

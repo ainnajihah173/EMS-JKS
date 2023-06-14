@@ -22,9 +22,10 @@
                             </div>
                             <div class="print-list">
                                 <ul>
-                                    <li style="margin-bottom: 30px;"><a href="{{ route('manageMCourse.printSlip') }}"><u>Cetak Slip Permohonan
-                                                Kursus</u></a></li>
-                                    <li><a href="{{ route('manageMCourse.printCert') }}"><u>Cetak Sijil Kursus Perkahwinan</u></a></li>
+                                    <li style="margin-bottom: 30px;"><a href="{{ route('manageMCourse.printSlip', ['course_app' => $data['id']]) }}"><u>Cetak
+                                                Slip Permohonan Kursus</u></a></li>
+                                    <li><a href="{{ route('manageMCourse.printCert', ['course_app' => $data['id']]) }}"><u>Cetak Sijil Kursus
+                                                Perkahwinan</u></a></li>
                                 </ul>
                             </div>
 
