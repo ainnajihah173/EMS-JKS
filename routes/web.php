@@ -56,7 +56,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-course/document-list', [CourseAppController::class, 'showDocTab'])->name('manageMCourse.documentListTab');
     Route::get('/marriage-course/{course_app}/document-list/slip', [CourseAppController::class, 'showSlip'])->name('manageMCourse.printSlip');
     Route::get('/marriage-course/{course_app}/document-list/certificate', [CourseAppController::class, 'showCert'])->name('manageMCourse.printCert');
-   
 
     Route::get('/marriage-course/postpone-date', [CourseAppController::class, 'editPostpone'])->name('manageMCourse.postponeCourse');
 
@@ -71,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-course/add-course', [CourseController::class, 'createCourse'])->name('manageMCourse.addCourse');
     Route::post('/staff/marriage-course/store-course', [CourseController::class, 'storeCourse'])->name('addCourse.store');
     Route::get('/staff/marriage-course/register-applicant', [CourseAppController::class, 'createRegStaff'])->name('manageMCourse.registerApplicant');
-    Route::post('/marriage-course/store-course', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
+    Route::post('/marriage-course/store', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
     Route::get('/staff/marriage-course/{course_app}/view-application', [CourseAppController::class, 'showAppStaff'])->name('manageMCourse.viewAppStaff');
     Route::get('/staff/marriage-course/{course_app}/edit-application', [CourseAppController::class, 'editAppStaff'])->name('manageMCourse.editAppStaff');
     Route::post('/staff/marriage-course/{course_app}/update-course', [CourseAppController::class, 'updateAppStaff'])->name('staffRegCourse.update');

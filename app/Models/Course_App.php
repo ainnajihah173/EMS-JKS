@@ -19,7 +19,7 @@ class Course_App extends Model
         'couApp_attendance',
         'couApp_receipt',
         'couApp_approveStatus',
-        'couApp_approveDate',
+        'couApp_noApp'
     ];
 
     public function applicant()

@@ -26,8 +26,7 @@
                                             <select class="form-select" name="course_id">
                                                 <option selected disabled>Sila Pilih Daerah</option>
                                                 @foreach ($courses as $course)
-                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}
-                                                    </option>
+                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

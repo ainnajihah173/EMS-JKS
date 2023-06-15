@@ -31,9 +31,9 @@ class CourseAppController extends Controller
     public function storeApp(Request $request)
     {
         // dd($request->all());
+        $CPCount = Course_App::count();
         $request->merge([
-            'couApp_approveStatus' => "Draft",
-            'couApp_attendance' => "Pending"
+            'couApp_approveStatus' => "Draft"
         ]);
         Course_App::create($request->all());
         return redirect()->route('manageMCourse.index');

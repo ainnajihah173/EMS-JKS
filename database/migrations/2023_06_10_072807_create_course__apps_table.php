@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('couApp_attendance')->nullable();
             $table->string('couApp_receipt')->nullable();
             $table->string('couApp_approveStatus')->nullable();
-            $table->date('couApp_approveDate')->nullable();
+            $table->string('couApp_noApp')->nullable();
             $table->timestamps();
         });
     

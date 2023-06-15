@@ -1,4 +1,5 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
     @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kemaskini Maklumat Perkahwinan'])
