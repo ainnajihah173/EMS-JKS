@@ -30,32 +30,44 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($datas as $data)
-                                    <tr style="line-height: 30px;">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->applicant->app_ic ?? '-' }}<br>{{ $data->applicant->app_name ?? '-' }}</td>
-                                        <td>{{ $data->mreg_noApp ?? '-' }}</td>
-                                        <td>
-                                            @if($data->mreg_category === "1") 
-                                            Kahwin Kebenaran
-                                            @else
-                                            Kahwin Sukarela
-                                            @endif
-                                        </td>
-                                        <td>{{$data->mreg_dateApply ?? '-' }}</td>
-                                        <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMRegistration.viewAppStaff') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMRegistration.editMRegStaff') }}"><i class="fas fa-edit"
-                                                    style="padding-right:15px;color:blue"></i></a>
-                                            <a href="{{ route('manageMRegistration.printAppStaff') }}"><i class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
-                                            <a href="{{ route('manageMRegistration.editStatusStaff') }}"><i class="far fa-check-circle"
-                                                    style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
-                                            <a href="{{ route('manageMRegistration.viewCertificateStaff') }}"><i class="fas fa-certificate"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                        </td>
-                                    </tr>
+                                    @if ($data->mreg_status !== 'Draft')
+                                        <tr style="line-height: 30px;">
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->applicant->app_ic ?? '-' }}<br>{{ $data->applicant->app_name ?? '-' }}
+                                            </td>
+                                            <td>{{ $data->mreg_noApp ?? '-' }}</td>
+                                            <td>
+                                                @if ($data->mreg_category === '1')
+                                                    Kahwin Kebenaran
+                                                @else
+                                                    Kahwin Sukarela
+                                                @endif
+                                            </td>
+                                            <td>{{ $data->mreg_dateApply ?? '-' }}</td>
+                                            <td>
+                                                @if ($data->mreg_status === 'Untuk Diluluskan')
+                                                    <span class="badge badge-pill bg-info">Untuk Diluluskan</span>
+                                                @elseif ($data->mreg_status === 'Lulus')
+                                                    <span class="badge badge-pill bg-success">Lulus</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('manageMRegistration.showAppStaff', ['mregistration' => $data->id]) }}"><i
+                                                        class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                                <a href="{{ route('manageMRegistration.editApp', ['mregistration' => $data->id]) }}"><i
+                                                        class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                                <a href="{{ route('manageMRegistration.printAppStaff', ['mregistration' => $data->id]) }}"><i
+                                                        class="fas fa-print"
+                                                        style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
+                                                <a href="{{ route('manageMRegistration.editStatus', ['mregistration' => $data->id]) }}"><i
+                                                        class="far fa-check-circle"
+                                                        style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
+                                                <a href="{{ route('manageMRegistration.showCertStaff', ['mregistration' => $data->id]) }}"><i
+                                                        class="fas fa-certificate"
+                                                        style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

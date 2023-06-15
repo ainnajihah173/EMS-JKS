@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('mreg_status')->nullable();
             $table->string('mreg_noApp')->nullable(); 
             $table->string('mreg_category')->nullable();
+            $table->string('mreg_printStatus')->nullable();
             $table->timestamps();
         });
     }

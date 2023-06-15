@@ -71,9 +71,9 @@
                             </div>
                             <div class="col-2">
                                 <p>:
-                                    @if ($data->applicant->app_nation == 1)
+                                    @if ($data->applicant->app_nation == '1')
                                         Warganegara
-                                    @elseif($data->applicant->app_nation == 2)
+                                    @elseif($data->applicant->app_nation == '2')
                                         Bukan Warganegara
                                     @endif
                                 </p>
@@ -319,7 +319,7 @@
                                 <label>Bayaran</label>
                             </div>
                             <div class="col-2">
-                                <p>: link resit</p>
+                                <a href="{{ asset($data->mreg_receipt) }}" style="">: Resit Bayaran</a>
                             </div>
                             <div class="col-2">
                                 <label>Nama Wali</label>

@@ -449,7 +449,7 @@
 
                         <div class="text-center mt-4">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="" class="btn btn-secondary btn-md ms-4">Cetak Permohonan</a>
+                            <button onclick="window.print()" class="btn btn-secondary btn-md ms-4">Cetak Permohonan</button>
                         </div>
                     </div>
                 </div>

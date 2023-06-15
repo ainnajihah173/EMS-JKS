@@ -114,14 +114,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.showPrint');
     Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.showCert');
     Route::get('/marriage-registration/{mregistration}/delete-application', [MRegistrationController::class, 'destroy'])->name('manageMRegistration.destroy');
-    
+
     //Marriage Registration Staff
     Route::get('/staff/marriage-registration', [MRegistrationController::class, 'indexStaff'])->name('manageMRegistration.indexStaff');
-    Route::get('/staff/marriage-registration/edit-application', [MRegistrationController::class, 'editApp'])->name('manageMRegistration.editMRegStaff');
-    Route::get('/staff/marriage-registration/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.viewAppStaff');
-    Route::get('/staff/marriage-registration/print-application', [MRegistrationController::class, 'printAppStaff'])->name('manageMRegistration.printAppStaff');
-    Route::get('/staff/marriage-registration/status-application', [MRegistrationController::class, 'editStatus'])->name('manageMRegistration.editStatusStaff');
-    Route::get('/staff/marriage-registration/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.viewCertificateStaff');
+    Route::get('/staff/marriage-registration/{mregistration}/edit-application', [MRegistrationController::class, 'editApp'])->name('manageMRegistration.editApp');
+    Route::post('staff/marriage-registration/{mregistration}/update-application', [MRegistrationController::class, 'updateApp'])->name('manageMRegistration.updateApp');
+    Route::get('/staff/marriage-registration/{mregistration}/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.showAppStaff');
+    Route::get('/staff/marriage-registration/{mregistration}/print-application', [MRegistrationController::class, 'printAppStaff'])->name('manageMRegistration.printAppStaff');
+    Route::get('/staff/marriage-registration/{mregistration}/status-application', [MRegistrationController::class, 'editStatus'])->name('manageMRegistration.editStatus');
+    Route::get('/staff/marriage-registration/{mregistration}/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.showCertStaff');
 
     //Marriage Card Applicant
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 

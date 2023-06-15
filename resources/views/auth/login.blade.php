@@ -18,7 +18,7 @@
                                         @method('post')
                                         <div class="flex flex-col mb-3">
                                             <input type="email" name="email" class="form-control form-control-lg"
-                                                value="{{ old('email') ?? 'admin@example.com' }}" aria-label="Email">
+                                                value="{{ old('email') ?? 'staff@example.com' }}" aria-label="Email">
                                             @error('email')
                                                 <p class="text-danger text-xs pt-1"> {{ $message }} </p>
                                             @enderror

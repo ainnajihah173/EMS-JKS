@@ -6,7 +6,7 @@
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card mb-4">
-                    @if (empty($data->mreg_status))
+                    @if (empty($datas->mreg_status))
                         <div class="card-header pb-0">
                             <h6>Maklumat Pasangan</h6>
                         </div>
@@ -69,7 +69,7 @@
                                 <a href="#" id="myLink" class="btn btn-info btn-md ms-4">Seterusnya</a>
                             </div>
                     @endif
-                    @if (!empty($data->mreg_status))
+                    @if (!empty($datas->mreg_status))
                         <button onclick="history.back()" class="btn btn-light btn-md mx-auto my-4"
                             style="width:10%;">Kembali</button>
                     @endif
@@ -91,7 +91,7 @@
 
             if (selectedValue === "1") {
                 document.getElementById("labelA").innerHTML = "No. Akaun Terima Kebenaran Berkahwin";
-                document.getElementById("noAcc").innerHTML = ": XXXXXXXXXXXXX";
+                document.getElementById("noAcc").innerHTML = ": ";
                 seterusnyaButton.href = "{{ route('manageMRegistration.create', ['category' => '1']) }}";
 
             } else {
