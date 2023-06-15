@@ -26,7 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        if (auth()->user()->role == 'pengguna') {
+            return view('pages.dashboard');
+        }
+        elseif (auth()->user()->role == 'staff'){
+            return view('pages.dashboardStaff');
+        }
+        else{
+            return view();
+        }
+
     }
 
     public function formExample()

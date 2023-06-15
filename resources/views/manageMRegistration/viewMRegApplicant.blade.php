@@ -13,8 +13,8 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between">
                         <h6>Maklumat Pasangan</h6>
-                        <a href="{{ route('manageMRegistration.show') }}"
-                            class="btn btn-info btn-sm float-end mb-0 mt-4"><i class="fas fa-plus"></i> Daftar
+                        <a href="{{ route('manageMRegistration.show') }}" class="btn btn-info btn-sm float-end mb-0 mt-4"><i
+                                class="fas fa-plus"></i> Daftar
                             Nikah</a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2 mx-5">
@@ -35,7 +35,8 @@
                                         <tr style="line-height: 30px;">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $data->applicant->app_ic ?? '-' }}
-                                                <br>{{ $data->applicant->app_name ?? '-' }}</td>
+                                                <br>{{ $data->applicant->app_name ?? '-' }}
+                                            </td>
                                             <td>{{ $data->mreg_noApp ?? '-' }}</td>
                                             <td>{{ $data->mreg_dateApply ?? '-' }}</td>
                                             <td>
@@ -64,10 +65,12 @@
                                                     <a href="{{ route('manageMRegistration.showApp') }}"><i
                                                             class="fas fa-eye"
                                                             style="padding-right:15px;color:green"></i></a>
-                                                    <a href="{{ route('manageMRegistration.editAppApplication') }}"><i
+                                                    <a href="{{ route('manageMRegistration.edit', ['mregistration' => $data['id']]) }}"><i
                                                             class="fas fa-edit"
                                                             style="padding-right:15px;color:blue"></i></a>
-                                                    <a href="#" onclick=""><i class="fas fa-trash"
+                                                    <a href="#"
+                                                        onclick="deleteRecord('{{ route('manageMRegistration.destroy', ['mregistration' => $data['id']]) }}')"><i
+                                                            class="fas fa-trash"
                                                             style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
                                                 @endif
                                             </td>
@@ -75,6 +78,28 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <!-- Padam Aduan Modal -->
+                            <div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
+                                aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content ">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteConfirmationModalLabel">Padam Permohonan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Adakah kamu mahu memadam permohonan?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <a href="" id="deleteLink" class="btn btn-danger">Padam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  End Padam Aduan Modal -->
                         </div>
                     </div>
                 </div>
@@ -86,6 +111,17 @@
 
 @push('js')
     <script>
+        let table = new DataTable('#myTable');
+
+        function deleteRecord(deleteUrl) {
+            // Set the href attribute of the delete link in the modal
+            document.getElementById('deleteLink').href = deleteUrl;
+
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
+        }
+    </script>
+    <!--<script>
         let table = new DataTable('#myTable');
 
         function deleteRecord(url) {
@@ -134,5 +170,5 @@
                 }
             })
         }
-    </script>
+    </script>-->
 @endpush

@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('m_cards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('applicant_id')->nullable();
+            $table->foreignId('spouse_id')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('mregistration_id')->nullable();
+            $table->string('mcard_ApplicantPhoto')->nullable();
+            $table->string('mcard_SpousePhoto')->nullable();
+            $table->string('mcard_receipt')->nullable();
+            $table->string('mcard_status')->nullable();
+            $table->date('mcard_dateApproval')->nullable();
+            $table->string('mcard_printStatus')->nullable();
+            $table->string('mcard_noApp')->nullable();
             $table->timestamps();
         });
     }

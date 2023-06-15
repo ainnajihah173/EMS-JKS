@@ -63,8 +63,6 @@
                                         Cina
                                     @elseif($data->applicant->app_nation == 3)
                                         India
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -77,8 +75,6 @@
                                         Warganegara
                                     @elseif($data->applicant->app_nation == 2)
                                         Bukan Warganegara
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -94,17 +90,15 @@
                                         Duda
                                     @elseif($data->applicant->app_marriageStatus == 4)
                                         Janda
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
                             <!--<div class="col-2">
-                                                        <label>Status Pekerjaan</label>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <p>: Bekerja</p>
-                                                    </div>-->
+                                                                <label>Status Pekerjaan</label>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <p>: Bekerja</p>
+                                                            </div>-->
                             <div class="col-2">
                                 <label>Nama Pekerjaan</label>
                             </div>
@@ -133,8 +127,6 @@
                                         Ijazah Sarjana
                                     @elseif($data->applicant->app_education == 6)
                                         PHD
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -199,8 +191,6 @@
                                         Cina
                                     @elseif($data->spouse->app_nation == 3)
                                         India
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -213,8 +203,6 @@
                                         Warganegara
                                     @elseif($data->spouse->app_nation == 2)
                                         Bukan Warganegara
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -230,17 +218,15 @@
                                         Duda
                                     @elseif($data->spouse->app_marriageStatus == 4)
                                         Janda
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
                             <!--<div class="col-2">
-                                                        <label>Sektor Pekerjaan</label>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <p>: Bekerja</p>
-                                                    </div>-->
+                                                                <label>Sektor Pekerjaan</label>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <p>: Bekerja</p>
+                                                            </div>-->
                             <div class="col-2">
                                 <label>Nama Pekerjaan</label>
                             </div>
@@ -269,8 +255,6 @@
                                         Ijazah Sarjana
                                     @elseif($data->spouse->app_education == 6)
                                         PHD
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -361,8 +345,6 @@
                                         Adik
                                     @elseif($data->spouse->app_education == 4)
                                         Atuk
-                                    @else
-                                        <span class="text-danger">Error</span>
                                     @endif
                                 </p>
                             </div>
@@ -446,11 +428,16 @@
                                 <p>: {{ $data->witness->wit_adress2 ?? '-' }}</p>
                             </div>
                         </div>
-
+                        @if($data->mreg_status !== "Untuk Diluluskan")
+                            <div class="text-center mt-4">
+                                <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
+                                <a href="{{ route('manageMRegistration.updateStatus', ['mregistration' => $data->id]) }}" class="btn btn-info btn-md ms-4">Hantar</a>
+                            </div>
+                        @else
                         <div class="text-center mt-4">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

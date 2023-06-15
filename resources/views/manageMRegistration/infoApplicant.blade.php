@@ -6,72 +6,79 @@
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Maklumat Pasangan</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>Nama Pemohon</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: </p>
-                            </div>
+                    @if (empty($data->mreg_status))
+                        <div class="card-header pb-0">
+                            <h6>Maklumat Pasangan</h6>
                         </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>No. K/P Pemohon</label>
+                        <div class="card-body p-3">
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label>Nama Pemohon</label>
+                                </div>
+                                <div class="col-2">
+                                    <p>: {{ $data->applicant->app_name ?? '' }}</p>
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <p>: </p>
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label>No. K/P Pemohon</label>
+                                </div>
+                                <div class="col-2">
+                                    <p>: {{ $data->applicant->app_ic ?? '' }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>Nama Pasangan</label>
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label>Nama Pasangan</label>
+                                </div>
+                                <div class="col-2">
+                                    <p>: {{ $data->spouse->app_name ?? '' }}</p>
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <p>:</p>
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label>No. K/P Pasangan</label>
+                                </div>
+                                <div class="col-2">
+                                    <p>: {{ $data->spouse->app_ic ?? '' }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>No. K/P Pasangan</label>
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label>Kategori Pendaftaran Nikah</label>
+                                </div>
+                                <div class="col-7">
+                                    <select class="form-select" id="mySelect" style="width:50%;"
+                                        onchange="checkSelected()">
+                                        <option selected>--- Sila Pilih ---</option>
+                                        <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
+                                        <option value="2">Pendaftaran Nikah Sukarela</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <p>: </p>
+                            <div class="row justify-content-start m-1">
+                                <div class="col-2">
+                                    <label id="labelA"></label>
+                                </div>
+                                <div class="col-2">
+                                    <p id="noAcc"></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label>Kategori Pendaftaran Nikah</label>
+                            <div class="text-center mt-2">
+                                <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
+                                <a href="#" id="myLink" class="btn btn-info btn-md ms-4">Seterusnya</a>
                             </div>
-                            <div class="col-7">
-                                <select class="form-select" id="mySelect" style="width:50%;" onchange="checkSelected()">
-                                    <option selected>--- Sila Pilih ---</option>
-                                    <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                    <option value="2">Pendaftaran Nikah Sukarela</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row justify-content-start m-1">
-                            <div class="col-2">
-                                <label id="labelA"></label>
-                            </div>
-                            <div class="col-2">
-                                <p id="noAcc"></p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-2">
-                            <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="#" id="myLink"
-                                class="btn btn-info btn-md ms-4">Seterusnya</a>
-                        </div>
-                    </div>
+                    @endif
+                    @if (!empty($data->mreg_status))
+                        <button onclick="history.back()" class="btn btn-light btn-md mx-auto my-4"
+                            style="width:10%;">Kembali</button>
+                    @endif
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
 @endsection
 

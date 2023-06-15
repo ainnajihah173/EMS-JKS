@@ -29,12 +29,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($datas as $data)
                                     <tr style="line-height: 30px;">
-                                        <td>1</td>
-                                        <td>981234050981 <br> Ali bin Abu</td>
-                                        <td>XXXXXXXXXXXXX</td>
-                                        <td>Nikah Sukarela</td>
-                                        <td>22/11/2022</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->applicant->app_ic ?? '-' }}<br>{{ $data->applicant->app_name ?? '-' }}</td>
+                                        <td>{{ $data->mreg_noApp ?? '-' }}</td>
+                                        <td>
+                                            @if($data->mreg_category === "1") 
+                                            Kahwin Kebenaran
+                                            @else
+                                            Kahwin Sukarela
+                                            @endif
+                                        </td>
+                                        <td>{{$data->mreg_dateApply ?? '-' }}</td>
                                         <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
                                         <td>
                                             <a href="{{ route('manageMRegistration.viewAppStaff') }}"><i class="fas fa-eye"
@@ -49,6 +56,7 @@
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

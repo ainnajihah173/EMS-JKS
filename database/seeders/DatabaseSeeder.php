@@ -22,14 +22,16 @@ class DatabaseSeeder extends Seeder
     {
         $datas = [
             [
-                'name' => 'Admin',
-                'email' => 'admin@example.com',
-                'password' => bcrypt('paswword')
+                'name' => 'Staff',
+                'email' => 'staff@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'staff',
             ],
             [
                 'name' => 'User',
                 'email' => 'user@example.com',
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
+                'role' => 'pengguna',
             ],
         ];
 

@@ -94,16 +94,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-request/view-application', [MApplicationController::class, 'showAppStaff'])->name('manageMRequest.viewAppStaff');
     Route::get('/staff/marriage-request/edit-application', [MApplicationController::class, 'editAppStaff'])->name('manageMRequest.editAppStaff');
 
-
+    //Jihah
     //Marriage Registration Applicant
     Route::get('/marriage-registration', [MRegistrationController::class, 'index'])->name('manageMRegistration.index');
     Route::get('/marriage-registration/view-info', [MRegistrationController::class, 'show'])->name('manageMRegistration.show');
     Route::get('/marriage-registration/create-application', [MRegistrationController::class, 'create'])->name('manageMRegistration.create');
-    Route::get('/marriage-registration/edit-application', [MRegistrationController::class, 'edit'])->name('manageMRegistration.editAppApplication');
+    Route::post('/marriage-registration/store-application', [MRegistrationController::class, 'store'])->name('manageMRegistration.store');
+    Route::get('/marriage-registration/{mregistration}/edit-application', [MRegistrationController::class, 'edit'])->name('manageMRegistration.edit');
+    Route::post('/marriage-registration/{mregistration}/update-application', [MRegistrationController::class, 'update'])->name('manageMRegistration.update');
     Route::get('/marriage-registration/view-application', [MRegistrationController::class, 'showApp'])->name('manageMRegistration.showApp');
+    Route::get('/marriage-registration/{mregistration}/updatestatus-application', [MRegistrationController::class, 'updateStatus'])->name('manageMRegistration.updateStatus');
     Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.showPrint');
     Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.showCert');
-    Route::post('/marriage-registration/store-application', [MRegistrationController::class, 'store'])->name('manageMRegistration.store');
+    Route::get('/marriage-registration/{mregistration}/delete-application', [MRegistrationController::class, 'destroy'])->name('manageMRegistration.destroy');
     
     //Marriage Registration Staff
     Route::get('/staff/marriage-registration', [MRegistrationController::class, 'indexStaff'])->name('manageMRegistration.indexStaff');
@@ -115,9 +118,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Marriage Card Applicant
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 
-    Route::get('/marriage-card/card-application', [MCardApplicationController::class, 'show'])->name('manageMCard.cardAppApplicant'); 
-    Route::get('/marriage-card/view-application', [MCardApplicationController::class, 'showApp'])->name('manageMCard.viewAppApplicant');
-    Route::get('/marriage-card/print-application', [MCardApplicationController::class, 'showPrint'])->name('manageMCard.printAppApplicant');
+    Route::get('/marriage-card/card-application', [MCardApplicationController::class, 'create'])->name('manageMCard.create');
+    Route::post('/marriage-card/store-application', [MRegistrationController::class, 'store'])->name('manageMCard.store'); 
+    Route::get('/marriage-card/view-application', [MCardApplicationController::class, 'showApp'])->name('manageMCard.showApp');
+    Route::get('/marriage-card/print-application', [MCardApplicationController::class, 'showPrint'])->name('manageMCard.showPrint');
     
     //Marriage Card Staff
     Route::get('/staff/marriage-card', [MCardApplicationController::class, 'indexStaff'])->name('manageMCard.indexStaff'); 
@@ -125,6 +129,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-card/status-application', [MCardApplicationController::class, 'editStatus'])->name('manageMCard.editStatusStaff'); 
     Route::get('/staff/marriage-card/card', [MCardApplicationController::class, 'showCardStaff'])->name('manageMCard.viewCardStaff'); 
 
+
+    
     //Consultation Application
 
 

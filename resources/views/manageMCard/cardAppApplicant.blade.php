@@ -11,65 +11,70 @@
                     </div>
                     <div class="card-body p-3">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama Suami</label>
-                                    <input class="form-control" type="text" name="husName" readonly>
+                            <form role="form" method="POST" action={{ route('manageMCard.store') }}
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Nama Suami</label>
+                                        <input class="form-control" type="text" name="applicant[app_name]" value="{{ $data->applicant->app_name ?? '' }}" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">No. K/P Suami</label>
-                                    <input class="form-control" type="text" name="noKPHus" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">No. K/P Suami</label>
+                                        <input class="form-control" type="text" name="applicant[app_ic]" value="{{ $data->applicant->app_ic ?? '' }}" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama Isteri</label>
-                                    <input class="form-control" type="text" name="wifeName" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Nama Isteri</label>
+                                        <input class="form-control" type="text" name="spouse[app_name]" value="{{ $data->spouse->app_name ?? '' }}" readonly >
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">No. K/P Isteri</label>
-                                    <input class="form-control" type="text" name="noKPWife" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">No. K/P Isteri</label>
+                                        <input class="form-control" type="text" name="spouse[app_ic]" value="{{ $data->spouse->app_ic ?? '' }}" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Tarikh Akad Nikah</label>
-                                    <input class="form-control" type="date" name="tarikhAkad" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Tarikh Akad Nikah</label>
+                                        <input class="form-control" type="text" name="mregistration[mreg_marriageDate]" value="{{ $data->mregistration->mreg_marriageDate ?? '' }}"
+                                            readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
-                                        Suami</label>
-                                    <input class="form-control" type="file" name="gambarHus" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
+                                            Suami</label>
+                                        <input class="form-control" type="file" name="mcard_ApplicantPhoto" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
-                                        Ister</label>
-                                    <input class="form-control" type="file" name="gambarWife" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
+                                            Ister</label>
+                                        <input class="form-control" type="file" name="mcard_SpousePhoto" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Muatnaik Resit Kad
-                                        Nikah</label>
-                                    <input class="form-control" type="file" name="resitKad" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Muatnaik Resit Kad
+                                            Nikah</label>
+                                        <input class="form-control" type="file" name="mcard_receipt" readonly>
+                                    </div>
                                 </div>
-                            </div>
 
                         </div>
 
                         <div class="text-center mt-5">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
                             <a href="" class="btn btn-secondary btn-md ms-4">Draft</a>
-                            <a href="" class="btn btn-info btn-md ms-4">Hantar</a>
+                            <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

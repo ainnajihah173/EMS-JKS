@@ -17,8 +17,8 @@
                 </li> -->
                 <li class="nav-item d-flex align-items-center ps-3">
                     <div class="text-xs text-white px-2 text-end">
-                        <span class="font-weight-bold">Kakitangan</span>
-                        <p class="text-xs mb-0">010304-04-0667</p>
+                        <span class="font-weight-bold">{{ Auth::user()->name }}</span>
+                        <p class="text-xs mb-0">{{ Auth::user()->role }}</p>
                     </div>
                     <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                         @csrf

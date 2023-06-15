@@ -17,16 +17,14 @@ class MRegistrationController extends Controller
      */
     public function index()
     {
-        $datas = MRegistration::all();
-
-        return view('manageMRegistration.viewMRegApplicant', compact('datas'));
+            $datas = MRegistration::all();
+            return view('manageMRegistration.viewMRegApplicant', compact('datas'));
     }
 
     public function indexStaff()
     {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMRegistration.viewMRegStaff');
+        $datas = MRegistration::all();
+        return view('manageMRegistration.viewMRegStaff', compact('datas'));
     }
 
     /**
@@ -80,11 +78,26 @@ class MRegistrationController extends Controller
     public function showApp()
     {
         $data = MRegistration::where('user_id', auth()->user()->id)->first();
+
         return view('manageMRegistration.viewAppApplicant', compact('data'));
     }
 
+    //update status
+    public function updateStatus($mRegistration)
+    {
+        $data = MRegistration::find($mRegistration);
+        if ($data) {
+            if ($data->mreg_status == "Draft") {
+                $data->mreg_status = "Untuk Diluluskan"; 
+                $data->save();
+            }
+        }
+        return redirect()->route('manageMRegistration.index'); 
+    }
+    
+
     /**
-     * Show Applicant Info for their Application
+     * Show Applicant Info for their Application and print
      */
     public function showPrint(MRegistration $mRegistration)
     {
@@ -118,10 +131,27 @@ class MRegistrationController extends Controller
     /**
      * Edit Registration Form
      */
-    public function edit(MRegistration $mRegistration)
+    public function edit($mregistration)
     {
-        return view('manageMRegistration.editAppApplicant');
+        $data = MRegistration::with('applicant', 'spouse', 'wali', 'witness')->find($mregistration);
+        return view('manageMRegistration.editAppApplicant', compact('data'));
     }
+
+    /**
+     * Update the Marriage Registration Form
+     */
+    public function update(Request $request, $mregistration)
+    {
+        $data = MRegistration::find($mregistration);
+        $data->update($request->all());
+        $data->applicant->update($request->applicant);
+        $data->spouse->update($request->spouse);
+        $data->wali->update($request->wali);
+        $data->witness->update($request->witness);
+        return redirect()->route('manageMRegistration.index');
+    }
+
+
     public function editStatus(MRegistration $mRegistration)
     {
         return view('manageMRegistration.editStatusStaff');
@@ -132,21 +162,13 @@ class MRegistrationController extends Controller
         return view('manageMRegistration.editMRegStaff');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMRegistrationRequest $request, MRegistration $mRegistration)
-    {
-        //
-    }
 
     /**
      * Delete Data
      */
-    public function destroy(MRegistration $mRegistration)
+    public function destroy($mregistration)
     {
-        MRegistration::where('user_id', auth()->user()->id)->first()->delete();
-
-        return response()->json(['success' => true]);
+        MRegistration::find($mregistration)->delete();
+        return redirect()->route('manageMRegistration.index');
     }
 }

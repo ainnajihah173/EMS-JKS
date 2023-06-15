@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between">
                         <h6>Maklumat Pasangan</h6>
-                        <a href="{{ route('manageMCard.cardAppApplicant') }}"
+                        <a href="{{ route('manageMCard.create') }}"
                             class="btn btn-info btn-sm float-end mb-0 mt-4"><i class="fas fa-plus"></i> Mohon Kad
                             Nikah</a>
                     </div>
@@ -39,13 +39,13 @@
                                         <td><span class="badge badge-pill bg-warning">Belum
                                                 Hantar</span></td>
                                         <td>
-                                            <a href="{{ route('manageMCard.viewAppApplicant') }}"><i class="fas fa-eye"
+                                            <a href="{{ route('manageMCard.showApp') }}"><i class="fas fa-eye"
                                                     style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMCard.cardAppApplicant') }}"><i class="fas fa-edit"
+                                            <a href="{{ route('manageMCard.create') }}"><i class="fas fa-edit"
                                                     style="padding-right:15px;color:blue"></i></a>
                                             <a href=""><i class="fas fa-trash"
                                                     style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                            <a href="{{ route('manageMCard.printAppApplicant') }}"><i class="fas fa-print"
+                                            <a href="{{ route('manageMCard.showPrint') }}"><i class="fas fa-print"
                                                     style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
                                         </td>
                                     </tr>
