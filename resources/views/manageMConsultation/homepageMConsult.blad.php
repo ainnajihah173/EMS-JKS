@@ -15,9 +15,7 @@
                               <form class="form-inline">
                                  <input class="form-control mr-sm-2" type="search" placeholder="Cari No.KP/Passport" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Semak</button>
-                                                   </form>
-
-                                                </nav>
+                                                  
  <h2>Senarai Prmohonan Aduan</h2>
  <style>
     table {
