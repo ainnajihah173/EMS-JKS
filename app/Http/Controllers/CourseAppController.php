@@ -33,7 +33,10 @@ class CourseAppController extends Controller
         // dd($request->all());
         $CPCount = Course_App::count();
         $request->merge([
-            'couApp_approveStatus' => "Draft"
+            'user_id' => auth()->user()->id,
+            'couApp_approveStatus' => "Draft",
+            'couApp_attendance' => "Pending",
+            'couApp_noApp' => 'CP' . date("Y") . sprintf("%'.05d\n", $CPCount + 1),
         ]);
         Course_App::create($request->all());
         return redirect()->route('manageMCourse.index');

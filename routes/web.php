@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-course/add-course', [CourseController::class, 'createCourse'])->name('manageMCourse.addCourse');
     Route::post('/staff/marriage-course/store-course', [CourseController::class, 'storeCourse'])->name('addCourse.store');
     Route::get('/staff/marriage-course/register-applicant', [CourseAppController::class, 'createRegStaff'])->name('manageMCourse.registerApplicant');
-    Route::post('/marriage-course/store', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
+    Route::post('/marriage-course/store-course', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
     Route::get('/staff/marriage-course/{course_app}/view-application', [CourseAppController::class, 'showAppStaff'])->name('manageMCourse.viewAppStaff');
     Route::get('/staff/marriage-course/{course_app}/edit-application', [CourseAppController::class, 'editAppStaff'])->name('manageMCourse.editAppStaff');
     Route::post('/staff/marriage-course/{course_app}/update-course', [CourseAppController::class, 'updateAppStaff'])->name('staffRegCourse.update');
@@ -84,8 +84,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Marriage Request Applicant
     Route::get('/marriage-request', [MApplicationController::class, 'index'])->name('manageMRequest.statusRequest');
     Route::get('/marriage-request/register', [MApplicationController::class, 'createRequestForm'])->name('manageMRequest.regRequestApplication');
+    Route::post('/marriage-request/store-application', [MApplicationController::class, 'store'])->name('manageMRequest.store');
     Route::get('/marriage-request/view-application', [MApplicationController::class, 'showApp'])->name('manageMRequest.viewApplication');
-    Route::get('/marriage-request/edit-application', [MApplicationController::class, 'editApp'])->name('manageMRequest.editApplication');
+    Route::get('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStatus'])->name('manageMRequest.update');
+    Route::get('/marriage-request/{m_application}/edit-application', [MApplicationController::class, 'editApp'])->name('manageMRequest.editApplication');
+    Route::post('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'update'])->name('manageMRequest.update');
+    Route::get('/marriage-request/{m_application}/delete-application', [MApplicationController::class, 'destroy'])->name('manageMRequest.destroy');
+
+    
     Route::get('/marriage-request/edit-hiv', [MApplicationController::class, 'editHIV'])->name('manageMRequest.editHIVForm');
     Route::get('/marriage-request/edit-wakalah', [MApplicationController::class, 'editWakalah'])->name('manageMRequest.editWakalahForm');
     

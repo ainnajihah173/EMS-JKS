@@ -6,15 +6,100 @@ use Illuminate\Http\Request;
 use App\Models\MApplication;
 use App\Http\Requests\MApplicationRequest;
 use App\Http\Requests\UpdateMApplicationRequest;
+use App\Models\ApplicantDetail;
+use App\Models\Wali;
+use App\Models\Witness;
 
 class MApplicationController extends Controller
 {
     public function index()
     {
         //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMRequest.statusRequest');
+        $datas = MApplication::all();
+        return view('manageMRequest.statusRequest', compact('datas'));
     }
+
+    //return page request form
+    public function createRequestForm(Request $request)
+    {
+        $data = $request->category;
+        return view('manageMRequest.regRequestApplication', compact('data'));
+    }
+
+    //store request form data
+    public function store(Request $request)
+    {
+        $applicant = ApplicantDetail::create($request->applicant);
+        $spouse = ApplicantDetail::create($request->spouse);
+        $wali = Wali::create($request->wali);
+        $witness = Witness::create($request->witness);
+
+        $MAPPCount = MApplication::count();
+
+        $request->merge([
+            'user_id' => auth()->user()->id,
+            'applicant_id' => $applicant->id,
+            'spouse_id' => $spouse->id,
+            'wali_id' => $wali->id,
+            'witness_id' => $witness->id,
+            'mapp_noApp' => 'MA' . date("Y") . sprintf("%'.05d\n", $MAPPCount + 1),
+            'mapp_status' => "Draft"
+        ]);
+
+        MApplication::create($request->all());
+
+        return redirect()->route('manageMRequest.statusRequest');
+    }
+
+
+    //return page borang permohonan
+    public function showApp()
+    {
+        $data = MApplication::where('user_id', auth()->user()->id)->first();
+
+        return view('manageMRequest.viewApplication', compact('data'));
+    }
+
+    //update status borang permohonan from draft to hantar
+    public function updateStatus($mapplication)
+    {
+        $data = MApplication::find($mapplication);
+        if ($data) {
+            if ($data->mapp_status == "Draft") {
+                $data->mapp_status = "Untuk Diluluskan";
+                $data->save();
+            }
+        }
+        return redirect()->route('manageMRequest.statusRequest');
+    }
+
+    //return page eidt borang permohonan
+    public function editApp($mapplication)
+    {
+        $data = MApplication::with('applicant', 'spouse', 'wali', 'witness')->find($mapplication);
+        return view('manageMRequest.editApplication', compact('data'));
+    }
+
+    //save data edit borang permohonan
+    public function update(Request $request, $mapplication)
+    {
+        $data = MApplication::find($mapplication);
+        $data->update($request->all());
+        $data->applicant->update($request->applicant);
+        $data->spouse->update($request->spouse);
+        $data->wali->update($request->wali);
+        $data->witness->update($request->witness);
+        return redirect()->route('manageMRequest.statusRequest');
+    }
+
+    //padam borang permohonan
+    public function destroy($mapplication)
+    {
+        MApplication::find($mapplication)->delete();
+        return redirect()->route('manageMRequest.statusRequest');
+    }
+
+
 
     public function indexStaff()
     {
@@ -23,11 +108,7 @@ class MApplicationController extends Controller
         return view('manageMRequest.searchListStaff');
     }
 
-//create function
-    public function createRequestForm()
-    {
-        return view('manageMRequest.regRequestApplication');
-    }
+
 
     public function createRegStaff()
     {
@@ -37,7 +118,7 @@ class MApplicationController extends Controller
 
     //store function
 
-     public function storeRequestForm(MApplication $request)
+    public function storeRequestForm(MApplication $request)
     {
         //
     }
@@ -46,13 +127,6 @@ class MApplicationController extends Controller
         //
     }
 
-    //show function
-    public function showApp()
-    {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMRequest.viewApplication');
-    }
     public function showAppStaff()
     {
         //$mreg = MRegistration::with('user')->get() , , compact('mreg');
@@ -73,13 +147,7 @@ class MApplicationController extends Controller
         return view('');
     }
 
-    //edit function
-    public function editApp()
-    {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
 
-        return view('manageMRequest.editApplication');
-    }
     public function editAppStaff()
     {
         //$mreg = MRegistration::with('user')->get() , , compact('mreg');
@@ -100,21 +168,12 @@ class MApplicationController extends Controller
         return view('manageMRequest.editWakalahForm');
     }
 
-    //delete function
-    public function destroyApp()
-    {
 
-    }
 
     public function destroyHIV()
     {
-        
     }
     public function destroyWakalah()
     {
-        
     }
-    
-
-
 }

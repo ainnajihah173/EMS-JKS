@@ -21,7 +21,7 @@
                             @csrf 
                             <div id="daftarKursus" class="tabcontent">
                                 <div class="instruction-note">
-                                    <p><b><i>***Sila isi semua bahagian.( * )adalah mandatori***</i></b></p>
+                                    <p><b><i>**Sila isi semua bahagian.( * )adalah mandatori**</i></b></p>
                                 </div>
 
                                 <div class="col-md-6">
@@ -82,6 +82,7 @@
 
 
                                 <div class="text-end mt-2">
+                                    <button  type="button" onclick="history.back()" class="btn btn-secondary btn-md ms-auto">Back</button>
                                     <button type="submit" class="btn btn-success btn-md ms-auto">Save</button>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between">
                         <h6>Maklumat Pasangan</h6>
-                        <a href="{{ route('manageMRegistration.show') }}" class="btn btn-info btn-sm float-end mb-0 mt-4"><i
+                        <a href={{ route('manageMRegistration.show') }} class="btn btn-info btn-sm float-end mb-0 mt-4"><i
                                 class="fas fa-plus"></i> Daftar
                             Nikah</a>
                     </div>

@@ -13,189 +13,259 @@
                         <!-- Maklumat Suami-->
                         <div class="row p-1 m-1 bg-light">
                             <div class="col">
-                                <h6>Maklumat Suami</h6>
+                                <h6>Maklumat Pemohon</h6>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1 mt-3">
                             <div class="col-2">
-                                <label>Nama Suami</label>
+                                <label>Nama Pemohon</label>
                             </div>
                             <div class="col-2">
-                                <p>: Ali Bin Abu</p>
+                                <p>: {{ $data->applicant->app_name ?? '-' }}</p>
                             </div>
                             <div class="col-2">
-                                <label>Umur Suami</label>
+                                <label>Umur Pemohon</label>
                             </div>
                             <div class="col-2">
-                                <p>: XX Tahun</p>
+                                <p>: {{ $data->applicant->app_age ?? '-' }} Tahun</p>
                             </div>
                             <div class="col-2">
                                 <label>No. Kad Pengenalan</label>
                             </div>
                             <div class="col-2">
-                                <p>: 981214050983</p>
+                                <p>: {{ $data->applicant->app_ic ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat terkini</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->applicant->app_addressLatest ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat Dalam K/P</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->applicant->app_houseaddress ?? '-' }}</p>
                             </div>
-                             <div class="col-2">
+                            <div class="col-2">
                                 <label>Tarikh Lahir</label>
                             </div>
                             <div class="col-2">
-                                <p>: 14 December 1998</p>
+                                <p>: {{ $data->applicant->app_birthdate ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Bangsa</label>
                             </div>
                             <div class="col-2">
-                                <p>: Melayu</p>
+                                <p>: @if ($data->applicant->app_nation == 1)
+                                        Melayu
+                                    @elseif($data->applicant->app_nation == 2)
+                                        Cina
+                                    @elseif($data->applicant->app_nation == 3)
+                                        India
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>Warganegara</label>
                             </div>
                             <div class="col-2">
-                                <p>: Malaysia</p>
+                                <p>:
+                                    @if ($data->applicant->app_nation == 1)
+                                        Warganegara
+                                    @elseif($data->applicant->app_nation == 2)
+                                        Bukan Warganegara
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>Status Sebelum Kahwin</label>
                             </div>
                             <div class="col-2">
-                                <p>: Bujang</p>
+                                <p>: @if ($data->applicant->app_marriageStatus == 1)
+                                        Dara
+                                    @elseif($data->applicant->app_marriageStatus == 2)
+                                        Teruna
+                                    @elseif($data->applicant->app_marriageStatus == 3)
+                                        Duda
+                                    @elseif($data->applicant->app_marriageStatus == 4)
+                                        Janda
+                                    @endif
+                                </p>
                             </div>
-                            <div class="col-2">
-                                <label>Status Pekerjaan</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: Bekerja</p>
-                            </div>
+                            <!--<div class="col-2">
+                                                                <label>Status Pekerjaan</label>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <p>: Bekerja</p>
+                                                            </div>-->
                             <div class="col-2">
                                 <label>Nama Pekerjaan</label>
                             </div>
                             <div class="col-2">
-                                <p>: Guru</p>
+                                <p>: {{ $data->applicant->app_jobName ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Pendapatan</label>
                             </div>
                             <div class="col-2">
-                                <p>: RM5000</p>
+                                <p>: RM{{ $data->applicant->app_jobSalary ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Taraf Pendidikan</label>
                             </div>
                             <div class="col-2">
-                                <p>: Ijazah Sarjana Muda</p>
+                                <p>: @if ($data->applicant->app_education == 1)
+                                        Tiada Pendidikan
+                                    @elseif($data->applicant->app_education == 2)
+                                        SPM
+                                    @elseif($data->applicant->app_education == 3)
+                                        Diploma
+                                    @elseif($data->applicant->app_education == 4)
+                                        Ijazah Sarjana Muda
+                                    @elseif($data->applicant->app_education == 5)
+                                        Ijazah Sarjana
+                                    @elseif($data->applicant->app_education == 6)
+                                        PHD
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>No. Telefon</label>
                             </div>
                             <div class="col-2">
-                                <p>: 0123456789</p>
+                                <p>: {{ $data->applicant->app_phoneNumber ?? '-' }}</p>
                             </div>
                         </div>
-                        
+
                         <!-- Maklumat Isteri-->
                         <div class="row p-1 m-1 bg-light mt-4">
                             <div class="col">
-                                <h6>Maklumat Isteri</h6>
+                                <h6>Maklumat Pasangan</h6>
                             </div>
                         </div>
                         <div class="row justify-content-start m-1 mt-3">
                             <div class="col-2">
-                                <label>Nama Isteri</label>
+                                <label>Nama Pasangan</label>
                             </div>
                             <div class="col-2">
-                                <p>: Sumaiyyah</p>
+                                <p>: {{ $data->spouse->app_name ?? '-' }}</p>
                             </div>
                             <div class="col-2">
-                                <label>Umur Isteri</label>
+                                <label>Umur Pasangan</label>
                             </div>
                             <div class="col-2">
-                                <p>: XX Tahun</p>
+                                <p>: {{ $data->spouse->app_age ?? '-' }} Tahun</p>
                             </div>
                             <div class="col-2">
                                 <label>No. Kad Pengenalan</label>
                             </div>
                             <div class="col-2">
-                                <p>: 981214050984</p>
+                                <p>: {{ $data->spouse->app_ic ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat terkini</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->spouse->app_addressLatest ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat Dalam K/P</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->spouse->app_houseaddress ?? '-' }}</p>
                             </div>
-                             <div class="col-2">
+                            <div class="col-2">
                                 <label>Tarikh Lahir</label>
                             </div>
                             <div class="col-2">
-                                <p>: 14 December 1998</p>
+                                <p>: {{ $data->spouse->app_birthdate ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Bangsa</label>
                             </div>
                             <div class="col-2">
-                                <p>: Melayu</p>
+                                <p>: @if ($data->spouse->app_nation == 1)
+                                        Melayu
+                                    @elseif($data->spouse->app_nation == 2)
+                                        Cina
+                                    @elseif($data->spouse->app_nation == 3)
+                                        India
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>Warganegara</label>
                             </div>
                             <div class="col-2">
-                                <p>: Malaysia</p>
+                                <p>:
+                                    @if ($data->spouse->app_nation == 1)
+                                        Warganegara
+                                    @elseif($data->spouse->app_nation == 2)
+                                        Bukan Warganegara
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>Status Sebelum Kahwin</label>
                             </div>
                             <div class="col-2">
-                                <p>: Bujang</p>
+                                <p>: @if ($data->spouse->app_marriageStatus == 1)
+                                        Dara
+                                    @elseif($data->spouse->app_marriageStatus == 2)
+                                        Teruna
+                                    @elseif($data->spouse->app_marriageStatus == 3)
+                                        Duda
+                                    @elseif($data->spouse->app_marriageStatus == 4)
+                                        Janda
+                                    @endif
+                                </p>
                             </div>
-                            <div class="col-2">
-                                <label>Status Pekerjaan</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: Bekerja</p>
-                            </div>
+                            <!--<div class="col-2">
+                                                                <label>Sektor Pekerjaan</label>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <p>: Bekerja</p>
+                                                            </div>-->
                             <div class="col-2">
                                 <label>Nama Pekerjaan</label>
                             </div>
                             <div class="col-2">
-                                <p>: Guru</p>
+                                <p>: {{ $data->spouse->app_jobName ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Pendapatan</label>
                             </div>
                             <div class="col-2">
-                                <p>: RM5000</p>
+                                <p>: RM{{ $data->spouse->app_jobSalary ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Taraf Pendidikan</label>
                             </div>
                             <div class="col-2">
-                                <p>: Ijazah Sarjana Muda</p>
+                                <p>: @if ($data->spouse->app_education == 1)
+                                        Tiada Pendidikan
+                                    @elseif($data->spouse->app_education == 2)
+                                        SPM
+                                    @elseif($data->spouse->app_education == 3)
+                                        Diploma
+                                    @elseif($data->spouse->app_education == 4)
+                                        Ijazah Sarjana Muda
+                                    @elseif($data->spouse->app_education == 5)
+                                        Ijazah Sarjana
+                                    @elseif($data->spouse->app_education == 6)
+                                        PHD
+                                    @endif
+                                </p>
                             </div>
                             <div class="col-2">
                                 <label>No. Telefon</label>
                             </div>
                             <div class="col-2">
-                                <p>: 0123456789</p>
+                                <p>: {{ $data->spouse->app_phoneNumber ?? '-' }}</p>
                             </div>
                         </div>
-                        
+
                         <!-- Maklumat Perkahwinan-->
                         <div class="row p-1 m-1 bg-light mt-4">
                             <div class="col">
@@ -207,152 +277,167 @@
                                 <label>Tarikh Permohonan</label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXXXXX</p>
+                                <p>: {{ $data->mapp_dateApply ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Masa Akad Nikah</label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXX</p>
+                                <p>: {{ $data->mapp_marriageTime ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Nama Jurunikah</label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXXXXXXX</p>
+                                <p>: {{ $data->mapp_jurunikahName ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Tarikh Akad Nikah</label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Nama Wali</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>No. K/P Wali</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXX</p>
-                            </div>
-                             <div class="col-2">
-                                <label>Hubungan Dengan Wali</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Tarikh Lahir Wali</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXX</p>
-                            </div>
-                            
-                            <div class="col-2">
-                                <label>Umur Wali</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Nama Saksi 1</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXx</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Umur Saksi 1</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXx</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Nama Saksi 2</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Umur Saksi 2</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Mas Kahwin</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Bayaran Nikah</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: (link)</p>
-                            </div>
-                            <div class="col-2">
-                                <label>No. K/P Saksi 1</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Umur Saksi 1</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>No. K/P Saksi 2</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Umur Saksi 2</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
-                            </div>
-                            <div class="col-2">
-                                <label>Tempat Akad Nikah</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
+                                <p>: {{ $data->mapp_marriageDate ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Hantaran</label>
                             </div>
                             <div class="col-2">
-                                <p>: XXXXXXXXXX</p>
+                                <p>: RM{{ $data->mapp_hantaran ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Mas Kahwin</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: RM{{ $data->mapp_masKahwin ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Tempat Akad Nikah</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->mapp_marriageAddress ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Bayaran</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: link resit</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Nama Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->wali->wali_name ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>No. K/P Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->wali->wali_ic ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Hubungan Dengan Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: @if ($data->wali->wali_relationship == 1)
+                                        Bapa
+                                    @elseif($data->spouse->app_education == 2)
+                                        Abang
+                                    @elseif($data->spouse->app_education == 3)
+                                        Adik
+                                    @elseif($data->spouse->app_education == 4)
+                                        Atuk
+                                    @endif
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <label>Tarikh Lahir Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->wali->wali_birthdate ?? '-' }}</p>
+                            </div>
+
+                            <div class="col-2">
+                                <label>Umur Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->wali->wali_age ?? '-' }} Tahun</p>
+                            </div>
+                            <div class="col-2">
+                                <label>No. Phone Wali</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->wali->wali_phoneNum ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Nama Saksi 1</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_name1 ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Umur Saksi 1</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_age1 ?? '-' }} Tahun</p>
+                            </div>
+                            <div class="col-2">
+                                <label>No. Phone Saksi 1</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_noPhone1 ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Nama Saksi 2</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_name2 ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>Umur Saksi 2</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_age2 ?? '-' }} Tahun</p>
+                            </div>
+                            <div class="col-2">
+                                <label>No. K/P Saksi 2</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_icNum2 ?? '-' }}</p>
+                            </div>
+                            <div class="col-2">
+                                <label>No. Phone Saksi 2</label>
+                            </div>
+                            <div class="col-2">
+                                <p>: {{ $data->witness->wit_noPhone2 ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat Wali</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->wali->wali_address ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat Saksi 1</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->witness->wit_adress1 ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Alamat Saksi 2</label>
                             </div>
                             <div class="col-2">
-                                <p>: Lot 5, Kampung Beruas, 15200, Pekan, Pahang</p>
+                                <p>: {{ $data->witness->wit_adress2 ?? '-' }}</p>
                             </div>
                         </div>
-                        
+                        @if($data->mapp_status !== "Untuk Diluluskan")
+                            <div class="text-center mt-4">
+                                <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
+                                <a href="{{ route('manageMRequest.update', ['m_application' => $data->id]) }}" class="btn btn-info btn-md ms-4">Hantar</a>
+                            </div>
+                        @else
                         <div class="text-center mt-4">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
