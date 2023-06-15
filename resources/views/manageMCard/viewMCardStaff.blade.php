@@ -28,21 +28,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="line-height: 30px;">
-                                        <td>1</td>
-                                        <td>981234050981</td>
-                                        <td>XXXXXXXXXXXXX</td>
-                                        <td>22/11/2022</td>
-                                        <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMCard.viewAppStaff') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMCard.editStatusStaff') }}"><i class="fa fa-check-circle"
-                                                    style="padding-right:15px;color:rgb(255, 128, 0)"></i></a>
-                                            <a href="{{ route('manageMCard.viewCardStaff') }}"><i class="fas fa-credit-card"
-                                                    style="padding-right:15px;color:rgba(0, 0, 0, 0.297)"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($datas as $data)
+                                        <tr style="line-height: 30px;">
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->applicant->app_ic ?? '-' }}<br>
+                                                {{ $data->applicant->app_name ?? '-' }}</td>
+                                            <td>{{ $data->mcard_noApp ?? '-' }}</td>
+                                            <td>{{ $data->created_at ? $data->created_at->format('Y-m-d') : '-' }}</td>
+                                            <td>
+                                                @if ($data->mcard_status === 'Untuk Diluluskan')
+                                                    <span class="badge badge-pill bg-info">Untuk Diluluskan</span>
+                                                @elseif ($data->mcard_status === 'Lulus')
+                                                    <span class="badge badge-pill bg-success">Lulus</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($data->mcard_status === 'Untuk Diluluskan')
+                                                    <a
+                                                        href="{{ route('manageMCard.showAppStaff', ['mcard' => $data['id']]) }}"><i
+                                                            class="fas fa-eye"
+                                                            style="padding-right:15px;color:green"></i></a>
+                                                    <a
+                                                        href="{{ route('manageMCard.editStatus', ['mcard' => $data['id']]) }}"><i
+                                                            class="fa fa-check-circle"
+                                                            style="padding-right:15px;color:rgb(255, 128, 0)"></i></a>
+                                                @else
+                                                    <a
+                                                        href="{{ route('manageMCard.showCardStaff', ['mcard' => $data['id']]) }}"><i
+                                                            class="fas fa-credit-card"
+                                                            style="padding-right:15px;color:rgba(0, 0, 0, 0.297)"></i></a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

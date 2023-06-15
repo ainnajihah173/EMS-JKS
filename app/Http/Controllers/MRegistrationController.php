@@ -16,7 +16,7 @@ class MRegistrationController extends Controller
      */
     public function index()
     {
-        $datas = MRegistration::all();
+        $datas = MRegistration::where('user_id', auth()->user()->id)->paginate(10);
         return view('manageMRegistration.viewMRegApplicant', compact('datas'));
     }
 

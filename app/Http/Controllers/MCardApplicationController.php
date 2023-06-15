@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\MCard;
 use App\Http\Requests\StoreMCard_ApplicationRequest;
 use App\Http\Requests\UpdateMCard_ApplicationRequest;
 use App\Models\ApplicantDetail;
 use App\Models\MRegistration;
-use App\Models\Wali;
-use App\Models\Witness;
 use Illuminate\Http\Request;
 
 class MCardApplicationController extends Controller
@@ -17,7 +16,7 @@ class MCardApplicationController extends Controller
      */
     public function index()
     {
-        $datas = MCard::all();
+        $datas = MCard::where('user_id', auth()->user()->id)->paginate(10);
         return view('manageMCard.viewMCardApplicant', compact('datas'));
     }
 
@@ -64,7 +63,7 @@ class MCardApplicationController extends Controller
             'user_id' => auth()->user()->id,
             'applicant_id' => $applicant->id,
             'spouse_id' => $spouse->id,
-            'mregistration_id'=> $mregistration->id,
+            'mregistration_id' => $mregistration->id,
             'mcard_noApp' => 'MC' . date("Y") . sprintf("%'.05d\n", $MCardCount + 1),
             'mcard_ApplicantPhoto' => $receiptPath ?? "",
             'mcard_receipt' => $receiptPath2 ?? "",
@@ -104,6 +103,18 @@ class MCardApplicationController extends Controller
         return view('manageMCard.viewAppApplicant', compact('data'));
     }
 
+    public function updateStatus($mcard)
+    {
+        $data = MCard::find($mcard);
+
+        if ($data->mcard_status == "Draft") {
+            $data->mcard_status = "Untuk Diluluskan";
+            $data->save();
+        }
+
+        return redirect()->route('manageMCard.index');
+    }
+
     public function showPrint()
     {
         $data = MCard::where('user_id', auth()->user()->id)->first();
@@ -115,7 +126,8 @@ class MCardApplicationController extends Controller
      */
     public function destroy($mCard)
     {
-        //
+        MCard::find($mCard)->delete();
+        return redirect()->route('manageMCard.index');
     }
 
 
@@ -128,24 +140,45 @@ class MCardApplicationController extends Controller
         return view('manageMCard.viewMCardStaff', compact('datas'));
     }
 
-    public function showAppStaff()
+    public function showAppStaff($mcard)
     {
-        return view('manageMCard.viewAppStaff');
+        $data = MCard::find($mcard);
+        return view('manageMCard.viewAppStaff', compact('data'));
     }
 
-    public function showCardStaff()
+    public function showCardStaff($mcard)
     {
-        return view('manageMCard.viewCardStaff');
+        $data = MCard::find($mcard);
+        return view('manageMCard.viewCardStaff', compact('data'));
     }
 
-
-    public function editStatus()
+    public function updateCetak($mcard, Request $request)
     {
-        return view('manageMCard.editStatusStaff');
+        $data = MCard::find($mcard);
+        $data->mcard_printStatus = $request->input('mcard_printStatus');
+        $data->save();
+
+        return redirect()->route('manageMCard.indexStaff');
     }
 
-    public function updateStatus(){
 
+    public function editStatus($mcard)
+    {
+        $data = MCard::with('applicant', 'spouse')->find($mcard);
+        return view('manageMCard.editStatusStaff', compact('data'));
     }
 
+    public function updateStatusApp($mcard, Request $request)
+    {
+        $data = MCard::find($mcard);
+        if ($request->input('mcard_terima') == '1') {
+        if ($data->mcard_status == "Untuk Diluluskan") {
+            $data->mcard_status = "Lulus";
+            $data->mcard_dateApproval = $request->input('mcard_dateApproval');
+            $data->save();
+        }
+    }
+
+        return redirect()->route('manageMCard.indexStaff');
+    }
 }

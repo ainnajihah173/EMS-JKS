@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/loc', [CourseAppController::class, 'getLocDistrict'])->name('locDistrict');
     // Route::get('/adress', [CourseAppController::class, 'getAdress'])->name('address');
     // Route::get('/date', [CourseAppController::class, 'getDate'])->name('date');
-    
+
 
     //Marriage Course Staff
     Route::get('/staff/marriage-course', [CourseAppController::class, 'indexStaff'])->name('manageMCourse.indexStaff');
@@ -78,8 +78,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-course/{course_app}/document-list', [CourseAppController::class, 'showDocStaff'])->name('manageMCourse.documentListStaff');
     Route::get('/staff/marriage-course/{course_app}/document-list/certificate', [CourseAppController::class, 'showCertStaff'])->name('manageMCourse.printCertStaff');
     Route::get('/staff/marriage-course/{course_app}/document-list/slip', [CourseAppController::class, 'showSlipStaff'])->name('manageMCourse.printSlipStaff');
-    
-    
+
+
 
     //Marriage Request Applicant
     Route::get('/marriage-request', [MApplicationController::class, 'index'])->name('manageMRequest.statusRequest');
@@ -91,10 +91,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'update'])->name('manageMRequest.update');
     Route::get('/marriage-request/{m_application}/delete-application', [MApplicationController::class, 'destroy'])->name('manageMRequest.destroy');
 
-    
+
     Route::get('/marriage-request/edit-hiv', [MApplicationController::class, 'editHIV'])->name('manageMRequest.editHIVForm');
     Route::get('/marriage-request/edit-wakalah', [MApplicationController::class, 'editWakalah'])->name('manageMRequest.editWakalahForm');
-    
+
     //Marriage Request Staff
     Route::get('/staff/marriage-request', [MApplicationController::class, 'indexStaff'])->name('manageMRequest.indexStaff');
     Route::get('/staff/marriage-request/register-application', [MApplicationController::class, 'createRegStaff'])->name('manageMRequest.registerApplicant');
@@ -127,30 +127,31 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('staff/marriage-registration/{mregistration}/update-cetak-application', [MRegistrationController::class, 'updateCetak'])->name('manageMRegistration.updateCetak');
 
     //Marriage Card Applicant
-    Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 
+    Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index');
     Route::get('/marriage-card/card-application', [MCardApplicationController::class, 'create'])->name('manageMCard.create');
-    Route::post('/marriage-card/store-application', [MCardApplicationController::class, 'store'])->name('manageMCard.store'); 
-    Route::get('/marriage-card/{mcard}/edit-application', [MCardApplicationController::class, 'edit'])->name('manageMCard.edit'); 
+    Route::post('/marriage-card/store-application', [MCardApplicationController::class, 'store'])->name('manageMCard.store');
+    Route::get('/marriage-card/{mcard}/edit-application', [MCardApplicationController::class, 'edit'])->name('manageMCard.edit');
     Route::post('/marriage-card/{mcard}/store-update', [MCardApplicationController::class, 'update'])->name('manageMCard.update');
-    Route::get('/marriage-card/{mcard}/delete-application', [MCardApplicationController::class, 'destroy'])->name('manageMCard.destroy');  
+    Route::get('/marriage-card/{mcard}/update-application', [MCardApplicationController::class, 'updateStatus'])->name('manageMCard.updateStatus');
+    Route::get('/marriage-card/{mcard}/delete-application', [MCardApplicationController::class, 'destroy'])->name('manageMCard.destroy');
     Route::get('/marriage-card/view-application', [MCardApplicationController::class, 'showApp'])->name('manageMCard.showApp');
     Route::get('/marriage-card/print-application', [MCardApplicationController::class, 'showPrint'])->name('manageMCard.showPrint');
-    
+
     //Marriage Card Staff
-    Route::get('/staff/marriage-card', [MCardApplicationController::class, 'indexStaff'])->name('manageMCard.indexStaff'); 
-    Route::get('/staff/marriage-card/view-application', [MCardApplicationController::class, 'showAppStaff'])->name('manageMCard.viewAppStaff'); 
-    Route::get('/staff/marriage-card/status-application', [MCardApplicationController::class, 'editStatus'])->name('manageMCard.editStatusStaff'); 
-    Route::get('/staff/marriage-card/card', [MCardApplicationController::class, 'showCardStaff'])->name('manageMCard.viewCardStaff'); 
+    Route::get('/staff/marriage-card', [MCardApplicationController::class, 'indexStaff'])->name('manageMCard.indexStaff');
+    Route::get('/staff/marriage-card/{mcard}/view-application', [MCardApplicationController::class, 'showAppStaff'])->name('manageMCard.showAppStaff');
+    Route::get('/staff/marriage-card/{mcard}/status-application', [MCardApplicationController::class, 'editStatus'])->name('manageMCard.editStatus');
+    Route::get('/staff/marriage-card/{mcard}/card', [MCardApplicationController::class, 'showCardStaff'])->name('manageMCard.showCardStaff');
+    Route::post('/staff/marriage-card/{mcard}/status-update', [MCardApplicationController::class, 'updateCetak'])->name('manageMCard.updateCetak');
+    Route::post('/staff/marriage-card/{mcard}/store', [MCardApplicationController::class, 'updateStatusApp'])->name('manageMCard.updateStatusApp');
 
-
-    
     //Consultation Application
 
 
     //Insentive Application
-Route::get('/manageIncentive', 'App\Http\Controllers\incentiveAppController@index')->name('applyIncentive');
-Route::get('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@create')->name('applyIncentive:create');
-Route::post('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@store')->name('applyIncentive:store');
+    Route::get('/manageIncentive', 'App\Http\Controllers\incentiveAppController@index')->name('applyIncentive');
+    Route::get('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@create')->name('applyIncentive:create');
+    Route::post('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@store')->name('applyIncentive:store');
 
 
 

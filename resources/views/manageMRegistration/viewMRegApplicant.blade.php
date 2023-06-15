@@ -65,7 +65,8 @@
                                                     <a href="{{ route('manageMRegistration.showApp') }}"><i
                                                             class="fas fa-eye"
                                                             style="padding-right:15px;color:green"></i></a>
-                                                    <a href="{{ route('manageMRegistration.edit', ['mregistration' => $data['id']]) }}"><i
+                                                    <a
+                                                        href="{{ route('manageMRegistration.edit', ['mregistration' => $data['id']]) }}"><i
                                                             class="fas fa-edit"
                                                             style="padding-right:15px;color:blue"></i></a>
                                                     <a href="#"

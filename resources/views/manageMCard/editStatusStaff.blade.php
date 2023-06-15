@@ -16,19 +16,19 @@
                                 <label>Nama Suami</label>
                             </div>
                             <div class="col-4">
-                                <p>: Ali Bin Abu</p>
+                                <p>: {{ $data->applicant->app_name ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>No. Pendaftaran</label>
                             </div>
                             <div class="col-4">
-                                <p>: KTN12343243</p>
+                                <p>: {{ $data->mcard_noApp ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>No. K/P Suami</label>
                             </div>
                             <div class="col-4">
-                                <p>: 98342424512</p>
+                                <p>: {{ $data->applicant->app_ic ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Gambar Passport Suami</label>
@@ -40,13 +40,13 @@
                                 <label>Nama Isteri</label>
                             </div>
                             <div class="col-4">
-                                <p>: Zubaidah Binti Awang</p>
+                                <p>: {{ $data->spouse->app_name ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>No. K/P Isteri</label>
                             </div>
                             <div class="col-4">
-                                <p>: 98432432435212</p>
+                                <p>: {{ $data->spouse->app_name ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Gambar Passport Isteri</label>
@@ -58,13 +58,13 @@
                                 <label>Tarikh Akad Nikah</label>
                             </div>
                             <div class="col-4">
-                                <p>: 12/12/2022</p>
+                                <p>: {{ $data->mregistration->mreg_marriageDate ?? '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Tarikh Mohon Kad</label>
                             </div>
                             <div class="col-4">
-                                <p>: 01/01/2023</p>
+                                <p>: {{ $data->created_at ? $data->created_at->format('Y-m-d') : '-' }}</p>
                             </div>
                             <div class="col-2">
                                 <label>Resit Bayaran</label>
@@ -75,25 +75,29 @@
                             <div class="col-2">
                                 <label>Status Permohonan</label>
                             </div>
-                            <div class="col-4">
-                                <select class="form-select" aria-label="Default select example" style="width:50%;">
-                                    <option selected>--- Sila Pilih ---</option>
-                                    <option value="1">Terima</option>
-                                    <option value="2">Tolak</option>
-                                </select>
-                            </div>
-                            <div class="col-2">
-                                <label>Tarikh Terima</label>
-                            </div>
-                            <div class="col-2">
-                                <input class="form-control" name="date" type="date">
-                            </div>
-                            
+                            <form role="form" method="POST"
+                                action="{{ route('manageMCard.updateStatusApp', ['mcard' => $data['id']]) }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="col-4">
+                                    <select class="form-select" name="mcard_terima" style="width:50%;">
+                                        <option value="0">--- Sila Pilih ---</option>
+                                        <option value="1">Terima</option>
+                                        <option value="2">Tolak</option>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <label>Tarikh Terima</label>
+                                </div>
+                                <div class="col-4">
+                                    <input class="form-control" name="mcard_dateApproval" type="date">
+                                </div>
 
-                        </div>
-                        <div class="text-center mt-5">
-                            <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                            <a href="" class="btn btn-info btn-md ms-4">Hantar</a>
+                                <div class="text-center mt-5">
+                                    <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
+                                    <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
