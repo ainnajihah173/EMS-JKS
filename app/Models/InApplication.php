@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class INAPPLICATIONModel extends Model
+class InApplication extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
         'Inc_passportnum',
         'Inc_bankaccountnum',
