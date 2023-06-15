@@ -124,12 +124,12 @@ class MRegistrationController extends Controller
     public function updateStatus($mRegistration)
     {
         $data = MRegistration::find($mRegistration);
-        if ($data) {
-            if ($data->mreg_status == "Draft") {
-                $data->mreg_status = "Untuk Diluluskan";
-                $data->save();
-            }
+
+        if ($data->mreg_status == "Draft") {
+            $data->mreg_status = "Untuk Diluluskan";
+            $data->save();
         }
+
         return redirect()->route('manageMRegistration.index');
     }
 
@@ -182,7 +182,17 @@ class MRegistrationController extends Controller
 
     public function showCertStaff($mRegistration)
     {
-        return view('manageMRegistration.viewCertificateStaff');
+        $data = MRegistration::find($mRegistration);
+        return view('manageMRegistration.viewCertificateStaff', compact('data'));
+    }
+
+    public function updateCetak($mRegistration, Request $request)
+    {
+        $data = MRegistration::find($mRegistration);
+        $data->mreg_printStatus = $request->input('mreg_printStatus');
+        $data->save();
+
+        return redirect()->route('manageMRegistration.indexStaff');
     }
 
     public function  printAppStaff($mRegistration)
@@ -196,6 +206,23 @@ class MRegistrationController extends Controller
         $data = MRegistration::with('applicant', 'spouse', 'wali', 'witness')->find($mRegistration);
         return view('manageMRegistration.editStatusStaff', compact('data'));
     }
+
+    public function updateStatusApp($mRegistration, Request $request)
+    {
+        $data = MRegistration::find($mRegistration);
+
+        if ($request->input('mreg_statusApp') == '1') {
+            if ($data->mreg_status == "Untuk Diluluskan") {
+                $data->mreg_statusApp == 'Terima';
+                $data->mreg_status = "Lulus";
+                $data->mreg_dateStatus = $request->input('mreg_dateStatus');
+                $data->save();
+            }
+        }
+
+        return redirect()->route('manageMRegistration.indexStaff');
+    }
+
 
     public function editApp($mRegistration)
     {

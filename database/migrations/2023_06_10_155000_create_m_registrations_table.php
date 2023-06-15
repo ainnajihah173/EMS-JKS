@@ -30,6 +30,9 @@ return new class extends Migration
             $table->string('mreg_noApp')->nullable(); 
             $table->string('mreg_category')->nullable();
             $table->string('mreg_printStatus')->nullable();
+            $table->string('mreg_docuSokongan')->nullable();
+            $table->string('mreg_statusApp')->nullable();
+            $table->date('mreg_dateStatus')->nullable();
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
                     href="{{ route('manageMCourse.indexStaff') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-file-alt text-white text-sm opacity-10"></i>
+                        <i class="fas fa-certificate text-white text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1 text-white">Kursus Kahwin</span>
                 </a>
@@ -38,7 +38,7 @@
                     href="{{ route('manageMRequest.indexStaff') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-file-alt text-white text-sm opacity-10"></i>
+                        <i class="fas fa-file text-white text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1 text-white">Kebenaran Kahwin</span>
                 </a>
@@ -55,7 +55,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'manageMCard.indexStaff' ? 'active' : '' }}"
-                    href="{{ route('manageMCard.index') }}">
+                    href="{{ route('manageMCard.indexStaff') }}">
                     <div
                         class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-id-card text-white text-sm opacity-10"></i>

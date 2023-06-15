@@ -52,6 +52,7 @@
                                                 @endif
                                             </td>
                                             <td>
+                                                @if ($data->mreg_status === 'Untuk Diluluskan')
                                                 <a href="{{ route('manageMRegistration.showAppStaff', ['mregistration' => $data->id]) }}"><i
                                                         class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
                                                 <a href="{{ route('manageMRegistration.editApp', ['mregistration' => $data->id]) }}"><i
@@ -62,6 +63,7 @@
                                                 <a href="{{ route('manageMRegistration.editStatus', ['mregistration' => $data->id]) }}"><i
                                                         class="far fa-check-circle"
                                                         style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
+                                                @endif
                                                 <a href="{{ route('manageMRegistration.showCertStaff', ['mregistration' => $data->id]) }}"><i
                                                         class="fas fa-certificate"
                                                         style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>

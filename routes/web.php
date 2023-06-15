@@ -122,12 +122,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/staff/marriage-registration/{mregistration}/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.showAppStaff');
     Route::get('/staff/marriage-registration/{mregistration}/print-application', [MRegistrationController::class, 'printAppStaff'])->name('manageMRegistration.printAppStaff');
     Route::get('/staff/marriage-registration/{mregistration}/status-application', [MRegistrationController::class, 'editStatus'])->name('manageMRegistration.editStatus');
+    Route::post('staff/marriage-registration/{mregistration}/update-status-application', [MRegistrationController::class, 'updateStatusApp'])->name('manageMRegistration.updateStatusApp');
     Route::get('/staff/marriage-registration/{mregistration}/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.showCertStaff');
+    Route::post('staff/marriage-registration/{mregistration}/update-cetak-application', [MRegistrationController::class, 'updateCetak'])->name('manageMRegistration.updateCetak');
 
     //Marriage Card Applicant
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index'); 
     Route::get('/marriage-card/card-application', [MCardApplicationController::class, 'create'])->name('manageMCard.create');
-    Route::post('/marriage-card/store-application', [MRegistrationController::class, 'store'])->name('manageMCard.store'); 
+    Route::post('/marriage-card/store-application', [MCardApplicationController::class, 'store'])->name('manageMCard.store'); 
+    Route::get('/marriage-card/{mcard}/edit-application', [MCardApplicationController::class, 'edit'])->name('manageMCard.edit'); 
+    Route::post('/marriage-card/{mcard}/store-update', [MCardApplicationController::class, 'update'])->name('manageMCard.update');
+    Route::get('/marriage-card/{mcard}/delete-application', [MCardApplicationController::class, 'destroy'])->name('manageMCard.destroy');  
     Route::get('/marriage-card/view-application', [MCardApplicationController::class, 'showApp'])->name('manageMCard.showApp');
     Route::get('/marriage-card/print-application', [MCardApplicationController::class, 'showPrint'])->name('manageMCard.showPrint');
     

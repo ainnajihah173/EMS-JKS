@@ -11,13 +11,9 @@
                     </div>
                     <div class="card-body p-3">
                         <div class="row">
-                            <form role="form" method="POST" action={{ route('manageMCard.store') }}
+                            <form role="form" method="POST" action={{ route('manageMCard.update', ['mcard' => $data['id']]) }}
                                 enctype="multipart/form-data">
                                 @csrf
-
-                                <input type="hidden" name="applicant_id" value="{{ $data->applicant->id ?? '' }}">
-                                <input type="hidden" name="spouse_id" value="{{ $data->spouse->id ?? '' }}">
-                                <input type="hidden" name="mregistration_id" value="{{ $data->id ?? '' }}">
 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -58,21 +54,21 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
                                             Suami</label>
-                                        <input class="form-control" type="file" name="mcard_ApplicantPhoto" readonly>
+                                        <input class="form-control" type="file" name="mcard_ApplicantPhoto">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Muatnaik Gambar Passport
                                             Isteri</label>
-                                        <input class="form-control" type="file" name="mcard_SpousePhoto" readonly>
+                                        <input class="form-control" type="file" name="mcard_SpousePhoto">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Muatnaik Resit Kad
                                             Nikah</label>
-                                        <input class="form-control" type="file" name="mcard_receipt" readonly>
+                                        <input class="form-control" type="file" name="mcard_receipt">
                                     </div>
                                 </div>
 

@@ -335,7 +335,7 @@
                                 <label>Bayaran</label>
                             </div>
                             <div class="col-2">
-                                <p>: link resit</p>
+                                <a href="{{ asset($data->mreg_receipt) }}" style="">: Resit Bayaran</a>
                             </div>
                             <div class="col-2">
                                 <label>Nama Wali</label>
