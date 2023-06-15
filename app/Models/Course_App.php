@@ -16,7 +16,7 @@ class Course_App extends Model
         'staff_id',
         'course_id',
         'user_id',
-        'couApp_attendace',
+        'couApp_attendance',
         'couApp_receipt',
         'couApp_approveStatus',
         'couApp_approveDate',

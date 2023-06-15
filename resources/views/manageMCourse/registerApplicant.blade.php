@@ -37,7 +37,8 @@
                             </div>
                         </div>
                     
-                        <form action="/action_page.php">
+                        <form role="form" method="POST" action={{ route('staffRegCourse.store') }} enctype="multipart/form-data">
+                            @csrf 
                             <div id="daftarKursus" class="tabcontent">
                                 <div class="instruction-note">
                                     <p><b><i>*** Sila isi semua bahagian (*) adalah mandatori. *** </i></p>
@@ -46,11 +47,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Anjuran *</label>
-                                        <select class="form-select">
-                                            <option selected>--Sila Pilih Anjuran--</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Daerah</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -58,19 +59,23 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pilih Lokasi *</label>
-                                        <select class="form-select">
-                                            <option selected>--Sila Pilih Lokasi--</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Lokasi</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}"> {{ $course->cou_address }}
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                     
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="example-text-input">Tarikh Kursus *</label>
-                                        <input class="form-control" type="date" id="tarikh-kursus" name="tarikh-kursus">
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Tarikh</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_date }}
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                     
@@ -92,11 +97,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="example-text-input">Bukti Pembayaran *</label>
-                                        <input class="form-control" type="file" id="receipt" name="receipt">
+                                        <input class="form-control" type="file" id="receipt" name="couApp_receipt">
                                     </div>
                                 </div>
-                                <input type="submit" value="Hantar">
-                                <input type="Reset" value="Set Semula">
+                                <div class="text-end mt-2">
+                                    <button type="submit" class="btn btn-success btn-md ms-auto">Save</button>
+                                </div>
                         </form>
                         </div>
                         <a href="{{ route('manageMCourse.indexStaff') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">

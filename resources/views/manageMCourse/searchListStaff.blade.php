@@ -26,7 +26,8 @@
                                             <select class="form-select" name="course_id">
                                                 <option selected disabled>Sila Pilih Daerah</option>
                                                 @foreach ($courses as $course)
-                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -61,8 +62,8 @@
                             <div class="column" style="width: 30%;">
                                 <a href="{{ route('manageMCourse.addCourse') }}"><input type="submit" value="Daftar Kursus"
                                         style="margin-right:100px;width:35%;"></a>
-                                <a href="{{ route('manageMCourse.registerApplicant') }}"><input type="submit" value="Daftar Peserta"
-                                    style="margin-right:100px;width:35%;"></a>
+                                <a href="{{ route('manageMCourse.registerApplicant') }}"><input type="submit"
+                                        value="Daftar Peserta" style="margin-right:100px;width:35%;"></a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +76,7 @@
                                         <th>Anjuran</th>
                                         <th>Lokasi</th>
                                         <th>Nama Peserta</th>
-                                       
+
                                         <th>Kehadiran</th>
                                         <th>Kelulusan</th>
                                         <th>Operasi</th>
@@ -83,36 +84,40 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($datas as $data)
-                                    <tr style="line-height: 30px;">
-                                       
-                                        <td>
-                                            {{ $loop->index + 1 }}
-                                        </td>
-                                        <td>
-                                            {{ $data->course->cou_locDistrict ?? '-' }}
-                                        </td>
-                                        <td>
-                                            {{ $data->course->cou_address ?? '-' }}
-                                        </td>
-                                        <td>981234050981 <br> Ali bin Abu</td>
-                                        <td>Hadir</td>
-                                        <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMCourse.viewAppStaff') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMCourse.editAppStaff') }}"><i
-                                                    class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
-                                            <a href="{{ route('manageMRegistration.printAppStaff') }}"><i
-                                                    class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
-                                            <a href="{{ route('manageMCourse.editAppStaff') }}"><i
-                                                    class="far fa-check-circle"
-                                                    style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
-                                            <a href=""><i class="fas fa-certificate"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                        </td>
-                                       
-                                    </tr>
+                                        <tr style="line-height: 30px;">
+
+                                            <td>
+                                                {{ $loop->index + 1 }}
+                                            </td>
+                                            <td>
+                                                {{ $data->course->cou_locDistrict ?? '-' }}
+                                            </td>
+                                            <td>
+                                                {{ $data->course->cou_address ?? '-' }}
+                                            </td>
+                                            <td>981234050981 <br> Ali bin Abu</td>
+                                            <td>{{ $data->couApp_attendance ?? '-' }}</td>
+                                            <td><span
+                                                    class="badge badge-pill bg-info">{{ $data->couApp_approveStatus ?? '-' }}</span>
+                                            </td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('manageMCourse.viewAppStaff', ['course_app' => $data['id']]) }}"><i
+                                                        class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                                <a
+                                                    href="{{ route('manageMCourse.editAppStaff', ['course_app' => $data['id']]) }}"><i
+                                                        class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                                <a href="#"
+                                                    onclick="showDeleteConfirmation('{{ route('manageMCourse.destroyAppStaff', ['course_app' => $data['id']]) }}');"><i
+                                                        class="fas fa-trash"
+                                                        style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
+
+                                                        <a href="{{ route('manageMCourse.documentListStaff', ['course_app' => $data->id]) }}"><i
+                                                        class="fas fa-print"
+                                                        style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
+                                            </td>
+
+                                        </tr>
                                     @endforeach
                                     <tr style="display:none"></tr>
                                 </tbody>
@@ -123,6 +128,29 @@
                 </div>
             </div>
         </div>
+        <!-- Padam Aduan Modal -->
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteConfirmationModalLabel">Padam Permohonan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Adakah kamu mahu memadam permohonan?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <a href="" id="deleteLink" class="btn btn-danger">Padam</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Padam Aduan Modal -->
+    </div>
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
 @endsection
 
@@ -175,6 +203,16 @@
                     }, 2000);
                 }
             })
+        }
+    </script>
+
+    <script>
+        function showDeleteConfirmation(deleteUrl) {
+            // Set the href attribute of the delete link in the modal
+            document.getElementById('deleteLink').href = deleteUrl;
+
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
         }
     </script>
 @endpush

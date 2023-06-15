@@ -32,7 +32,8 @@ class CourseAppController extends Controller
     {
         // dd($request->all());
         $request->merge([
-            'couApp_approveStatus' => "Draft"
+            'couApp_approveStatus' => "Draft",
+            'couApp_attendance' => "Pending"
         ]);
         Course_App::create($request->all());
         return redirect()->route('manageMCourse.index');
@@ -71,7 +72,7 @@ class CourseAppController extends Controller
         if ($data) {
             $data->couApp_approveStatus = $request->couApp_approveStatus;
             if ($request->couApp_approveStatus == "Draft") {
-                $data->couApp_approveStatus == "Hantar";
+                $data->couApp_approveStatus == "Untuk Diluluskan";
             }
             $data->save();
         }
@@ -137,41 +138,87 @@ class CourseAppController extends Controller
     // }
 
 
+
     public function createRegStaff(Course_App $courseApp)
     {
-        return view('manageMCourse.registerApplicant');
+        $courses = Course::All();
+        // $courseApp = Course_App::All();
+        return view('manageMCourse.registerApplicant', compact('courses'));
+    }
+
+    public function storeRegStaff(Request $request)
+    {
+        // dd($request->all());
+        $request->merge([
+            'couApp_approveStatus' => "Draft",
+            'couApp_attendance' => "Pending"
+        ]);
+        Course_App::create($request->all());
+        return redirect()->route('manageMCourse.indexStaff');
+    }
+
+    //retrun page view applicant course form
+    public function showAppStaff($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.viewAppStaff', compact('data'));
     }
 
 
-    public function storeRegStaff(Course_App $request)
+    //return staff page edit app
+    public function editAppStaff($courseApp)
     {
-        //
+        $courses = Course::all();
+        $data = Course_App::with('course')->find($courseApp);
+        return view('manageMCourse.editAppStaff', compact('data', 'courses'));
     }
 
 
+    //update application course staff
+    public function updateAppStaff(Request $request, $courseApp)
+    {
+        $data = Course_App::find($courseApp);
+        $data->update($request->all());
+        return redirect()->route('manageMCourse.indexStaff');
+    }
 
-    public function showDocStaff(Course_App $courseApp)
+    //delete kursus kahwin staff
+    public function destroyAppStaff($courseApp)
     {
-        return view('manageMCourse.documentListStaff');
+        Course_App::find($courseApp)->delete();
+        return redirect()->route('manageMCourse.indexStaff');
     }
-    public function showCertStaff(Course_App $courseApp)
+
+    //return page document List
+    public function showDocStaff($courseApp)
     {
-        return view('manageMCourse.printCertStaff');
+        $data = Course_App::with('course')->find($courseApp);
+        // dd($data);
+
+        return view('manageMCourse.documentListStaff', compact('data'));
     }
-    public function showSlipStaff(Course_App $courseApp)
+  
+
+    //return  page course slip 
+    public function showSlipStaff($courseApp)
     {
-        return view('manageMCourse.printSlipStaff');
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.printSlipStaff', compact('data'));
     }
-    public function showAppStaff(Course_App $courseApp)
+
+    //show page certificate 
+    public function showCertStaff($courseApp)
     {
-        return view('manageMCourse.viewAppStaff');
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.printCertStaff', compact('data'));
     }
+
 
     //edit function
-    public function editAppStaff(Course_App $courseApp)
-    {
-        return view('manageMCourse.editAppStaff');
-    }
+    
     public function editPostpone(Course_App $courseApp)
     {
         return view('manageMCourse.postponeCourse');
@@ -182,9 +229,7 @@ class CourseAppController extends Controller
     // {
     // }
 
-    public function destroyAppStaff()
-    {
-    }
+
 
     public function getLocDistrict()
     {

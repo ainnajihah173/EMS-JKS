@@ -11,13 +11,14 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2 mx-5">
                         <div id="daftarKursus" class="tabcontent">
-                            <form action="/action_page.php">
-                                <div class="container mt-2">
+                            <form role="form" method="POST" action="{{ route('staffRegCourse.update', ['course_app' => $data->id]) }}" enctype="multipart/form-data">
+                                @csrf
+                                  <div class="container mt-2">
                                     <div class="left">
                                         <span>Tarikh Permohonan </span>
                                     </div>
                                     <div class="right">
-                                        <span>ssssssssssssss</span>
+                                        <span>{{ $data->created_at ?? '-' }}</span>
                                     </div>
                                 </div>
                                 <div class="container mt-2">
@@ -41,10 +42,11 @@
                                         <span>Anjuran</span>
                                     </div>
                                     <div class="right">
-                                        <select class="form-select" aria-label="Default select example" style="width:50%;">
-                                            <option selected>--- Sila Pilih PAID ---</option>
-                                            <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                            <option value="2">Pendaftaran Nikah Sukarela</option>
+                                        <select class="form-select" name="course_id" value={{ $data->course->cou_locDistrict ?? '-' }}>
+                                            <option selected disabled>Sila Pilih Daerah</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -54,7 +56,12 @@
                                         <span>Lokasi & Alamat *</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="text" id="loc" name="loc">
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Lokasi</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}"> {{ $course->cou_address }}
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             
@@ -63,16 +70,29 @@
                                         <span>Tarikh Kursus *</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="date" id="startDate" name="startDate">
+                                        <select class="form-select" name="course_id">
+                                            <option selected disabled>Sila Pilih Tarikh</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->cou_date }}
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                         
                                 <div class="container mt-2">
                                     <div class="left">
-                                        <span>Masa Kursus</span>
+                                        <span>Masa Kursus Mula</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="text" id="capacity" name="capacity">
+                                        <span> {{ $data->course->cou_startTime ?? '-' }}</span>
+                                    </div>
+                                </div>
+                                <div class="container mt-2">
+                                    <div class="left">
+                                        <span>Masa Kursus Mula</span>
+                                    </div>
+                                    <div class="right">
+                                        <span>{{ $data->course->cou_endTime ?? '-' }}</span>
                                     </div>
                                 </div>
                                 <div class="container mt-2">
@@ -80,11 +100,7 @@
                                         <span>Kehadiran Kursus</span>
                                     </div>
                                     <div class="right">
-                                        <select class="form-select" aria-label="Default select example" style="width:50%;">
-                                            <option selected>--- Sila Pilih PAID ---</option>
-                                            <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                            <option value="2">Pendaftaran Nikah Sukarela</option>
-                                        </select>
+                                        <input class="form-control" type="text" id="couApp_approveStatus" name="couApp_approveStatus" value={{ $data->couApp_attendance ?? '-' }}>
                                     </div>
                                 </div>
                                 <div class="container mt-2">
@@ -92,11 +108,7 @@
                                         <span>Kelulusan Kursus</span>
                                     </div>
                                     <div class="right">
-                                        <select class="form-select" aria-label="Default select example" style="width:50%;">
-                                            <option selected>--- Sila Pilih PAID ---</option>
-                                            <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                            <option value="2">Pendaftaran Nikah Sukarela</option>
-                                        </select>
+                                        <input class="form-control" type="text" id="couApp_approveStatus" name="couApp_approveStatus" value={{ $data->couApp_approveStatus ?? '-' }}>
                                     </div>
                                 </div>
                                 <input type="reset" value="Set Semula">

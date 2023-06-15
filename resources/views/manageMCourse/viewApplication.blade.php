@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('manageMCourse.updateAppStatus', ['course_app'=>$data->id, 'couApp_approveStatus' => 'Hantar'])}}"
+                        <a href="{{ route('manageMCourse.updateAppStatus', ['course_app'=>$data->id, 'couApp_approveStatus' => 'Untuk Diluluskan'])}}"
                             class="btn btn-primary btn-sm float-left mb-0 mt-4">Hantar</a>
                         <a href="{{ route('manageMCourse.index') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
                             Kembali</a>

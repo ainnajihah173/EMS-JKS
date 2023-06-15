@@ -17,7 +17,7 @@
                                     <span>Tarikh Permohonan </span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->created_at ?? '-' }}</span>
                                 </div>
                             </div>
                             <div class="container mt-2">
@@ -41,7 +41,7 @@
                                     <span>Anjuran</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->course->cou_locDistrict ?? '-' }}</span>
                                 </div>
                             </div>
                             
@@ -50,7 +50,7 @@
                                     <span>Lokasi & Alamat *</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->course->cou_address ?? '-' }}</span>
                                 </div>
                             </div>
                         
@@ -59,7 +59,7 @@
                                     <span>Tarikh Kursus *</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->course->cou_date ?? '-' }}</span>
                                 </div>
                             </div>
                     
@@ -68,7 +68,8 @@
                                     <span>Masa Kursus</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span> {{ $data->course->cou_startTime ?? '-' }} -
+                                        {{ $data->course->cou_endTime ?? '-' }}</span>
                                 </div>
                             </div>
                             <div class="container mt-2">
@@ -76,7 +77,7 @@
                                     <span>Kehadiran Kursus</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span> {{ $data->couApp_attendance ?? '-' }}</span>
                                 </div>
                             </div>
                             <div class="container mt-2">
@@ -84,7 +85,7 @@
                                     <span>Kelulusan Kursus</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->couApp_approveStatus ?? '-' }}</span>
                                 </div>
                             </div>
                     
