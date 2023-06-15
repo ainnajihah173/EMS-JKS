@@ -54,13 +54,17 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'applyIncentive:create' ? 'active' : '' }}" href="{{ route('applyIncentive:create') }}">
                     <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-columns-gap text-secondary text-sm opacity-10"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-columns-gap text-secondary text-sm opacity-10" viewBox="0 0 16 16">
+                            <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+                            <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                     <span class="nav-link-text ms-1">Insentif Khas</span>
                 </a>
+                                            
             </li>
 
-            <!-- Contoh SideNav -->
+            {{-- <!-- Contoh SideNav -->
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Example</h6>
             </li>
@@ -87,7 +91,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Manage</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <div class="sidenav-footer mx-3 ">
