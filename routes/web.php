@@ -143,6 +143,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Insentive Application
+Route::get('/manageIncentive', 'App\Http\Controllers\incentiveAppController@index')->name('applyIncentive');
+Route::get('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@create')->name('applyIncentive:create');
+Route::post('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@store')->name('applyIncentive:store');
+
 
 
     //Example

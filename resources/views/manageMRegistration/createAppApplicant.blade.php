@@ -31,7 +31,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#kahwin"
                                             role="tab" aria-controls="kahwin" aria-selected="false">
-                                            Maklumat Perkahwinan
+                                            Maklumat Waris
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#kahwin"
+                                            role="tab" aria-controls="kahwin" aria-selected="false">
+                                            Dokumen
                                         </a>
                                     </li>
                                 </ul>
@@ -635,6 +641,214 @@
                                             </div>
                                             <div class="text-center mt-4">
                                                 <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="kahwin" role="tabpanel"
+                                        aria-labelledby="profile-tab">
+                                        <div class="row mt-3">
+                                            <div class="col-md-12 bg-light p-1 mb-2">
+                                                <h6>Butiran Perkahwinan</h6>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Tarikh Mohon <span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="date" name="mreg_dateApply"
+                                                        id="dateApply" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Tarikh Akad Nikah <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="mreg_marriageDate" type="date">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Tempat Akad Nikah <span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="text"
+                                                        name="mreg_marriageAddress">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Masa Akad Nikah <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="mreg_marriageTime" type="time">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Mas Kahwin (RM) <span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="number" name="mreg_masKahwin">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Hantaran (RM) <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="mreg_hantaran" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Nama Jurunikah <span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="text" name="mreg_jurunikahName">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Muatnaik Bayaran Nikah Resit <span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="form-control" name="mreg_resit" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 bg-light p-1 mb-2 mt-2">
+                                                <h6>Butiran Wali</h6>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Nama Wali <span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="text" name="wali[wali_name]">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. K/P Wali <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="wali[wali_ic]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Alamat Wali <span class="text-danger">*</span></label>
+                                                    <textarea class="form-control" name="wali[wali_address]" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Hubungan <span class="text-danger">*</span></label>
+                                                    <select class="form-select" name="wali[wali_relationship]">
+                                                        <option value="0">Sila Pilih...</option>
+                                                        <option value="1">Bapa</option>
+                                                        <option value="2">Abang</option>
+                                                        <option value="3">Adik</option>
+                                                        <option value="4">Atuk</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Tarikh Lahir Wali <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="wali[wali_birthdate]"
+                                                        type="date">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Umur Wali <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="wali[wali_age]" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. Phone Wali <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="wali[wali_phoneNum]"
+                                                        type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 bg-light p-1 mb-2 mt-2">
+                                                <h6>Maklumat Saksi</h6>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Nama Saksi 1 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_name1]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. K/P Saksi 1 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_icNum1]"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Alamat Saksi 1 <span class="text-danger">*</span></label>
+                                                    <textarea class="form-control" name="witness[wit_adress1]" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Umur Saksi 1 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_age1]" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. Phone Saksi 1 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_noPhone1]"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Nama Saksi 2 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_name2]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. K/P Saksi 2 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_icNum2]"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Alamat Saksi 2 <span class="text-danger">*</span></label>
+                                                    <textarea class="form-control" name="witness[wit_adress2]" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        Umur Saksi 2 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_age2]" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-control-label">
+                                                        No. Phone Saksi 2 <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="witness[wit_noPhone2]"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="text-center mt-4">
+                                                <a href="" class="btn btn-light btn-md ms-4">Kembali</a>
+                                                <button type="submit" class="btn btn-info btn-md ms-4">Draft</button>
                                             </div>
                                         </div>
                                     </div>
