@@ -26,7 +26,8 @@ class MRegistration extends Model
         'mreg_resit',
         'mreg_status',
         'mreg_noApp',
-        'mreg_category'
+        'mreg_category',
+        'mreg_printStatus'
     ];
 
     public function applicant()

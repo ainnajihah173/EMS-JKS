@@ -214,9 +214,9 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Telefon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="applicant[app_phonenumber]"
+                                                    <input class="form-control" name="applicant[app_phoneNumber]"
                                                         type="text"
-                                                        value="{{ $data->applicant->app_phonenumber ?? '' }}">
+                                                        value="{{ $data->applicant->app_phoneNumber ?? '' }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +250,7 @@
                                                         Tarikh Lahir <span class="text-danger">*</span></label>
                                                     <input class="form-control" type="date"
                                                         id="birthdate" name="spouse[app_birthdate]"
-                                                        value="{{ $data->spouse->app_birthdate ?? '' }}" disabled>
+                                                        value="{{ $data->spouse->app_birthdate ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -259,7 +259,7 @@
                                                         Umur <span class="text-danger">*</span></label>
                                                     <input class="form-control" name="spouse[app_age]"
                                                         type="number" id="age"
-                                                        value="{{ $data->spouse->app_age ?? '' }}" disabled>
+                                                        value="{{ $data->spouse->app_age ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -397,9 +397,9 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Telefon <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="spouse[app_phonenumber]"
+                                                    <input class="form-control" name="spouse[app_phoneNumber]"
                                                         type="text"
-                                                        value="{{ $data->spouse->app_phonenumber ?? '' }}">
+                                                        value="{{ $data->spouse->app_phoneNumber ?? '' }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -560,7 +560,7 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Nama Saksi 1 <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="witness[wit_name1]" type="text">
+                                                    <input class="form-control" name="witness[wit_name1]" type="text" value="{{ $data->witness->wit_name1 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -568,21 +568,21 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. K/P Saksi 1 <span class="text-danger">*</span></label>
                                                     <input class="form-control" name="witness[wit_icNum1]"
-                                                        type="text">
+                                                        type="text" value="{{ $data->witness->wit_icNum1 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Alamat Saksi 1 <span class="text-danger">*</span></label>
-                                                    <textarea class="form-control" name="witness[wit_adress1]" rows="2"></textarea>
+                                                    <textarea class="form-control" name="witness[wit_adress1]" rows="2">{{ $data->witness->wit_address1 ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Umur Saksi 1 <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="witness[wit_age1]" type="number">
+                                                    <input class="form-control" name="witness[wit_age1]" type="number" value="{{ $data->witness->wit_age1 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -590,14 +590,14 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Phone Saksi 1 <span class="text-danger">*</span></label>
                                                     <input class="form-control" name="witness[wit_noPhone1]"
-                                                        type="text">
+                                                        type="text" value="{{ $data->witness->wit_noPhone1 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Nama Saksi 2 <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="witness[wit_name2]" type="text">
+                                                    <input class="form-control" name="witness[wit_name2]" type="text" value="{{ $data->witness->wit_name2 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -605,21 +605,21 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. K/P Saksi 2 <span class="text-danger">*</span></label>
                                                     <input class="form-control" name="witness[wit_icNum2]"
-                                                        type="text">
+                                                        type="text" value="{{ $data->witness->wit_icNum2 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Alamat Saksi 2 <span class="text-danger">*</span></label>
-                                                    <textarea class="form-control" name="witness[wit_adress2]" rows="2"></textarea>
+                                                    <textarea class="form-control" name="witness[wit_adress2]" rows="2">{{ $data->witness->wit_address2 ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         Umur Saksi 2 <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="witness[wit_age2]" type="number">
+                                                    <input class="form-control" name="witness[wit_age2]" type="number" value="{{ $data->witness->wit_age2 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -627,7 +627,7 @@
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Phone Saksi 2 <span class="text-danger">*</span></label>
                                                     <input class="form-control" name="witness[wit_noPhone2]"
-                                                        type="text">
+                                                        type="text" value="{{ $data->witness->wit_noPhone2 ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="text-center mt-4">

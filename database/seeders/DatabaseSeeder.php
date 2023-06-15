@@ -33,6 +33,12 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'role' => 'pengguna',
             ],
+            [
+                'name' => 'User2',
+                'email' => 'user2@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'pengguna',
+            ],
         ];
 
         foreach ($datas as $data) {
