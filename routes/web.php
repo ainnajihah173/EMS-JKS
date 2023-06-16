@@ -114,9 +114,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-registration/print-application', [MRegistrationController::class, 'showPrint'])->name('manageMRegistration.showPrint');
     Route::get('/marriage-registration/show-certificate', [MRegistrationController::class, 'showCert'])->name('manageMRegistration.showCert');
     Route::get('/marriage-registration/{mregistration}/delete-application', [MRegistrationController::class, 'destroy'])->name('manageMRegistration.destroy');
-
+    
     //Marriage Registration Staff
     Route::get('/staff/marriage-registration', [MRegistrationController::class, 'indexStaff'])->name('manageMRegistration.indexStaff');
+<<<<<<< Updated upstream
     Route::get('/staff/marriage-registration/{mregistration}/edit-application', [MRegistrationController::class, 'editApp'])->name('manageMRegistration.editApp');
     Route::post('staff/marriage-registration/{mregistration}/update-application', [MRegistrationController::class, 'updateApp'])->name('manageMRegistration.updateApp');
     Route::get('/staff/marriage-registration/{mregistration}/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.showAppStaff');
@@ -125,6 +126,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('staff/marriage-registration/{mregistration}/update-status-application', [MRegistrationController::class, 'updateStatusApp'])->name('manageMRegistration.updateStatusApp');
     Route::get('/staff/marriage-registration/{mregistration}/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.showCertStaff');
     Route::post('staff/marriage-registration/{mregistration}/update-cetak-application', [MRegistrationController::class, 'updateCetak'])->name('manageMRegistration.updateCetak');
+=======
+    Route::get('/staff/marriage-registration/edit-application', [MRegistrationController::class, 'editApp'])->name('manageMRegistration.editMRegStaff');
+    Route::get('/staff/marriage-registration/view-application', [MRegistrationController::class, 'showAppStaff'])->name('manageMRegistration.viewAppStaff');
+    Route::get('/staff/marriage-registration/print-application', [MRegistrationController::class, 'printAppStaff'])->name('manageMRegistration.printAppStaff');
+    Route::get('/staff/marriage-registration/status-application', [MRegistrationController::class, 'editStatus'])->name('manageMRegistration.editStatusStaff');
+    Route::get('/staff/marriage-registration/certificate', [MRegistrationController::class, 'showCertStaff'])->name('manageMRegistration.viewCertificateStaff');
+>>>>>>> Stashed changes
 
     //Marriage Card Applicant
     Route::get('/marriage-card', [MCardApplicationController::class, 'index'])->name('manageMCard.index');
@@ -152,8 +160,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/manageIncentive', 'App\Http\Controllers\incentiveAppController@index')->name('applyIncentive');
     Route::get('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@create')->name('applyIncentive:create');
     Route::post('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@store')->name('applyIncentive:store');
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 
     //Example
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');

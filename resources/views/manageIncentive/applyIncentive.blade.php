@@ -75,13 +75,11 @@
                                     <div class="tab-pane fade" id="dokumen" role="tabpanel"
                                         aria-labelledby="contact-tab">
                                         <!-- Replace this section with your content -->
-                                        <!-- Note to make sure all fields are filled correctly -->
 <!-- Dokumen Sokongan field -->
 <p>Dokumen Sokongan <span style="color: red;">*</span></p>
 <p>Sila muatnaik salinan kad pengenalan, catatan akad nikah & penyata akaun bank</p>
 
 <!-- Drag & drop file upload section -->
-<h1 class="h4 text-center mb-3">Drag &amp; drop file upload example</h1>
 <form>
   <fieldset class="upload_dropZone text-center mb-3 p-4">
     <legend class="visually-hidden">Image uploader</legend>
@@ -89,7 +87,7 @@
       <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
       <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
     </svg>
-    <p>Letakkan fail untuk muat naik</p>
+    <p>Letakkan fail untuk <strong>muat naik</strong></p>
     <p style="font-size: smaller; opacity: 0.7;">atau klik di sini</p>
     <input id="upload_image_background" data-post-name="image_background" data-post-url="https://someplace.com/image/uploads/backgrounds/" class="position-absolute invisible" type="file" multiple accept="image/jpeg, image/png, image/svg+xml" />
     <label class="btn btn-upload mb-3" for="upload_image_background">Choose file(s)</label>
@@ -98,14 +96,10 @@
 
   <!-- "+ Tambah Fail" button -->
   <button type="button" class="btn btn-primary">+ Tambah Fail</button>
-
-  <!-- "Hantar" button -->
-  <button type="submit" class="btn btn-primary">Hantar</button>
 </form>
 
-
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-info btn-md ms-4">Draft</button>
+                                            <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
                                         </div>
                                     </div>
                                 </div>
