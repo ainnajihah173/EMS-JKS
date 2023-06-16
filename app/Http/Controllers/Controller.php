@@ -14,7 +14,15 @@ class Controller extends BaseController
     {
         //$mreg = MRegistration::with('user')->get() , , compact('mreg');
 
+        return view('manageMConsultation.homepageMConsult');
+    }
+
+    public function addConsult()
+    {
+        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
+
         return view('manageMConsultation.addAppConsult');
     }
+
 
 }
