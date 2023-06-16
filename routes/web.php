@@ -148,10 +148,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Consultation Application
 
 
-    //Insentive Application
-    Route::get('/manageIncentive', 'App\Http\Controllers\incentiveAppController@index')->name('applyIncentive');
+    //Insentive Application - User
+    Route::get('/manageIncentive/viewApplicationDetails', 'App\Http\Controllers\incentiveAppController@index')->name('viewApplicationDetails');
+    Route::get('/manageIncentive/viewApplicationStatus', 'App\Http\Controllers\incentiveAppController@appStatus')->name('viewApplicationStatus');
     Route::get('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@create')->name('applyIncentive:create');
     Route::post('/manageIncentive/applyIncentive', 'App\Http\Controllers\incentiveAppController@store')->name('applyIncentive:store');
+
+    //Insentive Application - Staff
+    Route::get('/manageIncentive/pendingApplication', 'App\Http\Controllers\incentiveAppController@showPendingStatus')->name('pendingApplication');
 
     //Example
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');

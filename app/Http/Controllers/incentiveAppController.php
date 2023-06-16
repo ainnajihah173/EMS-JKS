@@ -12,6 +12,20 @@ class incentiveAppController extends Controller
     public function index()
     {
         //
+        return view('manageIncentive.viewApplicationDetails');
+    }
+
+    public function appStatus()
+    {
+        //
+        return view('manageIncentive.viewApplicationStatus');
+    }
+
+    // Jaip Staff @ Admin
+    public function showPendingStatus()
+    {
+        //
+        return view('manageIncentive.pendingApplication');
     }
 
     /**

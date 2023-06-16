@@ -99,7 +99,7 @@
 </form>
 
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
+                                            <button href="{{ route('viewApplicationStatus') }}" type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
                                         </div>
                                     </div>
                                 </div>
