@@ -23,10 +23,15 @@ class MApplication extends Model
         'mapp_masKahwin',
         'mapp_hantaran',
         'mapp_jurunikahName',
-        'mapp_resit',
         'mapp_status',
         'mapp_noApp',
-        'mapp_category'
+        'mapp_category',
+        'mapp_hivStatus',
+        'mapp_hivForm',
+        'mapp_uploadHIV',
+        'mapp_wakalahForm',
+        'mapp_uploadWakalah'
+
     ];
 
     public function applicant()

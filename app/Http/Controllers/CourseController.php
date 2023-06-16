@@ -20,9 +20,10 @@ class CourseController extends Controller
 
     }
 
-    public function createCourse()
+    public function createCourse(Course $courseApp)
     {
-        return view('manageMCourse.addCourse');
+        $courses = Course::All();
+        return view('manageMCourse.addCourse', compact('courses'));
     }
 
     /**

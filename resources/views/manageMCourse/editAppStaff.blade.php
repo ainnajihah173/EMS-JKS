@@ -1,7 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kemaskini Maklumat Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -26,7 +26,7 @@
                                         <span>No. Kad Pengenalan</span>
                                     </div>
                                     <div class="right">
-                                        <span>ssssssssssssss</span>
+                                        <span>--</span>
                                     </div>
                                 </div>
                                 <div class="container mt-2">
@@ -34,7 +34,7 @@
                                         <span>Nama</span>
                                     </div>
                                     <div class="right">
-                                        <span>ssssssssssssss</span>
+                                        <span >--</span>
                                     </div>
                                 </div>
                                 <div class="container mt-2">
@@ -100,6 +100,7 @@
                                         <span>Kehadiran Kursus</span>
                                     </div>
                                     <div class="right">
+                                       
                                         <input class="form-control" type="text" id="couApp_approveStatus" name="couApp_approveStatus" value={{ $data->couApp_attendance ?? '-' }}>
                                     </div>
                                 </div>
@@ -108,15 +109,19 @@
                                         <span>Kelulusan Kursus</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="text" id="couApp_approveStatus" name="couApp_approveStatus" value={{ $data->couApp_approveStatus ?? '-' }}>
+                                        <input class="form-control" type="text" id="couApp_approveStatus" name="couApp_approveStatus" value="{{ $data->couApp_approveStatus ?? '-' }}">
                                     </div>
+                                    
                                 </div>
-                                <input type="reset" value="Set Semula">
-                                <input type="submit" value="Daftar">
-                            </form>
+                               
+                                
+                           
                         </div>
+                        <input type="submit" value="Simpan" class="btn btn-info btn-sm float-end mb-0 mt-4">
+                                    <input type="reset" value="Set Semula" class="btn btn-info btn-sm float-end mb-0 mt-4">
                         <a href="{{ route('manageMCourse.indexStaff') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
                             Kembali</a>
+                        </form>
                     </div>
                 </div>
             </div>

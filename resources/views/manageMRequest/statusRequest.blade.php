@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Daftar Perkahwinan'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kebenaran Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -18,7 +18,7 @@
                                 <thead class="bg-light">
                                     <tr>
                                         <th>Bil</th>
-                                        <th> No K/P</th>
+                                        <th> No K/P </th>
                                         <th>Jenis Dokumen</th>
                                         <th>Tarikh Mohon</th>
                                         <th>Status</th>
@@ -34,8 +34,22 @@
                                             </td>
                                             <td>Borang Permohonan</td>
                                             <td>22/11/2022</td>
-                                            <td><span class="badge badge-pill bg-warning">Belum
-                                                    Hantar</span></td>
+                                            <td><span>
+                                                    @if ($data->mapp_status === 'Untuk Diluluskan')
+                                                        <span class="badge badge-pill bg-info">Hantar</span>
+                                                    @elseif ($data->mapp_status === 'Baru')
+                                                        <span class="badge badge-pill bg-info">Baru</span>
+                                                    @elseif ($data->mapp_status === 'Dalam Proses')
+                                                        <span class="badge badge-pill bg-info">Dalam Proses</span>
+                                                    @elseif ($data->mapp_status === 'Lulus')
+                                                        <span class="badge badge-pill bg-success">Lulus</span>
+                                                    @elseif ($data->mapp_status === 'Gagal')
+                                                        <span class="badge badge-pill bg-warning">Gagal</span>
+                                                    @else
+                                                        <span class="badge badge-pill bg-warning">Belum
+                                                            Hantar</span>
+                                                    @endif
+                                                </span></td>
                                             <td>
                                                 <a href="{{ route('manageMRequest.viewApplication') }}"><i
                                                         class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
@@ -46,52 +60,83 @@
                                                     onclick="deleteRecord('{{ route('manageMRequest.destroy', ['m_application' => $data['id']]) }}')"><i
                                                         class="fas fa-trash"
                                                         style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                                <a href="{{ route('manageMRequest.editWakalahForm') }}"><i
-                                                        class="fas fa-print"
-                                                        style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.printApp', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-print" style="padding-right:15px;color:black"></i></a>
                                             </td>
                                         </tr>
-                                        {{-- <tr style="line-height: 30px;">
-                                        <td>2</td>
-                                        <td>{{ $data->applicant->app_ic ?? '-' }}
-                                            <br>{{ $data->applicant->app_name ?? '-' }}</td>
-                                        <td>Borang HIV</td>
-                                        <td>22/11/2022</td>
-                                        <td><span class="badge badge-pill bg-warning">Belum
-                                                Hantar</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMRequest.viewApplication') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMRequest.editHIVForm') }}"><i class="fas fa-edit"
-                                                    style="padding-right:15px;color:blue"></i></a>
-                                            <a href=""><i class="fas fa-trash"
-                                                    style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                            <a href="{{ route('manageMRequest.editHIVForm') }}"><i
-                                                    class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr style="line-height: 30px;">
-                                        <td>3</td>
-                                        <td>{{ $data->applicant->app_ic ?? '-' }}
-                                            <br>{{ $data->applicant->app_name ?? '-' }}</td>
-                                           
-                                        <td>Borang Persetujuan Wali</td>
-                                        <td>22/11/2022</td>
-                                        <td><span class="badge badge-pill bg-warning">Belum
-                                                Hantar</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMRequest.viewApplication') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMRequest.editWakalahForm') }}"><i class="fas fa-edit"
-                                                    style="padding-right:15px;color:blue"></i></a>
-                                            <a href=""><i class="fas fa-trash"
-                                                    style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
-                                            <a href="{{ route('manageMRequest.editWakalahForm') }}"><i
-                                                    class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                        </td>
-                                    </tr> --}}
+                                        <tr style="line-height: 30px;">
+                                            <td>2</td>
+                                            <td>{{ $data->applicant->app_ic ?? '-' }}
+                                                <br>{{ $data->applicant->app_name ?? '-' }}
+                                            </td>
+                                            <td>Borang HIV</td>
+                                            <td>22/11/2022</td>
+                                            <td><span>
+                                                    @if ($data->mapp_status === 'Untuk Diluluskan')
+                                                        <span class="badge badge-pill bg-info">Hantar</span>
+                                                    @elseif ($data->mapp_status === 'Baru')
+                                                        <span class="badge badge-pill bg-info">Baru</span>
+                                                    @elseif ($data->mapp_status === 'Dalam Proses')
+                                                        <span class="badge badge-pill bg-info">Dalam Proses</span>
+                                                    @elseif ($data->mapp_status === 'Lulus')
+                                                        <span class="badge badge-pill bg-success">Lulus</span>
+                                                    @elseif ($data->mapp_status === 'Gagal')
+                                                        <span class="badge badge-pill bg-warning">Gagal</span>
+                                                    @else
+                                                        <span class="badge badge-pill bg-warning">Belum
+                                                            Hantar</span>
+                                                    @endif
+                                                </span></td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('manageMRequest.viewHIV', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.editHIVForm', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.printHIV', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-print" style="padding-right:15px;color:black"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr style="line-height: 30px;">
+                                            <td>3</td>
+                                            <td>{{ $data->applicant->app_ic ?? '-' }}
+                                                <br>{{ $data->applicant->app_name ?? '-' }}
+                                            </td>
+
+                                            <td>Borang Persetujuan Wali</td>
+                                            <td>22/11/2022</td>
+                                            <td><span>
+                                                    @if ($data->mapp_status === 'Untuk Diluluskan')
+                                                        <span class="badge badge-pill bg-info">Hantar</span>
+                                                    @elseif ($data->mapp_status === 'Baru')
+                                                        <span class="badge badge-pill bg-info">Baru</span>
+                                                    @elseif ($data->mapp_status === 'Dalam Proses')
+                                                        <span class="badge badge-pill bg-info">Dalam Proses</span>
+                                                    @elseif ($data->mapp_status === 'Lulus')
+                                                        <span class="badge badge-pill bg-success">Lulus</span>
+                                                    @elseif ($data->mapp_status === 'Gagal')
+                                                        <span class="badge badge-pill bg-warning">Gagal</span>
+                                                    @else
+                                                        <span class="badge badge-pill bg-warning">Belum
+                                                            Hantar</span>
+                                                    @endif
+                                                </span></td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('manageMRequest.viewWakalah', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.editWakalahForm', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.printWakalah', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-print" style="padding-right:15px;color:black"></i></a>
+
+                                            </td>
+                                        </tr>
                                         <tr style="display:none">
                                             <td>3</td>
                                             <td></td>
@@ -103,7 +148,11 @@
                                     @endforeach
 
                                 </tbody>
+
+
+
                             </table>
+
                             <!-- Padam Aduan Modal -->
                             <div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
                                 aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
@@ -127,8 +176,17 @@
                             </div>
                             <!--  End Padam Aduan Modal -->
                         </div>
+                        @if ($data->mapp_status !== 'Untuk Diluluskan')
+                            <div class="text-center mt-4">
+
+                                <a href="{{ route('manageMRequest.update', ['m_application' => $data->id]) }}"
+                                    class="btn btn-info btn-md ms-4 float-end">Hantar</a>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
+
             </div>
         </div>
         @include('layouts.footers.auth.footer')
@@ -136,16 +194,15 @@
 @endsection
 
 @push('js')
-@push('js')
-<script>
-    let table = new DataTable('#myTable');
+    <script>
+        let table = new DataTable('#myTable');
 
-    function deleteRecord(deleteUrl) {
-        // Set the href attribute of the delete link in the modal
-        document.getElementById('deleteLink').href = deleteUrl;
+        function deleteRecord(deleteUrl) {
+            // Set the href attribute of the delete link in the modal
+            document.getElementById('deleteLink').href = deleteUrl;
 
-        // Show the delete confirmation modal
-        $('#deleteConfirmationModal').modal('show');
-    }
-</script>
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
+        }
+    </script>
 @endpush

@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Daftar Perkahwinan'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -92,10 +92,11 @@
                                     <span>: {{ $data->couApp_receipt ?? '-' }}</span>
                                 </div>
                             </div>
+                            <a href="{{ route('manageMCourse.updateAppStatus', ['course_app'=>$data->id, 'couApp_approveStatus' => 'Untuk Diluluskan'])}}"
+                                class="btn btn-info btn-sm float-end mb-0 mt-4">Hantar</a>
                         </div>
-                        <a href="{{ route('manageMCourse.updateAppStatus', ['course_app'=>$data->id, 'couApp_approveStatus' => 'Untuk Diluluskan'])}}"
-                            class="btn btn-primary btn-sm float-left mb-0 mt-4">Hantar</a>
-                        <a href="{{ route('manageMCourse.index') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
+                    
+                        <a href="{{ route('manageMCourse.index') }}" class="btn btn-info btn-sm float-right mb-0 mt-4">
                             Kembali</a>
 
                     </div>

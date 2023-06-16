@@ -1,8 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
-@extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kemaskini Maklumat Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -14,10 +13,10 @@
                         <div id="daftarKursus" class="tabcontent">
                             <div class="print-list">
                                 <ul>
-                                    <li style="margin-bottom: 30px;"><a href="{{ route('manageMCourse.printSlipStaff', ['course_app' => $data['id']]) }}"><u>Cetak
-                                                Slip Permohonan Kursus</u></a></li>
-                                    <li><a href="{{ route('manageMCourse.printCertStaff', ['course_app' => $data['id']]) }}"><u>Cetak Sijil Kursus
-                                                Perkahwinan</u></a></li>
+                                    <li style="margin-bottom: 30px;"><button type="button" onclick="window.print()" ><a href="{{ route('manageMCourse.printSlipStaff', ['course_app' => $data['id']]) }}"><u>Cetak
+                                                Slip Permohonan Kursus</u></button></a></li>
+                                    <li><button type="button" onclick="window.print()" ><a href="{{ route('manageMCourse.printCertStaff', ['course_app' => $data['id']]) }}"><u>Cetak Sijil Kursus
+                                                Perkahwinan</u></button></a></li>
                                 </ul>
                             </div>
                         </div>

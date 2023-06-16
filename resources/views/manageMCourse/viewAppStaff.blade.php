@@ -1,7 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kemaskini Maklumat Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -25,7 +25,7 @@
                                     <span>No. Kad Pengenalan</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->applicant->app_ic ?? '-' }}</span>
                                 </div>
                             </div>
                             <div class="container mt-2">
@@ -33,7 +33,7 @@
                                     <span>Nama</span>
                                 </div>
                                 <div class="right">
-                                    <span>ssssssssssssss</span>
+                                    <span>{{ $data->applicant->app_name ?? '-' }}</span>
                                 </div>
                             </div>
                             <div class="container mt-2">
@@ -47,7 +47,7 @@
                             
                             <div class="container mt-2">
                                 <div class="left">
-                                    <span>Lokasi & Alamat *</span>
+                                    <span>Lokasi & Alamat </span>
                                 </div>
                                 <div class="right">
                                     <span>{{ $data->course->cou_address ?? '-' }}</span>
@@ -56,7 +56,7 @@
                         
                             <div class="container mt-2">
                                 <div class="left">
-                                    <span>Tarikh Kursus *</span>
+                                    <span>Tarikh Kursus </span>
                                 </div>
                                 <div class="right">
                                     <span>{{ $data->course->cou_date ?? '-' }}</span>
@@ -90,9 +90,10 @@
                             </div>
                     
                         </div>
+                        <a href="{{ route('manageMCourse.indexStaff') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
+                            Kembali</a>
                     </div>
-                    <a href="{{ route('manageMCourse.indexStaff') }}" class="btn btn-info btn-sm float-left mb-0 mt-4">
-                        Kembali</a>
+                    
                 </div>
             </div>
         </div>

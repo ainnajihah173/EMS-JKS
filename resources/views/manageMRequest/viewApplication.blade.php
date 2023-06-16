@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Maklumat Permohonan Kahwin'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kebenaran Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -315,12 +315,8 @@
                             <div class="col-2">
                                 <p>: {{ $data->mapp_marriageAddress ?? '-' }}</p>
                             </div>
-                            <div class="col-2">
-                                <label>Bayaran</label>
-                            </div>
-                            <div class="col-2">
-                                <p>: link resit</p>
-                            </div>
+                            
+                            
                             <div class="col-2">
                                 <label>Nama Wali</label>
                             </div>
@@ -428,16 +424,11 @@
                                 <p>: {{ $data->witness->wit_adress2 ?? '-' }}</p>
                             </div>
                         </div>
-                        @if($data->mapp_status !== "Untuk Diluluskan")
-                            <div class="text-center mt-4">
-                                <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
-                                <a href="{{ route('manageMRequest.update', ['m_application' => $data->id]) }}" class="btn btn-info btn-md ms-4">Hantar</a>
-                            </div>
-                        @else
+                        
                         <div class="text-center mt-4">
                             <button onclick="history.back()" class="btn btn-light btn-md ms-auto">Kembali</button>
                         </div>
-                        @endif
+                    -
                     </div>
                 </div>
             </div>

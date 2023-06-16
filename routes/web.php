@@ -68,9 +68,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Marriage Course Staff
     Route::get('/staff/marriage-course', [CourseAppController::class, 'indexStaff'])->name('manageMCourse.indexStaff');
     Route::get('/staff/marriage-course/add-course', [CourseController::class, 'createCourse'])->name('manageMCourse.addCourse');
-    Route::post('/staff/marriage-course/store-course', [CourseController::class, 'storeCourse'])->name('addCourse.store');
+    Route::post('/staff/marriage-course/store', [CourseController::class, 'storeCourse'])->name('addCourse.store');
     Route::get('/staff/marriage-course/register-applicant', [CourseAppController::class, 'createRegStaff'])->name('manageMCourse.registerApplicant');
-    Route::post('/marriage-course/store-course', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
+    Route::post('/staff/marriage-course/store-course', [CourseAppController::class, 'storeRegStaff'])->name('staffRegCourse.store');
     Route::get('/staff/marriage-course/{course_app}/view-application', [CourseAppController::class, 'showAppStaff'])->name('manageMCourse.viewAppStaff');
     Route::get('/staff/marriage-course/{course_app}/edit-application', [CourseAppController::class, 'editAppStaff'])->name('manageMCourse.editAppStaff');
     Route::post('/staff/marriage-course/{course_app}/update-course', [CourseAppController::class, 'updateAppStaff'])->name('staffRegCourse.update');
@@ -86,10 +86,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-request/register', [MApplicationController::class, 'createRequestForm'])->name('manageMRequest.regRequestApplication');
     Route::post('/marriage-request/store-application', [MApplicationController::class, 'store'])->name('manageMRequest.store');
     Route::get('/marriage-request/view-application', [MApplicationController::class, 'showApp'])->name('manageMRequest.viewApplication');
-    Route::get('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStatus'])->name('manageMRequest.update');
+    Route::get('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStatus'])->name('manageMRequest.updateStatus');
     Route::get('/marriage-request/{m_application}/edit-application', [MApplicationController::class, 'editApp'])->name('manageMRequest.editApplication');
     Route::post('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'update'])->name('manageMRequest.update');
     Route::get('/marriage-request/{m_application}/delete-application', [MApplicationController::class, 'destroy'])->name('manageMRequest.destroy');
+    Route::get('/marriage-request/{m_application}/print-app', [MApplicationController::class, 'showAppStaff'])->name('manageMRequest.printApp');
+    Route::get('/marriage-request/{m_application}/print-hiv', [MApplicationController::class, 'showHIV'])->name('manageMRequest.printHIV');
+    Route::get('/marriage-request/{m_application}/print-wakalah', [MApplicationController::class, 'showWakalah'])->name('manageMRequest.printWakalah');
+    Route::get('/marriage-request/{m_application}/view-hiv', [MApplicationController::class, 'showHIV'])->name('manageMRequest.viewHIV');
+    Route::get('/marriage-request/{m_application}/view-wakalah', [MApplicationController::class, 'showWakalah'])->name('manageMRequest.viewWakalah');
 
 
     Route::get('/marriage-request/edit-hiv', [MApplicationController::class, 'editHIV'])->name('manageMRequest.editHIVForm');
@@ -97,9 +102,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Marriage Request Staff
     Route::get('/staff/marriage-request', [MApplicationController::class, 'indexStaff'])->name('manageMRequest.indexStaff');
-    Route::get('/staff/marriage-request/register-application', [MApplicationController::class, 'createRegStaff'])->name('manageMRequest.registerApplicant');
     Route::get('/staff/marriage-request/view-application', [MApplicationController::class, 'showAppStaff'])->name('manageMRequest.viewAppStaff');
-    Route::get('/staff/marriage-request/edit-application', [MApplicationController::class, 'editAppStaff'])->name('manageMRequest.editAppStaff');
+    Route::get('/staff/marriage-request/register-application', [MApplicationController::class, 'createRegStaff'])->name('manageMRequest.registerApplicant');
+    Route::post('/staff/marriage-request/store-application', [MApplicationController::class, 'storeRegStaff'])->name('manageMRequest.storeStaff');
+    Route::get('/staff/marriage-request/{m_application}/delete-application', [MApplicationController::class, 'destroyStaff'])->name('manageMRequest.destroyStaff');
+  
+
+    Route::get('/staff/marriage-request/{m_application}/edit-application', [MApplicationController::class, 'editAppStaff'])->name('manageMRequest.editAppStaff');
+    Route::post('/staff/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStaff'])->name('manageMRequest.updateStaff');
+    Route::get('/staff/marriage-request/{m_application}/document-list', [MApplicationController::class, 'showDocStaff'])->name('manageMRequest.documentListStaff');
+    Route::get('/staff/marriage-request/{m_application}/print-app', [MApplicationController::class, 'showPrintStaff'])->name('manageMRequest.printAppStaff');
+    Route::get('/staff/marriage-request/{m_application}/print-hiv', [MApplicationController::class, 'showHIVStaff'])->name('manageMRequest.printHIVStaff');
+    Route::get('/staff/marriage-request/{m_application}/print-wakalah', [MApplicationController::class, 'showWakalahStaff'])->name('manageMRequest.printWakalahStaff');
+
+
 
     //Jihah
     //Marriage Registration Applicant

@@ -1,7 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Pendaftaran Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -26,7 +26,8 @@
                                             <select class="form-select" name="course_id">
                                                 <option selected disabled>Sila Pilih Daerah</option>
                                                 @foreach ($courses as $course)
-                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}</option>
+                                                    <option value="{{ $course->id }}">{{ $course->cou_locDistrict }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -75,7 +76,6 @@
                                         <th>Anjuran</th>
                                         <th>Lokasi</th>
                                         <th>Nama Peserta</th>
-
                                         <th>Kehadiran</th>
                                         <th>Kelulusan</th>
                                         <th>Operasi</th>
@@ -94,10 +94,18 @@
                                             <td>
                                                 {{ $data->course->cou_address ?? '-' }}
                                             </td>
-                                            <td>981234050981 <br> Ali bin Abu</td>
+                                            <td></td>
                                             <td>{{ $data->couApp_attendance ?? '-' }}</td>
-                                            <td><span
-                                                    class="badge badge-pill bg-info">{{ $data->couApp_approveStatus ?? '-' }}</span>
+                                            <td>
+
+                                                @if ($data->couApp_approveStatus === 'Untuk Diluluskan')
+                                                    <span class="badge badge-pill bg-info">Untuk Diluluskan</span>
+                                                @elseif ($data->couApp_approveStatus === 'Lulus')
+                                                    <span class="badge badge-pill bg-success">Lulus</span>
+                                                @else
+                                                    <span class="badge badge-pill bg-warning">Gagal</span>
+                                                @endif
+
                                             </td>
                                             <td>
                                                 <a
@@ -111,7 +119,8 @@
                                                         class="fas fa-trash"
                                                         style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
 
-                                                        <a href="{{ route('manageMCourse.documentListStaff', ['course_app' => $data->id]) }}"><i
+                                                <a
+                                                    href="{{ route('manageMCourse.documentListStaff', ['course_app' => $data->id]) }}"><i
                                                         class="fas fa-print"
                                                         style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
                                             </td>
