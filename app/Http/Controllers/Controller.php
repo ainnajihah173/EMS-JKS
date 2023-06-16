@@ -9,4 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    public function index()
+    {
+        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
+
+        return view('manageMConsultation.addAppConsult');
+    }
+
 }

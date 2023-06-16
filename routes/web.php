@@ -162,7 +162,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/staff/marriage-card/{mcard}/store', [MCardApplicationController::class, 'updateStatusApp'])->name('manageMCard.updateStatusApp');
 
     //Consultation Application
-
+    Route::get('/manageMConsultation/addAppConsult', 'App\Http\Controllers\Consultation@index')->name('addAppConsult');
 
     //Insentive Application - User
     Route::get('/manageIncentive/viewApplicationDetails', 'App\Http\Controllers\incentiveAppController@index')->name('viewApplicationDetails');
