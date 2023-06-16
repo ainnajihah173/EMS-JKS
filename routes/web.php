@@ -86,10 +86,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/marriage-request/register', [MApplicationController::class, 'createRequestForm'])->name('manageMRequest.regRequestApplication');
     Route::post('/marriage-request/store-application', [MApplicationController::class, 'store'])->name('manageMRequest.store');
     Route::get('/marriage-request/view-application', [MApplicationController::class, 'showApp'])->name('manageMRequest.viewApplication');
-    Route::get('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStatus'])->name('manageMRequest.update');
+    Route::get('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'updateStatus'])->name('manageMRequest.updateStatus');
     Route::get('/marriage-request/{m_application}/edit-application', [MApplicationController::class, 'editApp'])->name('manageMRequest.editApplication');
     Route::post('/marriage-request/{m_application}/update-application', [MApplicationController::class, 'update'])->name('manageMRequest.update');
     Route::get('/marriage-request/{m_application}/delete-application', [MApplicationController::class, 'destroy'])->name('manageMRequest.destroy');
+    Route::get('/marriage-request/{m_application}/print-app', [MApplicationController::class, 'showAppStaff'])->name('manageMRequest.printApp');
+    Route::get('/marriage-request/{m_application}/print-hiv', [MApplicationController::class, 'showHIV'])->name('manageMRequest.printHIV');
+    Route::get('/marriage-request/{m_application}/print-wakalah', [MApplicationController::class, 'showWakalah'])->name('manageMRequest.printWakalah');
+    Route::get('/marriage-request/{m_application}/view-hiv', [MApplicationController::class, 'showHIV'])->name('manageMRequest.viewHIV');
+    Route::get('/marriage-request/{m_application}/view-wakalah', [MApplicationController::class, 'showWakalah'])->name('manageMRequest.viewWakalah');
 
 
     Route::get('/marriage-request/edit-hiv', [MApplicationController::class, 'editHIV'])->name('manageMRequest.editHIVForm');
