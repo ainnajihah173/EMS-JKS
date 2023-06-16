@@ -75,7 +75,7 @@ class CourseAppController extends Controller
         if ($data) {
             $data->couApp_approveStatus = $request->couApp_approveStatus;
             if ($request->couApp_approveStatus == "Draft") {
-                $data->couApp_approveStatus == "Untuk Diluluskan";
+                $data->couApp_approveStatus == "Hantar";
             }
             $data->save();
         }
@@ -128,6 +128,14 @@ class CourseAppController extends Controller
         return view('manageMCourse.searchListStaff', compact('datas','courses'));
     }
 
+    //retrun page view applicant course form
+    public function showAppStaff($courseApp)
+    {
+        $data = Course_App::with('course')->find($courseApp);
+
+        return view('manageMCourse.viewAppStaff', compact('data'));
+    }
+
     // public function showList($courseApp)
     // {
     //     $request->merge([
@@ -151,22 +159,18 @@ class CourseAppController extends Controller
 
     public function storeRegStaff(Request $request)
     {
-        // dd($request->all());
+        $CPCount = Course_App::count();
         $request->merge([
-            'couApp_approveStatus' => "Draft",
-            'couApp_attendance' => "Pending"
+            'user_id' => auth()->user()->id,
+            'couApp_approveStatus' => "Untuk D",
+            'couApp_attendance' => "Pending",
+            'couApp_noApp' => 'CP' . date("Y") . sprintf("%'.05d\n", $CPCount + 1),
         ]);
         Course_App::create($request->all());
         return redirect()->route('manageMCourse.indexStaff');
     }
 
-    //retrun page view applicant course form
-    public function showAppStaff($courseApp)
-    {
-        $data = Course_App::with('course')->find($courseApp);
 
-        return view('manageMCourse.viewAppStaff', compact('data'));
-    }
 
 
     //return staff page edit app

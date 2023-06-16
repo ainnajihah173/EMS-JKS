@@ -1,7 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Daftar KursusBaru'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -45,7 +45,7 @@
                                         <span>Masa Mula *</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="time" id="cou_startTime" name="cou_startTime">
+                                        <input class="form-control" type="time" id="cou_startTime" name="cou_startTime" style="width:50%">
                                     </div>
                                 </div>
 
@@ -54,7 +54,7 @@
                                         <span>Masa Tamat *</span>
                                     </div>
                                     <div class="right">
-                                        <input class="form-control" type="time" id="cou_endTime" name="cou_endTime">
+                                        <input class="form-control" type="time" id="cou_endTime" name="cou_endTime" style="width:50%">
                                     </div>
                                 </div>
 
@@ -94,8 +94,7 @@
                                     </div>
                                 </div>
                                 <div class="text-end mt-2">
-                                    <button  type="button" onclick="history.back()" class="btn btn-secondary btn-md ms-auto">Back</button>
-                                    <button type="submit" class="btn btn-success btn-md ms-auto">Save</button>
+                                    <button type="submit" class="btn btn-info btn-sm float-left mb-0 mt-4">Simpan</button>
                                 </div>
                                 {{-- <input type="submit" class="btn btn-info btn-sm float-end mb-0 mt-4">Daftar</a>
                                 <input type="reset" class="btn btn-info btn-sm float-end mb-0 mt-4" value="Set Semula"> --}}

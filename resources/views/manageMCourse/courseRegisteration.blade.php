@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Daftar Perkahwinan'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kursus Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -82,8 +82,7 @@
 
 
                                 <div class="text-end mt-2">
-                                    <button  type="button" onclick="history.back()" class="btn btn-secondary btn-md ms-auto">Back</button>
-                                    <button type="submit" class="btn btn-success btn-md ms-auto">Save</button>
+                                    <button type="submit" class="btn btn-info btn-sm float-left mb-0 mt-4">Simpan</button>
                                 </div>
                             </div>
                         </form>
@@ -97,41 +96,3 @@
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
-
-{{-- @push('js')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#loc').on('change', function() {
-                var cou_id = this.value;
-                $('#loc').html('');
-                $.ajax({
-                    url: '{{ route('address') }}?cou_id' + cou_id,
-                    type: 'get',
-                    success: function(res) {
-                        $('#address').html('<option value="">Sila Pilih Lokasi</option>');
-                        $.each(res, function(key, value) {
-                            $('#address').append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                        $('#date').html('<option value="">Sila Pilih Tarikh</option>');
-                    }
-                });
-            });
-            $('#address').on('change', function() {
-                var cou_locDistrict = this.value;
-                $('#date').html('');
-                $.ajax({
-                    url: '{{ route('date') }}?cou_locDistrict=' + cou_locDistrict,
-                    type: 'get',
-                    success: function(res) {
-                        $('#date').html('<option value="">Sila Pilih Tarikh</option>');
-                        $.each(res, function(key, value) {
-                            $('#date').append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-@endpush --}}

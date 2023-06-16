@@ -29,6 +29,11 @@ return new class extends Migration
             $table->string('mapp_status')->nullable();
             $table->string('mapp_noApp')->nullable(); 
             $table->string('mapp_category')->nullable();
+            $table->string('mapp_hivStatus')->nullable();
+            $table->string('mapp_hivForm')->nullable();
+            $table->string('mapp_uploadHIV')->nullable();
+            $table->string('mapp_wakalahForm')->nullable();
+            $table->string('mapp_uploadWakalah')->nullable();
             $table->timestamps();
         });
     }

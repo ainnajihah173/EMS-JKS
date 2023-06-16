@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Pendaftaran Perkahwinan'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kursus Perkahwinan'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -43,7 +43,7 @@
                             <table id="kursus-status">
                                 <tr>
                                     <th>Bil</th>
-                                    <th>Nama</th>
+                                    <th>Tempat</th>
                                     <th>Tarikh Kursus</th>
                                     <th>Status</th>
                                     <th>Operasi</th>
@@ -53,11 +53,17 @@
                                         <td>
                                             {{ $loop->index + 1 }}
                                         </td>
-                                        <td></td>
+                                        <td> {{ $data->course->cou_locDistrict ?? '-' }} -  {{ $data->course->cou_address ?? '-' }}</td>
                                         <td>
                                             {{ $data->course->cou_date ?? '-' }}
                                         </td>
-                                        <td>{{ $data->couApp_approveStatus ?? '-' }}</td>
+                                        <td>
+                                            @if ($data->couApp_approveStatus == 'Untuk Diluluskan')
+                                            Hantar
+                                        @elseif($data->couApp_approveStatus == 'Draft')
+                                            Draft
+                                
+                                        @endif</td>
                                         <td>
                                             {{-- <a href="{{ route('manageMCourse.viewApplication', ['course_app' => $data->id]) }}"><i class="fas fa-eye" style="padding-right:15px;color:green"></i></a> --}}
 

@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Kemaskini Maklumat Perkahwinan'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Permohonan Kebenaran Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -385,14 +385,7 @@
                                                             name="mreg_jurunikahName">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="example-text-input" class="form-control-label">
-                                                            Muatnaik Bayaran Nikah Resit <span
-                                                                class="text-danger">*</span></label>
-                                                        <input class="form-control" name="mreg_resit" type="file">
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-md-12 bg-light p-1 mb-2 mt-2">
                                                     <h6>Butiran Wali</h6>
                                                 </div>
@@ -537,7 +530,7 @@
                                                 </div>
                                                 <div class="text-center mt-4">
                                                     <a href="" class="btn btn-light btn-md ms-4">Kembali</a>
-                                                    <button type="submit" class="btn btn-info btn-md ms-4">Draft</button>
+                                                    <button type="submit" class="btn btn-info btn-md ms-4">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>

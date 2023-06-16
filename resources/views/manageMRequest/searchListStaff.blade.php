@@ -1,7 +1,7 @@
 @extends('layouts.staff', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Pendaftaran Perkahwinan'])
+    @include('layouts.navbars.auth.topnavStaff', ['title' => 'Permohonan Kebenaran Kahwin'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -24,11 +24,13 @@
                                             <span><b>Status</b></span>
                                         </div>
                                         <div class="right">
-                                            <select class="form-select" aria-label="Default select example"
-                                                style="width:50%;">
-                                                <option selected>--- Sila Pilih Status ---</option>
-                                                <option value="1">Pendaftaran Nikah Dengan Kebenaran</option>
-                                                <option value="2">Pendaftaran Nikah Sukarela</option>
+                                            <select class="form-select" name="mapp_status" style="width: 50%;">
+                                                <option selected></option>
+                                                <option value="Untuk Diluluskan">Untuk Diluluskan</option>
+                                                <option value="Baru">Baru</option>
+                                                <option value="Dalam Proses">Dalam Proses</option>
+                                                <option value="Lulus">Lulus</option>
+                                                <option value="Gagal">Gagal</option>
                                             </select>
                                         </div>
                                     </div>
@@ -40,8 +42,8 @@
                             </div>
 
                             <div class="column" style="width: 30%;">
-                                <a href="{{ route('manageMRequest.registerApplicant') }}"><input type="submit" value="Daftar Permohonan"
-                                        style="margin-right:100px;width:45%;"></a>
+                                <a href="{{ route('manageMRequest.registerApplicant') }}"><input type="submit"
+                                        value="Daftar Permohonan" style="margin-right:100px;width:45%;"></a>
                             </div>
                         </div>
                     </div>
@@ -53,37 +55,88 @@
                                         <th>Bil</th>
                                         <th>No.Akuan Terima</th>
                                         <th>Pemohon</th>
-                                        <th>Tarikh Nohon</th>
+                                        <th>Tarikh Mohon</th>
                                         <th>Tarikh Akad</th>
                                         <th>Status</th>
                                         <th>Operasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="line-height: 30px;">
-                                        <td>1</td>
-                                        <td>981234050981 <br> Ali bin Abu</td>
-                                        <td>XXXXXXXXXXXXX</td>
-                                        <td>Nikah Sukarela</td>
-                                        <td>22/11/2022</td>
-                                        <td><span class="badge badge-pill bg-info">Untuk Diluluskan</span></td>
-                                        <td>
-                                            <a href="{{ route('manageMRequest.viewAppStaff') }}"><i class="fas fa-eye"
-                                                    style="padding-right:15px;color:green"></i></a>
-                                            <a href="{{ route('manageMRequest.editAppStaff') }}"><i class="fas fa-edit"
-                                                    style="padding-right:15px;color:blue"></i></a>
-                                            <a href="{{ route('manageMRegistration.printAppStaff') }}"><i
-                                                    class="fas fa-print"
-                                                    style="padding-right:15px;color:rgba(0, 0, 0, 0.784)"></i></a>
-                                            <a href="{{ route('manageMCourse.editAppStaff') }}"><i
-                                                    class="far fa-check-circle"
-                                                    style="padding-right:15px;color:rgb(255, 122, 5)"></i></a>
-                                            <a href=""><i class="fas fa-certificate"
-                                                    style="padding-right:15px;color:rgba(185, 185, 185, 0.297)"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($datas as $data)
+                                        <tr style="line-height: 30px;">
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td> {{ $data->mapp_noApp ?? '-' }}</td>
+                                            <td> {{ $data->applicant->app_ic ?? '-' }} <br>
+                                                {{ $data->applicant->app_name ?? '-' }}</td>
+                                            <td>{{ $data->mapp_dateApply ?? '-' }}</td>
+                                            <td>{{ $data->mapp_marriageDate ?? '-' }}</td>
+                                            <td><span>
+                                                    @if ($data->mapp_status === 'Untuk Diluluskan')
+                                                        <span class="badge badge-pill bg-info">Untuk Diluluskan</span>
+                                                    @elseif ($data->mapp_status === 'Baru')
+                                                        <span class="badge badge-pill bg-info">Baru</span>
+                                                    @elseif ($data->mapp_status === 'Dalam Proses')
+                                                        <span class="badge badge-pill bg-info">Dalam Proses</span>
+                                                    @elseif ($data->mapp_status === 'Lulus')
+                                                        <span class="badge badge-pill bg-success">Lulus</span>
+                                                    @elseif ($data->mapp_status === 'Gagal')
+                                                        <span class="badge badge-pill bg-warning">Gagal</span>
+                                                    @else
+                                                        <span class="badge badge-pill bg-warning">Belum
+                                                            Hantar</span>
+                                                    @endif
+                                                </span></td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('manageMRequest.viewAppStaff', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-eye" style="padding-right:15px;color:green"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.editAppStaff', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-edit" style="padding-right:15px;color:blue"></i></a>
+                                                <a href="#"
+                                                    onclick="deleteRecord('{{ route('manageMRequest.destroyStaff', ['m_application' => $data['id']]) }}')"><i
+                                                        class="fas fa-trash"
+                                                        style="padding-right:15px;color:rgb(255, 5, 5)"></i></a>
+                                                <a
+                                                    href="{{ route('manageMRequest.documentListStaff', ['m_application' => $data['id']]) }}"><i
+                                                        class="fas fa-print" style="padding-right:15px;color:black"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr style="display:none">
+                                            <td>3</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            <!-- Padam Aduan Modal -->
+                            <div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
+                                aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content ">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteConfirmationModalLabel">Padam Permohonan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Adakah kamu mahu memadam permohonan?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <a href="" id="deleteLink" class="btn btn-danger">Padam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  End Padam Aduan Modal -->
+
                         </div>
                     </div>
 
@@ -92,56 +145,16 @@
         </div>
     </div>
 @endsection
-
 @push('js')
     <script>
         let table = new DataTable('#myTable');
 
-        function deleteRecord(url) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#000080',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
-                preConfirm: (input) => {
-                    return fetch(url, {
-                            method: 'DELETE',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                _token: "{{ csrf_token() }}"
-                            })
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(response.statusText)
-                            }
-                            return response.json()
-                        })
-                        .catch(error => {
-                            Swal.showValidationMessage(
-                                `Request failed: ${error}`
-                            )
-                        })
-                },
-                allowOutsideClick: () => !Swal.isLoading()
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'The user has been deleted.',
-                        'success'
-                    )
-                    setTimeout(() => {
-                        document.location.reload();
-                    }, 2000);
-                }
-            })
+        function deleteRecord(deleteUrl) {
+            // Set the href attribute of the delete link in the modal
+            document.getElementById('deleteLink').href = deleteUrl;
+
+            // Show the delete confirmation modal
+            $('#deleteConfirmationModal').modal('show');
         }
     </script>
 @endpush
