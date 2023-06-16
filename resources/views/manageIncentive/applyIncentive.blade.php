@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body p-3">
                         <!-- Nav Tab -->
-                        <form role="form" method="POST" action={{ route('applyIncentive:store') }}
+                        <form role="form" method="POST" action=""
                             enctype="multipart/form-data">
                             @csrf
                             <div class="nav-wrapper position-relative end-0">
