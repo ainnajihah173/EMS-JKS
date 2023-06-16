@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body p-3">
                         <!-- Nav Tab -->
-                        <form role="form" method="POST" action=""
+                        <form role="form" method="POST" action={{ route('applyIncentive:store') }}
                             enctype="multipart/form-data">
                             @csrf
                             <div class="nav-wrapper position-relative end-0">
@@ -50,7 +50,118 @@
                                     <!-- Maklumat Pemohon Tab Pane -->
                                     <div class="tab-pane fade show active" id="pemohon" role="tabpanel"
                                         aria-labelledby="home-tab">
-                                        <!-- Replace this section with your content -->
+                                        <!-- Maklumat Pemohon content -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nama_pemohon" class="form-control-label">Nama Pemohon <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="nama_pemohon" type="text" name="applicant[app_name]">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_kad_pengenalan" class="form-control-label">No. Kad Pengenalan <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_kad_pengenalan" name="applicant[app_ic]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tarikh_lahir" class="form-control-label">Tarikh Lahir <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="tarikh_lahir" name="applicant[tarikh_lahir]" type="date">
+                                                </div>
+                                            </div>                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="umur" class="form-control-label">Umur <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="umur" name="applicant[umur]" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tempat_lahir" class="form-control-label">Tempat Lahir <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="tempat_lahir" name="applicant[tempat_lahir]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="warganegara" class="form-control-label">Warganegara <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="warganegara" name="applicant[warganegara]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_passport" class="form-control-label">No. Passport/Tentera/Polis <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_passport" name="applicant[no_passport]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_telefon" class="form-control-label">No. Telefon <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_telefon" name="applicant[no_telefon]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nama_bank" class="form-control-label">Nama Bank <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="nama_bank" name="applicant[nama_bank]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_akaun_bank" class="form-control-label">No. Akaun Bank <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_akaun_bank" name="applicant[no_akaun_bank]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="alamat_semasa" class="form-control-label">Alamat Semasa <span class="text-danger">*</span></label>
+                                                    <textarea class="form-control" id="alamat_semasa" name="applicant[alamat_semasa]" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" value="" id="alamat_sama">
+                                            <label class="form-check-label" for="alamat_sama">
+                                                Tanda Jika Alamat Semasa Sama Dengan Alamat Dalam K/P
+                                            </label>
+                                        </div>
+                                        <div class="card-header pb-0 text-left">
+                                            <p class="fw-bold">Maklumat Pekerjaan
+                                            </p>
+                                        </div>
+                                        <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_pekerjaan" class="form-control-label">Nama Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="nama_pekerjaan" name="applicant[nama_pekerjaan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="jenis_pekerjaan" class="form-control-label">Jenis Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="jenis_pekerjaan" name="applicant[jenis_pekerjaan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="pendapatan" class="form-control-label">Pendapatan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="pendapatan" name="applicant[pendapatan]" type="number" step="0.01"> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_majikan" class="form-control-label">Nama Majikan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="nama_majikan" name="applicant[nama_majikan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="alamat_premis" class="form-control-label">Alamat Premis Perniagaan <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" id="alamat_premis" name="applicant[alamat_premis]" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        </div>                                        
+
                                         <div class="text-center mt-4">
                                             <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
                                         </div>
@@ -58,7 +169,117 @@
                                     <!-- Maklumat Pasangan Tab Pane -->
                                     <div class="tab-pane fade" id="pasangan" role="tabpanel"
                                         aria-labelledby="profile-tab">
-                                        <!-- Replace this section with your content -->
+                                        <!-- Maklumat Pasangan content -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nama_pasangan" class="form-control-label">Nama Pasangan <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="nama_pemohon" type="text" name="applicant[spouse_name]">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_kad_pengenalan" class="form-control-label">No. Kad Pengenalan <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_kad_pengenalan" name="applicant[app_ic]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tarikh_lahir" class="form-control-label">Tarikh Lahir <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="tarikh_lahir" name="applicant[tarikh_lahir]" type="date">
+                                                </div>
+                                            </div>                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="umur" class="form-control-label">Umur <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="umur" name="applicant[umur]" type="number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tempat_lahir" class="form-control-label">Tempat Lahir <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="tempat_lahir" name="applicant[tempat_lahir]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="warganegara" class="form-control-label">Warganegara <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="warganegara" name="applicant[warganegara]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_passport" class="form-control-label">No. Passport/Tentera/Polis <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_passport" name="applicant[no_passport]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_telefon" class="form-control-label">No. Telefon <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_telefon" name="applicant[no_telefon]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nama_bank" class="form-control-label">Nama Bank <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="nama_bank" name="applicant[nama_bank]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_akaun_bank" class="form-control-label">No. Akaun Bank <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_akaun_bank" name="applicant[no_akaun_bank]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="alamat_semasa" class="form-control-label">Alamat Semasa <span class="text-danger">*</span></label>
+                                                    <textarea class="form-control" id="alamat_semasa" name="applicant[alamat_semasa]" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" value="" id="alamat_sama">
+                                            <label class="form-check-label" for="alamat_sama">
+                                                Tanda Jika Alamat Semasa Sama Dengan Alamat Dalam K/P
+                                            </label>
+                                        </div>
+                                        <div class="card-header pb-0 text-left">
+                                            <p class="fw-bold">Maklumat Pekerjaan
+                                            </p>
+                                        </div>
+                                        <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_pekerjaan" class="form-control-label">Nama Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="nama_pekerjaan" name="applicant[nama_pekerjaan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="jenis_pekerjaan" class="form-control-label">Jenis Pekerjaan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="jenis_pekerjaan" name="applicant[jenis_pekerjaan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="pendapatan" class="form-control-label">Pendapatan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="pendapatan" name="applicant[pendapatan]" type="number" step="0.01"> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_majikan" class="form-control-label">Nama Majikan <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="nama_majikan" name="applicant[nama_majikan]" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="alamat_premis" class="form-control-label">Alamat Premis Perniagaan <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" id="alamat_premis" name="applicant[alamat_premis]" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        </div>     
                                         <div class="text-center mt-4">
                                             <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
                                         </div>
@@ -66,7 +287,28 @@
                                     <!-- Maklumat Waris Tab Pane -->
                                     <div class="tab-pane fade" id="waris" role="tabpanel"
                                         aria-labelledby="contact-tab">
-                                        <!-- Replace this section with your content -->
+                                        <!-- Maklumat Waris content -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nama_waris" class="form-control-label">Nama Waris <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="nama_waris" name="applicant[nama_waris]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="hubungan" class="form-control-label">Hubungan <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="hubungan" name="applicant[hubungan]" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="no_telefon_waris" class="form-control-label">No. Telefon Waris <span class="text-danger">*</span></label>
+                                                    <input class="form-control" id="no_telefon_waris" name="applicant[no_telefon_waris]" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="text-center mt-4">
                                             <a href="" class="btn btn-info btn-md ms-4">Seterusnya</a>
                                         </div>
@@ -74,7 +316,7 @@
                                     <!-- Dokumen Tab Pane -->
                                     <div class="tab-pane fade" id="dokumen" role="tabpanel"
                                         aria-labelledby="contact-tab">
-                                        <!-- Replace this section with your content -->
+                                        <!-- Dokumen content -->
 <!-- Dokumen Sokongan field -->
 <p>Dokumen Sokongan <span style="color: red;">*</span></p>
 <p>Sila muatnaik salinan kad pengenalan, catatan akad nikah & penyata akaun bank</p>
@@ -99,7 +341,7 @@
 </form>
 
                                         <div class="text-center mt-4">
-                                            <button href="{{ route('viewApplicationStatus') }}" type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
+                                            <button type="submit" class="btn btn-info btn-md ms-4">Hantar</button>
                                         </div>
                                     </div>
                                 </div>
