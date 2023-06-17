@@ -14,6 +14,7 @@ use App\Http\Controllers\MCardApplicationController;
 use App\Http\Controllers\MRegistrationController;
 use App\Http\Controllers\UserController;
 use App\Models\MApplication;
+use App\Http\Controllers\MConsultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -161,9 +162,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/staff/marriage-card/{mcard}/status-update', [MCardApplicationController::class, 'updateCetak'])->name('manageMCard.updateCetak');
     Route::post('/staff/marriage-card/{mcard}/store', [MCardApplicationController::class, 'updateStatusApp'])->name('manageMCard.updateStatusApp');
 
-    //Consultation Application
-    Route::get('/manageMConsultation/homepageMConsult', 'App\Http\Controllers\Consultation@index')->name('homepageMConsult');
-    Route::get('/manageMConsultation/addAppConsult', 'App\Http\Controllers\Consultation@addConsult')->name('addAppConsult');
+    //Consultation Application Applicant
+    Route::get('/manageConsultation/viewApplicantConsForm','App\Http\Controllers\MConsultController@index')->name('viewApplicantConsForm');
+    Route::get('/manageConsultation/consultRegistration', 'App\Http\Controllers\MConsultationController@addConsult')->name('consultRegistration');
 
     //Insentive Application - User
     Route::get('/manageIncentive/viewApplicationDetails', 'App\Http\Controllers\incentiveAppController@index')->name('viewApplicationDetails');

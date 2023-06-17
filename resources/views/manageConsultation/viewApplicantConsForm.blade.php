@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Insentif Khas'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'KHIDMAT NASIHAT'])
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
@@ -18,7 +18,7 @@
                                          <input class="form-control mr-sm-2" type="search" placeholder="Cari No.KP/Passport" aria-label="Search">
                                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Semak</button>
                                                           
-         <h2>Senarai Prmohonan Aduan</h2>
+         <h2>Senarai Permohonan Aduan</h2>
          <style>
             table {
               border-collapse: collapse;
@@ -40,7 +40,7 @@
             }
           </style>
         
-        <a class="btn btn-primary" href="{{ route('addAppConsult') }}" role="button">Daftar Baru</a>
+        <a class="btn btn-primary" href="{{ route('consultRegistrationPage') }}" role="button">Daftar Baru</a>
         
           <table>
             <thead>

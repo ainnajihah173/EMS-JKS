@@ -10,19 +10,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function index()
-    {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMConsultation.homepageMConsult');
-    }
-
-    public function addConsult()
-    {
-        //$mreg = MRegistration::with('user')->get() , , compact('mreg');
-
-        return view('manageMConsultation.addAppConsult');
-    }
+   
 
 
 }
