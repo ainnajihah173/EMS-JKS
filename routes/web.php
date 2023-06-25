@@ -164,8 +164,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Consultation Application Applicant
     Route::get('/manageConsultation/viewApplicantConsForm','App\Http\Controllers\MConsultController@index')->name('viewApplicantConsForm');
+<<<<<<< Updated upstream
     Route::get('/manageConsultation/consultRegistrationPage', 'App\Http\Controllers\MConsultationController@addConsult')->name('consultRegistrationPage');
 
+=======
+    Route::get('/manageConsultation/consultRegistration', 'App\Http\Controllers\MConsultationController@addConsult')->name('consultRegistration');
+    Route::get('/marriage-card/card-application', [MCardApplicationController::class, 'create'])->name('manageMCard.create');
+>>>>>>> Stashed changes
     //Insentive Application - User
     Route::get('/manageIncentive/viewApplicationDetails', 'App\Http\Controllers\incentiveAppController@index')->name('viewApplicationDetails');
     Route::get('/manageIncentive/viewApplicationStatus', 'App\Http\Controllers\incentiveAppController@appStatus')->name('viewApplicationStatus');
