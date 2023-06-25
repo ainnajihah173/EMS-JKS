@@ -164,7 +164,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Consultation Application Applicant
     Route::get('/manageConsultation/viewApplicantConsForm','App\Http\Controllers\MConsultController@index')->name('viewApplicantConsForm');
-    Route::get('/manageConsultation/consultRegistration', 'App\Http\Controllers\MConsultationController@addConsult')->name('consultRegistration');
+    Route::get('/manageConsultation/consultRegistrationPage', 'App\Http\Controllers\MConsultationController@addConsult')->name('consultRegistrationPage');
 
     //Insentive Application - User
     Route::get('/manageIncentive/viewApplicationDetails', 'App\Http\Controllers\incentiveAppController@index')->name('viewApplicationDetails');
