@@ -12,7 +12,7 @@ class MConsultController extends Controller
     public function index()
     {
         //
-        return view('manageConsultation.viewApplicantConsForm');
+        return view('manageConsultation.consultRegistrationPage');
     }
 
     public function appStatus()

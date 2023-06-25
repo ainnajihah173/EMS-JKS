@@ -133,22 +133,20 @@
                                             </div>
                                            
                                         <h3>Maklumat Pasangan</h3>
-                                       
-                                    <div class="tab-pane fade" id="pasangan" role="tabpanel"
-                                        aria-labelledby="profile-tab">
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
+                                        <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
-                                                        Nama Pasangan <span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" name="spouse[app_name]">
+                                                        Nama <span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="applicant[spouse_name]" type="text">
                                                 </div>
+                                        
+                                    
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">
                                                         No. Kad Pengenalan <span class="text-danger">*</span></label>
-                                                    <input class="form-control" name="spouse[app_ic]" type="text">
+                                                    <input class="form-control" name="spouse[spouce_ic]" type="text">
                                                 </div>
                                             <h3>Maklumat Aduan</h3>
                                             <div class="col-md-6">
@@ -161,7 +159,8 @@
                                         
                                             <div class="text-center mt-4">
                                                 <a href="" class="btn btn-light btn-md ms-4">Kembali</a>
-                                                <button type="submit" class="btn btn-info btn-md ms-4">Simpan</button>
+                                                <a href="{{ route('viewApplicantConsForm') }}" class="btn btn-info btn-md ms-4">Simpan</a>
+
                                             </div>
                                         </div>
                                     </div>
